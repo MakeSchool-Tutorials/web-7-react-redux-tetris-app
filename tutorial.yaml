@@ -1,0 +1,7 @@
+title: "React Redux Passwords App Tutorial"
+cover: cover.png
+solution_url: https://github.com/MakeSchool-Tutorials/Tutorial-Template/
+teaser_text: |
+    This tutorial is an introduction to React and Redux. 
+    The goal is to create a small app that generates and 
+    stores a list of passwords. 

@@ -1,39 +1,37 @@
 ---
-title: "React Redux Introduction"
-slug: react-redux-introduction
+title: "React Redux Tetris - Introduction"
+slug: react-redux-tetris-introduction
 ---
 
-This tutorial creates a small app using React and Redux. The goal of the app 
-is to generate random passwords and store passwords generated. 
-
-The project can be built with React or React Native. The tutorial will use React. 
-
-Code will be written with ES6 version of JavaScript. 
-
-Data will be stored with local storage. 
+This tutorial uses React and Redux to recreate the classic 
+arcade game Tetris. 
 
 # Prerequisites 
 
-To follow the tutorial you should have a basic understanding of JavaScript. 
-
-The tutorial assumes familiarity with React and JSX. 
-
-Some understanding of the ES6 version of JS will also be helpful. 
+To comlete this tutorial you should have some experience with 
+the JavaScript Lnaguage and React. 
 
 # Introduction 
 
-The goal of this tutorial is to create an app that generates randomized passwords, and keeps
-a store of these passwords locally on your device. 
+The goal of the project is to create the classic arcade game
+Tetris with React and Redux. React will generate and manage 
+the views in the project while the state of the game will 
+be stored in Redux. 
+
+The game state is stored in a Arrays and managing and 
+manipulating these Arrays will be a big portion of making the
+game function.
+
+The tutorial will also delve into related topics like CSS, 
+CSS Grid, and Flex Box. 
 
 ## Concepts Covered
 
-- React
+- React 
   - JSX
-  - Components
+- Redux 
+  - Flux
 - JavaScript
-  - Generating random numbers and characters
-  - String methods and manipulating strings
-  - Class objects and OOP
-- Redux and React Redux
-  - Managing Application state with the Flux pattern
-
+  - ES6
+  - Array
+  

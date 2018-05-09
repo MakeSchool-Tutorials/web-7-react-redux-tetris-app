@@ -38,6 +38,10 @@ Since we removed the logo we should remove the import for it:
 
 Make a folder for components: 'src/components'.
 
+## conclusion
+
+
+
 ## Resources
 
 - https://github.com/facebook/create-react-app

@@ -26,6 +26,10 @@ Make a folder for Reducers: 'src/reducers'.
 
 Make another folder to hold some utility functions: 'src/utils'.
 
+## conclusion
+
+
+
 ## Resources
 
 - 

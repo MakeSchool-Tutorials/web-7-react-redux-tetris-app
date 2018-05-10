@@ -1,6 +1,6 @@
 ---
-title: "React Redux Tetris - Actions"
-slug: react-redux-tetris-actions
+title: "React Redux Tetris - Actions and Reducers"
+slug: react-redux-tetris-actions-and-reducers
 ---
 
 The game will use Redux to store the state of the application. 
@@ -41,6 +41,8 @@ the game.
 
 ## Challenges
 
+**Actions**
+
 Make a new file: './actions/index.js'. 
 
 Define some actions: 
@@ -56,6 +58,8 @@ export const SET_NEXT   = "SET_NEXT"    // ???
 export const GAME_OVER  = "GAME_OVER"   // The game is over
 export const RESTART    = "RESTART"     // Restart Game
 ```
+
+**Action Creators**
 
 Then define an action creator for each action.
 
@@ -98,6 +102,8 @@ action creators and action objects will need to
 incorporate data in a payload. The game is simple in it's
 use of data. All of the data is handled and stored in the 
 Redux store, all the actions need only pass the type. 
+
+**Reducer**
 
 Define a reducer to handle actions. 
 
@@ -155,7 +161,7 @@ export default gameReducer
 
 This is a stub for the final implementation. So far it 
 imports the actions and defines and exports the 
-`gameReducer` method. 
+`gameReducer` method.
 
 There is a lot of work to do here. Currently all cases 
 return state unchanged. The entire game state will be 
@@ -166,6 +172,27 @@ changes to state and returing a copy of state.
 Reducers are responsible for defining the initial value 
 for state. Currently the stub method sets the default 
 value of state to an empty object `{}`. 
+
+**Combine Reducers**
+
+There is only one reducer but, we still need to call 
+`combineReducers` to define state. 
+
+Add a new file './src/reducers/index.js'. 
+
+```JavaScript 
+import { combineReducers } from 'redux'
+import gameReducer from './game-reducer'
+
+const reducers = combineReducers({
+  game: gameReducer
+})
+
+export default reducers
+```
+
+The state handled by `gameReducer` will be stored 
+with the property name `game` on the Redux store. 
 
 ## Conclusion
 

@@ -1,6 +1,6 @@
 ---
-title: "React Redux Tetris - Displaying Game State"
-slug: react-redux-tetris-displaying-game-state
+title: "React Redux Tetris - Connect Next Block"
+slug: react-redux-tetris-connect-next-block
 ---
 
 Connecting game state to components. 

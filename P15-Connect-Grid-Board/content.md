@@ -1,6 +1,6 @@
 ---
-title: "React Redux Tetris - Display Grid Board state"
-slug: react-redux-tetris-display-grid-board-state
+title: "React Redux Tetris - Connect Grid Board"
+slug: react-redux-tetris-connect-grid-board
 ---
 
 Display the grid board from state
@@ -71,10 +71,11 @@ makeGrid() {
   return grid.map((rowArray, row) => {
     // map columns
     return rowArray.map((square, col) => {
+      // Find the block x and y on the shape grid
       const blockX = col - x
       const blockY = row - y
       let color = square
-      // Map current falling block to grid
+      // Map current falling block to grid. 
       if (blockX >= 0 && blockX < block.length && blockY >= 0 && blockY < block.length) {
         color = block[blockY][blockX] === 0 ? color : blockColor
       }

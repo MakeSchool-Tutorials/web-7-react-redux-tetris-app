@@ -55,6 +55,10 @@ of state and increment the rotation property.
 Hint, rotation can't exceed the last index of the
 the rotations for that shape.
 
+Hint: You can move the blokc into view by setting 
+the default value for y, then clicking the rotate
+button will show the rotation. 
+
 ## Conclusion
 
 

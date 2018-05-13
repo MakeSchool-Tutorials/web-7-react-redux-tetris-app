@@ -120,7 +120,6 @@ case MOVE_DOWN:
   newState.score = score
   newState.isRunning = isRunning
 
-  // TODO: Check canMoveTo if not game over
   if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
     // Game Over
     console.log("Game Should be over...")
@@ -133,10 +132,11 @@ case MOVE_DOWN:
   return newState
 ```
 
-
-
 ## Conclusion
 
+This should get a good portion of the game working. 
+The core mechanic is now in place. The next step is 
+get the blocks to move down on their own. 
 
 ## Resources
 

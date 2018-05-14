@@ -50,6 +50,14 @@ will make our job easier.
 I'll leave it up to you to choose where to place 
 the code.
 
+**Keep track of time**
+
+The code sample I will present will use a concept
+called Delta Time. This is the difference between
+the last time a function is called and right now. 
+
+Delta Time has some 
+
 ## Conclusion
 
 

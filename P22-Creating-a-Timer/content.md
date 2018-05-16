@@ -27,8 +27,6 @@ This solution might seem a little strange.
 It has a couple advantages and will (hopefully)
 introduce you to new ideas. 
 
-## Challenges
-
 **Dispatching a periodic MOVE_DOWN action**
 
 The goal here is issue a MOVE_DOWN action 
@@ -52,11 +50,113 @@ the code.
 
 **Keep track of time**
 
-The code sample I will present will use a concept
-called Delta Time. This is the difference between
-the last time a function is called and right now. 
+Delta time represents the difference between 
+now and the last time you checked the time. 
 
-Delta Time has some 
+**Where to handle timer events**
+
+The game needs to handle time and issue MOVE_DOWN
+actions at intervals. The interval will be the 
+speed set on state. 
+
+With those ideas in consideration where you 
+store the code that handles these update is a
+matter where you can access speed from the 
+Redux store and where you would logically look 
+for this code. 
+
+I made the decision to handle timing in the 
+GameBoard component. 
+
+**Request Animation Frame**
+
+The browser draws the contents of the window at 
+regular intervals, about every 16.7 milliseconds. 
+It's advantageous to our application to update
+our views on the same clock. 
+
+JavaScript provides a method to notify our 
+applications when the browser is about to redraw 
+the screen. 
+
+`requestAnimationFrame`
+
+## Challenges
+
+**Keeping track of Delta Time**
+
+To keep track of delta time the game needs two 
+variables: `lastUpdateTime` to hold the time of 
+the last update, and `progressTime` to hold the 
+amount of time since the last update. 
+
+These don't need to be part of state. I made them 
+class properties of the GameBoard. 
+
+```JavaScript
+constructor(props) {
+  super(props)
+
+  this.lastUpdateTime = 0
+  this.progressTime = 0
+}
+```
+
+**Request Animation Frame**
+
+The goal is to calculate the number of 
+milliseconds that have elapsed since the last 
+frame by subtracting the current time from 
+the last update time. 
+
+The game will keep a running total of the 
+milliseconds that have elapsed since the last 
+update. When the total is greater than the 
+speed issue a MOVE_DOWN. 
+
+The `requestAnimationFrame` takes a callback and 
+only calls it once. So the will have to make 
+another callback and we need to trigger the 
+first call in `componentDidMount`.
+
+Issue the first call to `requestAnimationFrame`.
+
+```JavaScript
+componentDidMount() {
+  window.requestAnimationFrame(this.update.bind(this))
+}
+```
+
+Define the callback for `requestAnimationFrame`.
+
+```JavaScript
+// Handle game updates
+update(time) {
+  window.requestAnimationFrame(this.update.bind(this))
+  if (!this.props.isRunning) {
+
+    return
+  }
+
+  if (!this.lastUpdateTime) {
+    this.lastUpdateTime = time
+  }
+
+  const deltaTime = time - this.lastUpdateTime
+  this.progressTime += deltaTime
+  if (this.progressTime > this.props.speed) {
+    this.props.moveDown()
+    this.progressTime = 0
+  }
+
+  this.lastUpdateTime = time
+}
+```
+
+Try testing the timing. Change the default 
+value for speed on game state. The blocks should fall 
+faster. You can use thise during game play to increase
+the difficulty of the game. 
 
 ## Conclusion
 

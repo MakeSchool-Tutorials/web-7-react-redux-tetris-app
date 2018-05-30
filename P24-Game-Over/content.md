@@ -167,12 +167,8 @@ case MOVE_DOWN:
   const newState = defaultState()
   newState.grid = newGrid
   newState.shape = nextShape
-  newState.nextShape = randomShape()
   newState.score = score
   newState.isRunning = isRunning
-  console.log(state)
-  console.log(newState)
-
 
   // TODO: Check and Set level
   // Score increases decrease interval
@@ -183,7 +179,24 @@ case MOVE_DOWN:
 
 Here there are three exit points. 
 
-The first if statement exits by **returning** new state 
+The first if statement exits by **returning** new state. The 
+state in this case is a copy of the current state with the y 
+value changed. In this situation it was okay to move to this 
+new y position. 
+
+If we get past the first if statement the bloack has hit some 
+squares on the grid and needs to be placed. So, immediately 
+after call `addBlockToGrid`. This returns an object with the 
+grid and the `gameOver` bool. 
+
+The second if state looks at the `gameOver` bool if true 
+the last block placed must have extended off the top of the 
+board the game is over. The game needs to return new state 
+with the shape set to `0` and `gameOver` set to true. 
+
+If the block was placed and the game is not over the game 
+needs to reset the x, y, and set the shape to next shape, 
+set next shape to a new random shape. 
 
 ## Conclusion
 

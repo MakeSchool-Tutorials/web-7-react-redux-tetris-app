@@ -1,21 +1,24 @@
 ---
 title: "React Redux Tetris - Grid Board"
-slug: react-redux-tetris-
+slug: react-redux-tetris-grid-board
 ---
 
 This section takes the grid square created in the last 
-section and displays them as a 10 x 18 grid.
+section and displays them as a 10 x 18 grid. 
+This grid of squares will be a component. 
 
 # Introduction 
 
-The game is made of a 10 by 18 grid. Where each square 
-on the grid is a single 20px by 20px square rendered 
-from a grid square component. 
+The the main view of the game is made of a 10 by 18 grid. 
+Where each square on the grid is a single 20px by 20px square 
+rendered from a grid square component. 
 
 The main game logic has not been implmented yet so you 
-will hard code the grid squares. 
+will hard code the grid squares for now. 
 
 ## Challenges
+
+**Make the GridBoard Component**
 
 Make a new file: 'src/components/grid-board.js'. 
 
@@ -54,9 +57,13 @@ export default GridBoard
 The `makeGrid` method generates an array of 18 rows, 
 each containg 10 `GridSquares`. 
 
+The components in this array are rendered in `div.grid-board`.
+
 Test this in 'App.js'.
 
 The grid squares should all end up stacked vertically. 
+
+**Use CSS Grid to arrange the squares**
 
 Use CSS Grid to arrange them into a grid. 
 

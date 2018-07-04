@@ -10,9 +10,12 @@ for this purpose.
 # Introduction 
 
 The next block will be displayed in a component that will 
-draw itself as a 4 by 4 grid of grid squares. 
+draw itself as a 4 by 4 grid of grid squares. You can reuse the 
+grid square component here. 
 
 ## Challenges
+
+**Make the Next Block Component**
 
 Make a new component: './src/components/next-block.js'.
 
@@ -46,6 +49,8 @@ class NextBlock extends Component {
 }
 ```
 
+**Add styles for the Next Block**
+
 Add some styles to arrange these into a grid. 
 
 ```css
@@ -60,12 +65,17 @@ Add some styles to arrange these into a grid.
 At this point the page is lacking arranement but the tiles 
 in each component are arranged in a grid. 
 
-You will CSS grid to arrange the page after we add a couple
-more elements. 
+Notice the GridSqaures are using the default color 0. You 
+will get the block shape as an array later and use this to 
+set the color of the blocks. 
+
+You can use CSS Grid to arrange the NextGrid and GridBoard 
+components on the page also!
 
 ## Conclusion 
 
-
+CSS Grid is a great tool for arrange elements in a two 
+dimensional layout. 
 
 ## Resources
 

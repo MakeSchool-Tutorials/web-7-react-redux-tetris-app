@@ -12,27 +12,40 @@ CSS grid is good for arranging the tiles in the
 grid. CSS grid can also be used to arrange the 
 larger UI element on the page as a whole. 
 
-CSS Grid is a very powerful layout tool that 
-can arrange items in rows and columns it can 
-also declare items that fill multiple rows and
-columns. This is easily accomplished using a
-simple decalrative approach. 
+CSS Grid gives you control to arrange elements on 
+a two dimensional grid. Elements can occupy multiple 
+rows and/or columns. All of this is easily accomplished 
+using a simple decalrative approach. 
 
 ## Defining a grid
 
 A grid is a two dimension structure of columns and rows. 
-Columns run vertically and rows run horizontally. 
+Columns span vertically and rows span horizontally. 
 In CSS we define the number of rows and columns, and the 
 width of each column and the height of each row. 
 
-The CSS grid module provides lots of options for this. 
+The size of a column or row can be defined in any unit 
+supported by CSS: `%`, `px`, `em`, `pt`, `mm`, `in`, cm etc. 
+Columns and rows can also also be specified as a fraction 
+of the available space with special unit: `fr`. 
+
+The CSS grid module provides many options to define a grid. 
 This discussion will focus on Grid Areas. Grid Areas 
 are named collections of cells on the grid. 
 
 ## Defining a grid for the game
 
 For the Tetris game the grid might have three columns and
-three rows. 
+three rows. This is main game layout that includes the 
+Header, NextBlock, GridBoard, ScoreBoard, Buttons components. 
+
+The Header will span all of the columns along the top. 
+
+The NextBlock, GridBoard, and ScoreBoard will be side by 
+side each taking a column. 
+
+The Buttons will sit in the center column below the 
+GridBoard. 
 
 The size of the columns can be based on the size of the 
 game tiles (20px). 
@@ -43,7 +56,7 @@ The columns will be 80px (20px * 4 columns), 200px (20px *
 ![columns](./assets/tetris-grid-columns.png)
 
 There will be three rows. The top will 100px this will 
-contain the header. The center row will be sized to fit the
+contain the Header. The center row will be sized to fit the
 game grid 360px (20px * 18), and the bottom row will hold 
 the buttons (which haven't been made yet) 100px.
 
@@ -76,7 +89,7 @@ Notice the cells in the lower left and right corner are
 not being used. 
 
 The gap between cells is an option that can be set with 
-CSS Grid. 
+CSS Grid. We will make that the sam size as one grid square. 
 
 ## Challenges
 
@@ -91,7 +104,7 @@ Currently the app structure looks looks like this:
   - div.next-block
   - div.score-board
 
-Declare .App as a grid container and define some grid areas. 
+Declare `.App` as a grid container and define some grid areas. 
 The areas are just strings. I used the names: 
 
 - h : Header
@@ -192,8 +205,13 @@ Last, set the area for the score board:
 
 ## Conclusion 
 
+This step used CSS Grid to layout the major UI element blocks. 
+Using `grid-area` makes the the process easier manage. 
 
+You used variables to define the width of UI blocks based on the 
+size of the grid squares. This way changing the size of the grid
+square will change the size of everything. 
 
 ## Resources
 
- 
+

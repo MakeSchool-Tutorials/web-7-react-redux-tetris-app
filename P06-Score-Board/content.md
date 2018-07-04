@@ -10,10 +10,21 @@ to live.
 # Introduction 
 
 The score board component will display the game 
-score. This will also give us a place to place 
-the play pause buttons. 
+score. As blocks are placed when row is filled with colored 
+squares the game scores points. 
+
+The game also needs a button to pause game play and restart 
+the game. 
+
+As the game progresses you can speed up game play or make it 
+more difficult in other ways the current level. 
+
+The component you add in this step will give these elements 
+a place to live. 
 
 ## Challenges
+
+**Create the ScoreBoard Component**
 
 Make a new file: './src/components/score-board.js'.
 
@@ -28,7 +39,7 @@ class ScoreBoard extends Component {
     return (
       <div className="score-board">
         <div>Score:{ this.props.score }</div>
-        <div>Level: 000</div>
+        <div>Level: 1</div>
 
         <button className="score-board-button" onClick={(e) => {
 
@@ -47,8 +58,8 @@ class ScoreBoard extends Component {
 export default ScoreBoard
 ```
 
-Might as well style some of this. No need to worry about the 
-text now focus on the buttons. 
+Define some styles for these elements. No need to worry about 
+the text now focus on the buttons. 
 
 ```css
 /* Score Board */
@@ -64,13 +75,18 @@ text now focus on the buttons.
 }
 ```
 
-This needs work but we can take care the details later. 
+Notice we can use the variables here. 
+
+This needs work, but we can take care the details later. 
 For now this is good. 
 
 ## Conclusion 
 
+Again CSS variables make our work more convient and flexible. 
 
+The Score Board component holds information about the current
+state of the game and controls that pause, resume, and 
+restart the game. 
 
 ## Resources
 
- 

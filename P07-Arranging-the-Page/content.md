@@ -73,8 +73,10 @@ The insection of Columns and Rows makes the grid Cells.
 ![Cells](./assets/tetris-grid-cells.png)
 
 CSS Grid allows you to define Grid Areas that span 
-multiple Columns and Rows. The goal of the final layout is 
-to place the header across the top three columns. 
+multiple Columns and Rows. 
+
+The goal of the final layout is to place the header across 
+the top three columns. 
 
 ![rows](./assets/tetris-grid-areas.png)
 
@@ -90,7 +92,7 @@ Notice the cells in the lower left and right corner are
 not being used. 
 
 The gap between cells is an option that can be set with 
-CSS Grid. We will make that the sam size as one grid square. 
+CSS Grid. We will make that the same size as one grid square. 
 
 ## Challenges
 
@@ -148,7 +150,9 @@ grid-template-areas: "h h h"
 ```
 
 This defines the areas on the grid with names: 'h', 'l', 'c', 'r', 
-and 'b'. The '.' represents an empty cell on the grid. 
+and 'b'. 
+
+The '.' represents an empty cell on the grid. 
 
 `grid-template-columns: var(--col-side) var(--col-center) var(--col-side);`
 
@@ -215,4 +219,4 @@ square will change the size of everything.
 
 ## Resources
 
-
+- https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas

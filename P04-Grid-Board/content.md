@@ -83,13 +83,13 @@ Add the following your stylesheet.
 }
 ```
 
-The first rule defines the `box-sizing` method to `border-box`
+The first rule sets the `box-sizing` to `border-box`
 This has the effect of telling the browser to calculate the 
 size boxes to inlcude the border width rather than adding
-the border, which is the default. 
+the border, which is the default. Read more about the [CSS Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model).
 
 The second rule defines the `grid-board` to display as `grid`.
-This cause the children of this element to arrange on a grid. 
+This causes the children of this element to arrange on a grid. 
 The number of columns is set by `--cols` var and the width 
 of each column is set by `--tile-size`. These two CSS custom 
 properties are defined in `:root` which allow them to be easily 
@@ -97,8 +97,11 @@ changed.
 
 ## conclusion 
 
-
+Here you created a new component to display the game board grid. 
+This component contains 10x18 grid squares, which are arranged 
+in a grid with the help of CSS Grid. 
 
 ## Resources
 
-- 
+- https://www.w3schools.com/css/css_grid.asp
+- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model

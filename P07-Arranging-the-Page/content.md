@@ -29,8 +29,9 @@ supported by CSS: `%`, `px`, `em`, `pt`, `mm`, `in`, cm etc.
 Columns and rows can also also be specified as a fraction 
 of the available space with special unit: `fr`. 
 
-The CSS grid module provides many options to define a grid. 
-This discussion will focus on Grid Areas. Grid Areas 
+The CSS grid module provides properties that allow you 
+to define the configuration of the grid many different 
+ways. This discussion will focus on Grid Areas. Grid Areas 
 are named collections of cells on the grid. 
 
 ## Defining a grid for the game

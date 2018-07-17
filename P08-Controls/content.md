@@ -14,15 +14,16 @@ four buttons.
 The next step is to create a component with four buttons. These 
 buttons will all issue actions. 
 
-Notice that using Redux/React-Redux we can easily connect a 
-component make changes to application state. Without Redux 
-It would be important to understand this components relationship 
-to other components. In this case it is unimportant since we 
-need only send an action to the dispatcher. 
+Redux allows you to make changes to applications state from 
+any component by issuing and action. 
+
+Without Redux changes in state would have to be passed up and 
+down the component hierarchy and state would have to be managed by 
+a shared parent component. 
 
 ## Challenges
 
-Make a new component to hold the buttons. Make a new file
+The first step is to make a new component to hold the buttons. Make a new file
 './src/components/controls.js'. The following stubs in the 
 the controls component class. 
 
@@ -65,7 +66,8 @@ export default Controls
 Add some new styles for the controls in './src/index.css'.
 
 Add some styles for the controls. These will style the controls
-container. 
+container. Notice here you are mapping this element to grid 
+area b. 
 
 ```CSS
 /* controls */
@@ -120,7 +122,9 @@ Then add the new component in the render method.
 
 ## Conclusion 
 
-
+Controls will handle game interactions. The buttons appear 
+below the game board. Each button will call an action to 
+create changes in state.
 
 ## Resources
 

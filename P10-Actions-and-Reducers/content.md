@@ -25,19 +25,19 @@ These actions handle running the game.
 **Game Play**
 These actions work with the player controls to move the block.
 
-- Move Left : Moves the current block left
-- Move Right : Moves the current block right 
-- Move Down : Moves the current block down
-- Rotate : Rotates the current block
+- **Move Left** : Moves the current block left
+- **Move Right** : Moves the current block right 
+- **Move Down** : Moves the current block down
+- **Rotate** : Rotates the current block
 
 **Game Automation**
 These actions are issued by the game periodically as play 
 progreses. Note: Move Down can be issued by the player or
 the game. 
 
-- Move Down
-- Set Next
-- Game Over 
+- **Move Down** : Moves a block down
+- **Set Next** : Get a random block, this will be the next block
+- **Game Over** : The game just ended
 
 ## Challenges
 
@@ -97,15 +97,15 @@ export const restart = () => {
 }
 ```
 
-In many applications you'll need to pass parameters to 
-action creators and action objects will need to 
-incorporate data in a payload. The game is simple in it's
-use of data. All of the data is handled and stored in the 
-Redux store, all the actions need only pass the type. 
+Next add a reducer to handle changs to application
+state. 
 
 **Reducer**
 
-Define a reducer to handle actions. 
+Define your reducer. The reducer takes in state 
+and an action. It looks at the action.type and 
+comapres it to the action strings with a 
+switch statement. 
 
 Make a new file '.src/reducers/game-reducer.js'. 
 
@@ -167,7 +167,7 @@ There is a lot of work to do here. Currently all cases
 return state unchanged. The entire game state will be 
 handled by a single Object which will pass through 
 this reducer and each case will be responsible for making 
-changes to state and returing a copy of state. 
+changes to state and returing a **copy** of state. 
 
 Reducers are responsible for defining the initial value 
 for state. Currently the stub method sets the default 

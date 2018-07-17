@@ -14,8 +14,13 @@ The Message Popup will be a component connected to
 application state. 
 
 This component will appear above the game board in the 
-center of the screen. It won't be arranged with Grid
-and instead will use CSS absolute position. 
+center of the screen. The HTML element that holds this 
+component needs to display over the rest of the 
+component elements. 
+
+It won't be arranged with Grid and instead will use CSS 
+absolute position. Position allows us to place this 
+anywhere on the screen regardless of the other elements. 
 
 ## Challenges
 
@@ -41,8 +46,8 @@ class MessagePopup extends Component {
 export default MessagePopup
 ```
 
-Import and add the message Popup to the bottom of App. 
-It should be the last compnent in App. 
+Import and add the message Popup to the _bottom_ of App. 
+_It should be the last compnent in App._ 
 
 Use styles to position and display the Message Popup. 
 

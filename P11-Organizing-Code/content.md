@@ -29,7 +29,9 @@ to this folder 'src/utils/index.js'.
 The game needs to generate random numbers. 
 The `Math.random()` works but we will need to 
 get integers in a range. It will be good define 
-a function that is easier to work with. 
+a function that is easier to work with.
+
+Add the function below to 'src/utils/index.js'.
 
 ```JavaScript
 export const random = (min, max) => {

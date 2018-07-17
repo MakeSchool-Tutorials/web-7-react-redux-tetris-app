@@ -4,16 +4,19 @@ slug: react-redux-tetris-default-state-and-block-shapes
 ---
 
 The game will work by managing it's state in a
-series of arrays stored in Redux.
+series of arrays stored in Redux. Manipulating
+and comparing these arrays will determine what
+the game shows and how the game plays. 
 
 # Introduction 
 
 The game is managed with Arrays. Much of the work 
 of running the game will revolve around mapping
-Arrays. 
+and comparing Arrays. 
 
 Nested arrays represent a two dimensional data 
-structure. 
+structure. This is refelcts the two dimensional
+grid the game is played on. 
 
 The game board is an 18 by 10 grid. 
 
@@ -21,23 +24,21 @@ Each shape will be stored as a 4 by 4 grid.
 Shapes can be rotated so there will be a 4 by 
 4 grid representing each rotation. 
 
-Game state will be an object stored in Redux. 
-It will have all of the properties that manage 
+Game state is an object stored in Redux. 
+This object will have all of the properties that manage 
 the game. Here is a list of all properties with 
 a short description. 
 
-- grid : (Array) nested array describing the game board
-- shape : (Int) **index** of current shape block controlled by player
-- rotation : (Int) rotation **index** of the current shape block
-- x : (Int) horizontal position of the current shape block on the game board
-- y : (Int) vertical position of the current shape block
-- nextShape : (Int) **index** of the next shape to play
-- isRunning : (Bool) true when game is running, false when paused
-- score : (Int) number of points scored
-- speed : (Int) speed of falling blocks
-- gameOver : (Bool) true when game is over
-
-## Challenges
+- **grid** : (Array) nested array describing the game board
+- **shape** : (Int) **index** of current shape block controlled by player
+- **rotation** : (Int) rotation **index** of the current shape block
+- **x** : (Int) horizontal position of the current shape block on the game board
+- **y** : (Int) vertical position of the current shape block
+- **nextShape** : (Int) **index** of the next shape to play
+- **isRunning** : (Bool) true when game is running, false when paused
+- **score** : (Int) number of points scored
+- **speed** : (Int) speed of falling blocks
+- **gameOver** : (Bool) true when game is over
 
 **Game Board**
 
@@ -61,10 +62,19 @@ The gameboard array might look like this:
 ]
 ```
 
-A T shaped block in color three is near the top. 
-Speaking of which.
+The grid above shows the game board with a
+T shaped block in color three is near the top. 
+
+## Challenge
+
+You need a function that will generate a default 
+empty array. 
 
 Write a function in 'src/utils/index.js'. 
+
+This function needs to return an array containing
+18 arrays, each of the nested arrays should contain 
+ten 0s. This represents an empty game board. 
 
 ```JavaScript
 // Returns the default grid
@@ -242,13 +252,20 @@ export const randomShape = () => {
 
 This function returns a number from 1 to the number of 
 items in `shapes`. We don't want the first item it's 
-the empty shape. This function won't return a shape, 
-instead it will return the index of a shape. 
+the empty shape. 
+
+This function won't return a shape, 
+instead it will return the index of a shape. The 
+game will use the index to get the shape. 
 
 **Game State**
 
 Write a function that generates the default state 
 of the game. 
+
+This function returns the default object used redux 
+with all of the properties reflecting a default 
+game state.
 
 ```JavaScript
 // Return the default state for the game
@@ -267,6 +284,14 @@ export const defaultState = () => {
   }
 }
 ```
+
+The default properties create an empty grid, 
+get a new random shape, set th rotation of the 
+shape to 0, position the shape at 5 on the and 
+-4 on the y (should put the shape in the center
+of the grid above the top), set the index to the 
+next shape to a new random shape, set the score 
+to 0, and game over to false. 
 
 ## Conclusion
 

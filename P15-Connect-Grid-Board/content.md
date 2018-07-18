@@ -3,7 +3,8 @@ title: "React Redux Tetris - Connect Grid Board"
 slug: react-redux-tetris-connect-grid-board
 ---
 
-Display the grid board from state
+Display the grid board from state. This is the main area
+of the game. 
 
 # Introduction 
 
@@ -18,6 +19,9 @@ the current block down at regular intervals.
 ## Challenges
 
 **Import connect**
+
+You need to connect the component to Redux to do this you 
+need `connect` from 'react-redux'.
 
 **Map state to props**
 

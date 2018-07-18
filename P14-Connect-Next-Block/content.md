@@ -3,28 +3,50 @@ title: "React Redux Tetris - Connect Next Block"
 slug: react-redux-tetris-connect-next-block
 ---
 
-Connecting game state to components. 
+Updating game state through components connected to 
+redux. 
 
 # Introduction 
 
-With default game state defined it's time to connect 
+With the default game state defined it's time to connect 
 game state to components. 
 
-The goal here is to get the index of the next block, 
-this is `game.nextShape` on state. Use this to find 
-the array that represents this shape, at the first 
-rotation, and map it to the grid. 
+The goal is to display the next block in the NextBlock 
+component. 
 
-The color will be set by the same index value.
+To do this you need to get the index of the next block 
+from game state and map this to an array of squares in
+the component.
+
+The index of the next block is stored at `game.nextShape` 
+on state. Use this to find the array that represents this 
+shape, at the first rotation, and map it to the grid. 
+
+The empty grid will be: 
+
+`const box = shapes[0][0]`
+
+Remember the first block is empty. The shape would be 
+located at: 
+
+`const block = shapes[shape][0]`
+
+The color of the square will match the index of the shape. 
 
 To get state from Redux into this Component you'll
 need to connect the component with React-Redux. 
 
 ## Challenges
 
+Connect the component to Redux. 
+
 **Import connect**
 
 `import { connect } from 'react-redux'`
+
+You'll need to get the data from state and map it to 
+props in this component. Map the `nextShape` from 
+`state.game` to `shape`.
 
 **Map State to Props**
 
@@ -38,11 +60,32 @@ const mapStateToProps = (state) => {
 }
 ```
 
+The `mapStateToProps` method is a helper. React-Redux provides
+a helper method to `connect` components to the store. 
+
+Here's where the component actually gets connected to Redux.
+
 **Connect component**
 
 `export default connect(mapStateToProps)(NextBlock)`
 
-**Mape the block shape into the grid**
+Now you can use data mapped to props. The `shape` key 
+on props now holds the index of the shape to display. 
+
+**Map the block shape into the grid**
+
+The goal here is to transform one of the shape arrays 
+into a `GridSquare`s. The color of each square will be the 
+shape index. 
+
+Working with the shapes array `shape[index]` will give you 
+an array containing all rotations for a shape. Here you will 
+just display the first rotation. So `shape[index][0]` should
+give you a two dimensional array with four rows and four
+columns that describe the shape. 
+
+Once you've got the shape array you'll need to transform it 
+into `GridSquares`.
 
 ```JavaScript
 makeGrid() {

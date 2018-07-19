@@ -3,18 +3,18 @@ title: "React Redux Tetris - Connect Grid Board"
 slug: react-redux-tetris-connect-grid-board
 ---
 
-Display the grid board from state. This is the main area
-of the game. 
+Display the grid board from state. This is the core rendering
+feature of the game. 
 
 # Introduction 
 
-The grid board component display the array of grid. 
-It will also map the current shape block into this 
-grid at the x, y, and rotation. 
+The `GridBoard` component displays an array of `GridSquare`s. 
+It will also map the current shape block at it's rotation into 
+this grid at the x, and y. 
 
-This component will also be responsible for updating 
-the game over time. It will have a timer that moves 
-the current block down at regular intervals. 
+Tapping the left, right, rotate, down buttons update game state 
+which in turn triggers this component to update. Updates are 
+also generated as the timer triggers move down actions. 
 
 ## Challenges
 
@@ -23,9 +23,16 @@ the current block down at regular intervals.
 You need to connect the component to Redux to do this you 
 need `connect` from 'react-redux'.
 
+Import `connect` from 'react-redux' at the top of the `GridBoard`
+component. 
+
 **Map state to props**
 
-Map the following properties from state to props: 
+Define a `mapStateToProps` method. This method takes in state 
+as a parameter. 
+
+Return an object that maps the following properties from state 
+to these props: 
 
 ```JavaScript
 grid: state.game.grid,
@@ -37,9 +44,15 @@ speed: state.game.speed,
 isRunning: state.game.isRunning
 ```
 
+This component will issue `MOVE_DOWN` actions. It needs to call 
+on the `moveDown` action. 
+
 **Map dispatch to props**
 
-Import the `moveDown` action and map it to dispatch. 
+Import the `moveDown` action and map it to props. 
+
+Add a `mapDispatchToProps` method that returns an Object 
+containing the actions issued by this component. 
 
 **Connect the component**
 
@@ -49,7 +62,9 @@ Use the connect method to connect `mapStateToProps`,
 **Mapping the Grid to GridSquares**
 
 Previously the grid was mocked up. Now it's time to 
-get the grid data from props and map to the grid. 
+get the grid data from props and map to the grid. You need to 
+replace the current that generates the mocked up grid in this 
+step.
 
 The `makeGrid()` method is responsible for this. 
 `Array.map` is a good tool here since we want to 
@@ -61,6 +76,15 @@ just be one dimensional. Use `Array.map()` to map
 across all rows, inside use `Array.map()` again to map
 across each column. Inside this second map function
 generate Grid Squares. 
+
+Let's go over that again. You need to map the row arrays
+then map each row to get the value at each column. 
+
+The value is an integer representing the color of each 
+square.
+
+Next you'll need to map the shape on to the grid. The 
+shape is represented by an integer value. 
 
 When Grid Squares are created find the color for the 
 square by looking at the shape array. If there is a 1

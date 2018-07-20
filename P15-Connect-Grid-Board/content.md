@@ -20,7 +20,7 @@ also generated as the timer triggers move down actions.
 
 **Import connect**
 
-You need to connect the component to Redux to do this you 
+You need to connect the `GridBoard` component to Redux to do this you 
 need `connect` from 'react-redux'.
 
 Import `connect` from 'react-redux' at the top of the `GridBoard`
@@ -61,14 +61,13 @@ Use the connect method to connect `mapStateToProps`,
 
 **Mapping the Grid to GridSquares**
 
-Previously the grid was mocked up. Now it's time to 
-get the grid data from props and map to the grid. You need to 
-replace the current that generates the mocked up grid in this 
-step.
+Previously the grid was mocked up. Now it's time replace 
+this code with code that generates a grid from game state 
+and maps the current shape block on to the grid. 
 
 The `makeGrid()` method is responsible for this. 
 `Array.map` is a good tool here since we want to 
-transform the integer values into Grid Squares of a 
+transform the integer values into Grid Squares with 
 color. 
 
 The source Grid is two dimensional the ouput Grid will 
@@ -78,10 +77,14 @@ across each column. Inside this second map function
 generate Grid Squares. 
 
 Let's go over that again. You need to map the row arrays
-then map each row to get the value at each column. 
+then map each row to get the value at each column. These 
+values are used to generate grid squares. 
 
-The value is an integer representing the color of each 
-square.
+Along the way you'll look at shape block and map that into
+the grid. 
+
+The value assigned to each location on the grid is an integer 
+representing the color of each square.
 
 Next you'll need to map the shape on to the grid. The 
 shape is represented by an integer value. 
@@ -120,13 +123,19 @@ makeGrid() {
 }
 ```
 
-This should generate the main grid for the game and 
-map a random shape to it. The default x and y position 
-of this shape is 5, -4 so the shape by default is above
-the top of the screen! 
+The code above collects properties mapped to props from state. 
+Then it gets the block which is the current shape the player 
+is controlling. Then we map over the rows and then again map 
+the columns. 
 
-You can make the shape visible by setting the default 
-value for y to a positive number like 4. 
+To map the shape block onto the grid we need to use the x and y
+values. By subtracting the x and y from the col and the row
+we get the position of the position of the upper left corner 
+of the block array as if it was superimposed over the main
+grid. It's possible some or all of the block array may be 
+off the top left or right of the grid. For any squares that 
+fall on the grid we need to look at the block array and see
+if there is a 1 in this case we use the block color.
 
 ## Conclusion
 

@@ -24,7 +24,7 @@ Each of the letters above represents an Array
 of shapes. Each of these shapes is a rotation 
 of the same shape. For example, in abstract. 
 
-`[[I, –],O,T,Z,S,J,L]`
+`[ [I, –], [O], T, Z, S, J, L]`
 
 The first array is bar in it's two rotations, 
 vertical and horizontal. 

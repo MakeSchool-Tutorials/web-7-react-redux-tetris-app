@@ -6,7 +6,7 @@ slug: react-redux-tetris-moving-down-and-placing-blocks
 Moving blocks down not only moves them down it 
 is also the point where blocks are placed on
 to the grid and a new block is added and starts from 
-the top. 
+the top. This is a core game mechanic. 
 
 # Introduction 
 
@@ -89,7 +89,8 @@ export const checkRows = (grid) => {
 **Implement MOVE_DOWN in game reducer**
 
 The 'MOVE_DOWN' action is likely the most complicated 
-block of code in the game. Alot happens here. 
+block of code in the game, a lot happens here. Here is 
+the logic you need to implement. 
 
 - Check if we can move the block down
   - if so we're done

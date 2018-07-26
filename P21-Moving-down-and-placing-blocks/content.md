@@ -5,25 +5,30 @@ slug: react-redux-tetris-moving-down-and-placing-blocks
 
 Moving blocks down not only moves them down it 
 is also the point where blocks are placed on
-to the grid and a new block is added. 
+to the grid and a new block is added and starts from 
+the top. 
 
 # Introduction 
 
 Moving down is more complex than moving left
 right or rotating. When a block moves down if 
-it would hit the bottom of the grid it should 
-become part of the grid and be fixed in place
-and the next block added to the grid at the top. 
+it would hit the bottom of the grid or if the block 
+hits a placed square it should become part of the 
+grid and be fixed in place and the next block added 
+to the grid at the top. 
 
-This is also the point where the game will 
-end if a new block would hit placed blocks 
-when it is added. 
+This is also where the game can be over. If placed
+blocks would extend off the top of the grid. 
 
 If a block can't move down it should be added
 to the grid board array. This will happen by 
 writing the shape number into grid array at 
 position of the block. If a grid square is 
 empty the value is 0. 
+
+After placing new squares on the grid we can score points. 
+You will need a function that checks for complete rows on 
+the grid, remove these and move the rows above down. 
 
 ## Challenges
 
@@ -36,16 +41,17 @@ new shape should be written into the grid.
 ```JavaScript
 // Adds current shape to grid
 export const addBlockToGrid = (shape, grid, x, y, rotation) => {
-  const block = shapes[shape][rotation]
-  const newGrid = [ ...grid ]
+  const block = shapes[shape][rotation];  // Get the block array
+  const newGrid = [ ...grid ];            // Copy the grid
+  // Map the Block onto the grid                                                           
   for (let row = 0; row < block.length; row++) {
     for (let col = 0; col < block[row].length; col++) {
       if (block[row][col]) {
-        newGrid[row + y][col + x] = shape
+        newGrid[row + y][col + x] = shape;
       }
     }
   }
-  return newGrid
+  return newGrid;
 }
 ```
 
@@ -58,10 +64,8 @@ Teris awards points when a row is completely filled
 with squares. The number is greater if multiple
 rows are filled. 
 
-When the game moves a block down and it can't that 
-block is placed. At this momentthe game should 
-check if a row or rows have been filled. If so 
-we score points. 
+Once a block is placed it's possible that one or more
+rows will be filled. 
 
 Implement a method that looks at the grid and 
 determines of any rows are filled. 

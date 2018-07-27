@@ -32,6 +32,9 @@ it's rotation. This is a 4 by 4 grid.
 
 ![map-shape-to-grid](assets/map-shape-to-grid.png)
 
+The block is mapped to onto the grid. THe image above 
+shows shape 2, rotation 0 at x = 3 and y = 7. 
+
 # Introduction 
 
 The `GridBoard` component displays an array of `GridSquare`s. 

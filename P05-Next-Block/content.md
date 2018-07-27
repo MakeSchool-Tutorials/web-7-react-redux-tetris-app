@@ -18,6 +18,9 @@ like this:
 
 ![Next-Block-Array](assets/Next-Block-Array.png)
 
+Hey, it's just like the Grid Board array only smaller with 
+4 rows and 4 columns. 
+
 ## Challenges
 
 **Make the Next Block Component**

@@ -15,6 +15,16 @@ The game will be made up of 180 squares in different colors.
 
 ![squares](assets/squares.png)
 
+Colors will be stored as an index:
+
+Color 0 ![square](assets/square-0.png)
+Color 1 ![square](assets/square-1.png)
+Color 2 ![square](assets/square-2.png)
+Color 3 ![square](assets/square-3.png)
+Color 4 ![square](assets/square-4.png)
+Color 5 ![square](assets/square-5.png)
+Color 6 ![square](assets/square-6.png)
+Color 7 ![square](assets/square-7.png)
 
 # Introduction 
 

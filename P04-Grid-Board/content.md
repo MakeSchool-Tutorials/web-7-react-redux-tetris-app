@@ -24,9 +24,10 @@ Each of these arrays represent one row on the grid.
 Each row is an array containing 10 integers. Each each 
 integer represents the color displayed at that row and column. 
 
-This a to dimensional array. You might visualize it like this: 
+This a to dimensional array. You might visualize it like this
+if all the squares contained color 0. 
 
-![Two-Dimension-grid-with-Arrays](Two-Dimension-grid-with-Arrays.png)
+![Two-Dimension-grid-with-Arrays](assets/Two-Dimension-grid-with-Arrays.png)
 
 ## Challenges
 

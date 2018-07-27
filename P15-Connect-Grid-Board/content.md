@@ -22,6 +22,10 @@ These integer values map to colors.
 - Color 6: ![square](assets/square-6.png)
 - Color 7: ![square](assets/square-7.png)
 
+These colors would map to the grid like this: 
+
+![Grid-with-Colors](assets/Grid-with-Colors.png)
+
 # Introduction 
 
 The `GridBoard` component displays an array of `GridSquare`s. 

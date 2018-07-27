@@ -3,7 +3,7 @@ title: "React Redux Tetris - Moving Block"
 slug: react-redux-tetris-moving-block
 ---
 
-Moving the blocks left 
+Moving the blocks left, right, and down.
 
 # Introduction 
 
@@ -11,7 +11,11 @@ Moving the blocks is handled by the `x` and `y`
 properties on game state. These properties determine 
 where the upper left corner of the block box will 
 positioned when drawing the current block onto  the 
-game board grid. 
+game board grid.
+
+![map-shape-to-grid.png](assets/map-shape-to-grid.png)
+
+Here `shapes[2][0]` is being mapped at x = 7 and y = 3. 
 
 The block is defined in a 4 by 4 array. Some of these
 squares are empty and some are filled. 

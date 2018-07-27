@@ -13,6 +13,11 @@ The next block will be displayed in a component that will
 draw itself as a 4 by 4 grid of grid squares. You can reuse the 
 grid square component here. 
 
+You might visualize the array that described the next block 
+like this: 
+
+![Next-Block-Array](assets/Next-Block-Array.png)
+
 ## Challenges
 
 **Make the Next Block Component**

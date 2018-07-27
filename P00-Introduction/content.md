@@ -19,12 +19,12 @@ Easter egg on non-media products like oscilloscopes.
 Here is what Tetris looked like on an arcade machine in the 
 80s. 
 
-![tetris-arcade](assests/s-l300.gif)
+![tetris-arcade](assets/s-l300.gif)
 
 Here is what you will build with this tutorial. This version of 
 Tetris will run in any web browser that supports JavaScript. 
 
-![tetris-web](Screen-Shot.png)
+![tetris-web](assets/Screen-Shot.png)
 
 # Prerequisites 
 

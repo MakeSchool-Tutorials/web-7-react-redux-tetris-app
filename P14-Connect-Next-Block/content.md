@@ -3,8 +3,11 @@ title: "React Redux Tetris - Connect Next Block"
 slug: react-redux-tetris-connect-next-block
 ---
 
-Updating game state through components connected to 
-redux. 
+Tetris displays the next block in the upper left corner. 
+This is a component that will display a 4 by 4 grid 
+of square components. 
+
+![next-block](assets/next-block.png)
 
 # Introduction 
 

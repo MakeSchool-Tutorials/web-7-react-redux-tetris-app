@@ -3,10 +3,17 @@ title: "React Redux Tetris - Getting Started"
 slug: react-redux-tetris-getting-started
 ---
 
-This section sets up the default project using [Create React
-App](https://github.com/facebook/create-react-app). 
+This project will be built with Node.js, React.js, 
+and Redux.js. 
+
+![node-icon](assets/node-icon.png)
+![react-icon](assets/react-icon.png)
+![redux-icon](assets/redux-icon.png)
 
 # Introduction 
+
+This section sets up the default project using [Create React
+App](https://github.com/facebook/create-react-app). 
 
 The Create React App starter project is a great place to start 
 for any React project. 

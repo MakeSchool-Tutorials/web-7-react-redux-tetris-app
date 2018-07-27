@@ -20,9 +20,32 @@ grid the game is played on.
 
 The game board is an 18 by 10 grid. 
 
+![Two-Dimension-grid-with-Arrays](assets/Two-Dimension-grid-with-Arrays.png)
+
 Each shape will be stored as a 4 by 4 grid. 
+These arrays are stored as arrays of rows 
+where the value represents a column. The 
+values are either 0 (empty) or 1 (draw a block). 
+For example the T shaped block could be 
+visualized like this: 
+
+![Shape-Array-T](assets/Shape-Array-T.png)
+
 Shapes can be rotated so there will be a 4 by 
-4 grid representing each rotation. 
+4 grid representing each rotation. The array of 
+shapes and their rotations could be visualized like this: 
+
+![Shapes-Array](assets/Shapes-Array.png)
+
+To access the array containg the shape data you'll 
+use the index of the shape followed by the index of
+the rotation e.g.
+
+`shapes[shapeIndex][rotationIndex]`
+
+This would return the 4 by 4 two dimensional array 
+containing the 0s and 1s describing one of the shapes
+e.g. `shapes[2][0]` would give the T shape. 
 
 Game state is an object stored in Redux. 
 This object will have all of the properties that manage 

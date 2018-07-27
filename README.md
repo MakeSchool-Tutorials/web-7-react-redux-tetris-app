@@ -1,4 +1,4 @@
-# Web 7 - React Reduc Tetris Tutorial
+# React Redux Tetris Tutorial
 
 This tutorial recreates the classic arcade game Tetris with 
 React and Redux. 

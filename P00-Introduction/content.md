@@ -6,6 +6,26 @@ slug: react-redux-tetris-introduction
 This tutorial uses React and Redux to recreate the classic 
 arcade game Tetris. 
 
+Tetris is a classic arcade game that was originally designed 
+and programmed by Russian game designer [Alexey Pajitnov](https://en.wikipedia.org/wiki/Alexey_Pajitnov).
+It was released on June 6, 1984.
+
+The game, or one of its many variants, is available for nearly 
+every video game console and computer operating system, as well 
+as on devices such as graphing calculators, mobile phones, 
+portable media players, PDAs, Network music players and as an 
+Easter egg on non-media products like oscilloscopes.
+
+Here is what Tetris looked like on an arcade machine in the 
+80s. 
+
+![tetris-arcade](assests/s-l300.gif)
+
+Here is what you will build with this tutorial. This version of 
+Tetris will run in any web browser that supports JavaScript. 
+
+![tetris-web](Screen-Shot.png)
+
 # Prerequisites 
 
 To complete this tutorial you should have some experience with 

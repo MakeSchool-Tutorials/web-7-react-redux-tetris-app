@@ -15,7 +15,7 @@ game board grid.
 
 ![map-shape-to-grid.png](assets/map-shape-to-grid.png)
 
-Here `shapes[2][0]` is being mapped at x = 7 and y = 3. 
+Here shape = 2, rotation = 0, x = 7 and y = 3. 
 
 The block is defined in a 4 by 4 array. Some of these
 squares are empty and some are filled. 

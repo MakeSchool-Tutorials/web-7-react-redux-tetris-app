@@ -202,6 +202,7 @@ and set next shape to a new random shape.
 ## Conclusion
 
 
+
 ## Resources
 
  

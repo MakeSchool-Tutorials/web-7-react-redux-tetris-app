@@ -7,6 +7,8 @@ This section takes the grid square created in the last
 section and displays them as a 10 x 18 grid. 
 This grid of squares will be a component. 
 
+![game-board](assets/game-board.png)
+
 # Introduction 
 
 The the main view of the game is made of a 10 by 18 grid. 
@@ -15,6 +17,16 @@ rendered from a grid square component.
 
 The main game logic has not been implmented yet so you 
 will hard code the grid squares for now. 
+
+The grid is made up of is an array containing 18 arrays. 
+Each of these arrays represent one row on the grid. 
+
+Each row is an array containing 10 integers. Each each 
+integer represents the color displayed at that row and column. 
+
+This a to dimensional array. You might visualize it like this: 
+
+![Two-Dimension-grid-with-Arrays](Two-Dimension-grid-with-Arrays.png)
 
 ## Challenges
 

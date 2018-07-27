@@ -14,7 +14,11 @@ represents the index in the shapes array of
 the shape at a rotation. 
 
 Quick review of the Array that holds the 
-shapes and their rotations. 
+shapes and their rotations. Remember the 
+the shapes array at the top level holds 
+arrays of rotations. 
+
+![Shapes-Array](assets/Shapes-Array.png)
 
 At the top level the array holds the shapes. 
 

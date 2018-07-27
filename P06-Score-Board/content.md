@@ -7,6 +7,11 @@ We need a score board to show the game score and
 provide a place for the play and pause buttons 
 to live. 
 
+The scoreboard when completed will display on the 
+right side of the game board. 
+
+![score-board](assets/score-board.png)
+
 # Introduction 
 
 The score board component will display the game 
@@ -21,6 +26,8 @@ more difficult in other ways the current level.
 
 The component you add in this step will give these elements 
 a place to live. 
+
+
 
 ## Challenges
 

@@ -6,6 +6,10 @@ slug: react-redux-tetris-arranging-the-page
 Arranging the large UI elements on the page will 
 make the app easier to understand and look better.
 
+The components are on a grid. 
+
+![css-grid](assets/css-grid.png)
+
 # Introduction 
 
 CSS grid is good for arranging the tiles in the

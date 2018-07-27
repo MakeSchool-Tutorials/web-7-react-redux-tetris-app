@@ -24,7 +24,7 @@ Here is what Tetris looked like on an arcade machine in the
 Here is what you will build with this tutorial. This version of 
 Tetris will run in any web browser that supports JavaScript. 
 
-![tetris-web](assets/Screen-Shot.png)
+![tetris-web](assets/Screen-Shot-small.png)
 
 # Prerequisites 
 

@@ -6,7 +6,7 @@ slug: react-redux-tetris-connect-grid-board
 Display the grid board from state. This is the core rendering
 feature of the game. 
 
-The grif board is a two dimensional array where each each 
+The grid board is a two dimensional array where each each 
 array at the top level represents a row, and each of these 
 row arrays contains integers that represent the contents at
 each column in the row. 
@@ -25,6 +25,12 @@ These integer values map to colors.
 These colors would map to the grid like this: 
 
 ![Grid-with-Colors](assets/Grid-with-Colors.png)
+
+The grid also needs to map the current block onto the 
+grid. The current block is one of the shape arrays at 
+it's rotation. This is a 4 by 4 grid. 
+
+![map-shape-to-grid](assets/map-shape-to-grid.png)
 
 # Introduction 
 

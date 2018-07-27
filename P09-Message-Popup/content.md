@@ -8,6 +8,8 @@ state. Messages will be 'Game Over' and 'Paused' for
 now but can be expanded to showing score, advancing 
 to a new level, and more. 
 
+![Modal](assets/Modal.png)
+
 # Introduction 
 
 The Message Popup will be a component connected to 

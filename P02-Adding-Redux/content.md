@@ -3,7 +3,9 @@ title: "React Redux Tetris - Adding Redux"
 slug: react-redux-tetris-adding-redux
 ---
 
-Here you will add the Redux and React Redux Dependancies.
+In this section you will add dependancies with NPM. 
+
+![npm-icon](assets/npm-icon.png)
 
 # Introduction 
 
@@ -44,5 +46,5 @@ organization you made a folder to store each of these.
 
 ## Resources
 
-- https://github.com/reduxjs/redux/blob/master/README.md
+- https://github.com/reduxjs/redux
 - https://github.com/reduxjs/react-redux

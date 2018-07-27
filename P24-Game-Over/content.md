@@ -47,12 +47,12 @@ On the other hand when `gameOver` is true the game is over.
 The controls should not issue actions when `isRunning` is
 false or `gameOver` is true. 
 
-The move down action that forces tha game along should also 
+The move down action that forces the game along should also 
 not happen when `isRunning` is false or `gameOver` is true.
 
-`gameOver` is set to false by default. Its gets set to true 
+`gameOver` is set to false by default. It gets set to true 
 when the game is over. A game is over when a block is 
-added to the grid and part of that block ends up off the
+added to the grid and part if that block ends up off the
 top edge of the grid. 
 
 ## Challenges
@@ -96,19 +96,20 @@ takes the following parameters: shape, grid, x, y, rotation.
 It uses these to map the current block you controlling  
 onto the grid array. The function returns a new grid array. 
 
-This function know when the game is over when you map a
-block to the grid and part of the block is off the top 
-edge of the grid. 
+The `addBlockToGrid()` function adds a block to the grid. 
+If part of the block ends up off the top the grid the 
+game is over. 
 
 The goal is to have the function return the new grid and 
 a bool that says the game is over true or the game is not 
 over false. Since we can only return one value from a 
 function the return type will have to change to an object 
-with two properties: `grid` and `gameOver`. 
+with two properties: `grid` and `gameOver`.
 
 ```JavaScript
 // Adds current shape to grid
 export const addBlockToGrid = (shape, grid, x, y, rotation) => {
+  // At this point the game is not over
   let blockOffGrid = false
   const block = shapes[shape][rotation]
   const newGrid = [ ...grid ]
@@ -184,19 +185,19 @@ state in this case is a copy of the current state with the y
 value changed. In this situation it was okay to move to this 
 new y position. 
 
-If we get past the first if statement the bloack has hit some 
-squares on the grid and needs to be placed. So, immediately 
-after call `addBlockToGrid`. This returns an object with the 
+If we get past the first if statement the block has hit some 
+squares on the grid and needs to be placed. Time to 
+call `addBlockToGrid()`. This returns an object with the 
 grid and the `gameOver` bool. 
 
-The second if state looks at the `gameOver` bool if true 
+If `gameOver` bool if true 
 the last block placed must have extended off the top of the 
 board the game is over. The game needs to return new state 
 with the shape set to `0` and `gameOver` set to true. 
 
 If the block was placed and the game is not over the game 
 needs to reset the x, y, and set the shape to next shape, 
-set next shape to a new random shape. 
+and set next shape to a new random shape. 
 
 ## Conclusion
 

@@ -10,8 +10,9 @@ way to restart it.
 
 The game state held in Redux is the entire game. 
 restarting the game will only require setting the
-stae in redux back to default, and there is a 
-function for this. 
+game state in redux back to default, and there 
+already is a function for this! You need to 
+implement this at the right location. 
 
 ## Challenges
 

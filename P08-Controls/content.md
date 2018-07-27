@@ -9,7 +9,7 @@ and down, blocks can also be rotated.
 The original game used a joystick and button. This game will use 
 four buttons.
 
-![controls](controls.png)
+![controls](assets/controls.png)
 
 # Introduction 
 

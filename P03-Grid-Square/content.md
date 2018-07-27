@@ -7,6 +7,15 @@ In this section you will make a component that represents a single
 grid square. The game board is played on a grid made up of grid 
 squares. 
 
+One square will look like this: 
+
+![square](assets/square.png)
+
+The game will be made up of 180 squares in different colors. 
+
+![squares](assets/squares.png)
+
+
 # Introduction 
 
 React uses a component based architecture. Everything you see 

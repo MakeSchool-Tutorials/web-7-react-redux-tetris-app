@@ -58,6 +58,7 @@ Add some styles to arrange these into a grid.
 > [action]
 >
 > Add the following to `/src/index.css`:
+>
 ```css
 /* Next Block */
 .next-block {

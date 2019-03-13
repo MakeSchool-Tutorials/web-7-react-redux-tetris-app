@@ -1,50 +1,43 @@
 ---
-title: "React Redux Tetris - Adding Redux"
-slug: react-redux-tetris-adding-redux
+title: "Tetris - Adding Redux"
+slug: tetris-adding-redux
 ---
 
-In this section you will add dependancies with NPM. 
+Redux is a library that manages Application state. The React-Redux library acts as bindings between React and Redux. We will need to install both as dependancies.
 
-![npm-icon](assets/npm-icon.png)
+# Adding Dependancies
 
-# Introduction 
+> [action]
+>
+> Add Redux and React-Redux as a dependency to your project.
+>
+```bash
+$ npm install --save redux react-redux
+```
 
-Redux is a library that manages Application state. The React
-Redux library act
+# Add some folders
 
-You need to add both as dependancies and import both. 
+This next step adds a couple folders to organize your code.
 
-## Challenges
-
-**Adding Dependancies**
-
-Add Redux as a dependancy to your project. 
-
-`npm install --save redux`
-
-Add React Redux to the project. 
-
-`npm install --save react-redux`
-
-**Add some folders**
-
-This next step adds a couple folders to organize your code. 
-
-Make a folder for Actions: 'src/actions'. 
-
-Make a folder for Reducers: 'src/reducers'.
-
-Make another folder to hold some utility functions: 'src/utils'.
-
-## conclusion
-
-In this step you imported required dependancies. 
-
-You also created some new folders to organize code. The following 
-tutorials will cover the concept of Actions and Reducers. For 
-organization you made a folder to store each of these. 
+> [action]
+>
+> Make a folder for Actions: `src/actions`
+>
+> Then, make a folder for Reducers: `src/reducers`
+>
+> Finally, make another folder to hold some utility functions: `src/utils`
 
 ## Resources
 
 - https://github.com/reduxjs/redux
 - https://github.com/reduxjs/react-redux
+
+# Now Commit
+
+>[action]
+>
+```bash
+$ git add .
+$ git commit -m 'proj setup complete'
+$ git push
+```

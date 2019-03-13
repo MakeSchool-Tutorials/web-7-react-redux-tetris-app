@@ -79,7 +79,46 @@ the text, we'll just focus on the buttons for now.
 
 Notice we used the CSS variables again!
 
-This needs work, but we can take care the details later. For now this is a solid start.
+# Add to App.js
+
+Let's see what we have so far:
+
+> [action]
+>
+> Add the following to `/src/App.js`:
+>
+```js
+import React, { Component } from 'react';
+>
+import GridBoard from './components/grid-board'
+import NextBlock from './components/next-block'
+[bold]import ScoreBoard from './components/score-board'[/bold]
+>
+import './App.css';
+>
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Tetris Redux</h1>
+        </header>
+        <GridBoard />
+        <NextBlock />
+[bold]        <ScoreBoard />[/bold]
+      </div>
+    );
+  }
+}
+>
+export default App;
+```
+
+You should see the following in your browser:
+
+![initial-scoreboard](assets/initial-scoreboard.png)
+
+This needs work, but we will take care the details later. For now this is a solid start.
 
 # Now Commit
 

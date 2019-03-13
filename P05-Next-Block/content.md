@@ -49,6 +49,8 @@ class NextBlock extends Component {
     )
   }
 }
+>
+export default NextBlock
 ```
 
 # Add styles for the Next Block
@@ -73,7 +75,44 @@ themselves in each component are arranged in a grid.
 
 Also notice the GridSquares are using the default color 0 in the `Next Block` component. We will get the block shape as an array later and use this to set the color of the blocks.
 
-We won't export and display this for now, as there's still some work to be done on this component before we can view it in the browser.
+# Add to App.js
+
+Let's see what we have so far:
+
+> [action]
+>
+> Add the following to `/src/App.js`:
+>
+```js
+import React, { Component } from 'react';
+>
+import GridBoard from './components/grid-board'
+[bold]import NextBlock from './components/next-block'[/bold]
+>
+import './App.css';
+>
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Tetris Redux</h1>
+        </header>
+        <GridBoard />
+[bold]        <NextBlock />[/bold]
+      </div>
+    );
+  }
+}
+>
+export default App;
+```
+
+You should see the following in your browser:
+
+![initial-next-block](assets/initial-next-block.png)
+
+Doesn't look amazing right now, but we'll spruce it up in future chapters.
 
 # Now Commit
 

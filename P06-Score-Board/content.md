@@ -1,73 +1,68 @@
 ---
-title: "React Redux Tetris - Score Board"
-slug: react-redux-tetris-score-board
+title: "Tetris Score Board"
+slug: tetris-score-board
 ---
 
-We need a score board to show the game score and 
-provide a place for the play and pause buttons 
-to live. 
+We need a score board to show the game score and
+provide a place for the play and pause buttons
+to live.
 
-The scoreboard when completed will display on the 
-right side of the game board. 
+The scoreboard when completed will display on the
+right side of the game board.
 
 ![score-board](assets/score-board.png)
 
-# Introduction 
+Some requirements for the score board:
 
-The score board component will display the game 
-score. As blocks are placed when row is filled with colored 
-squares the game scores points. 
-
-The game also needs a button to pause game play and restart 
-the game. 
-
-As the game progresses you can speed up game play or make it 
-more difficult in other ways the current level. 
-
-The component you add in this step will give these elements 
-a place to live. 
+- The score board component will display the game score.
+- As blocks are placed when a row is filled with colored squares, the game scores points.
+- The game also needs a button to pause game play and restart the game.
+- As the game progresses you can speed up game play or make it
+more difficult in other ways for the current level.
+- The component added in this chapter will give these previously described elements a place to live.
 
 
 
-## Challenges
+# Create the ScoreBoard Component
 
-**Create the ScoreBoard Component**
-
-Make a new file: './src/components/score-board.js'.
-
-Setup the component: 
-
-```jsx
+> [action]
+>
+> Make a new file: `/src/components/score-board.js` with the following code:
+>
+```js
 import React, { Component } from 'react'
-
+>
 class ScoreBoard extends Component {
-
+>
   render() {
     return (
       <div className="score-board">
         <div>Score:{ this.props.score }</div>
         <div>Level: 1</div>
-
+>
         <button className="score-board-button" onClick={(e) => {
-
+>
         }}>Play</button>
-
-
+>
         <button className="score-board-button" onClick={(e) => {
-
+>
         }}>Restart</button>
-
+>
       </div>
     )
   }
 }
-
+>
 export default ScoreBoard
 ```
 
-Define some styles for these elements. No need to worry about 
-the text now focus on the buttons. 
+Now we can define some styles for these elements. No need to worry about
+the text, we'll just focus on the buttons for now.
 
+> [action]
+>
+> Add the following to `/src/index.css`
+>
 ```css
 /* Score Board */
 .score-board-button {
@@ -82,18 +77,16 @@ the text now focus on the buttons.
 }
 ```
 
-Notice we can use the variables here. 
+Notice we used the CSS variables again!
 
-This needs work, but we can take care the details later. 
-For now this is good. 
+This needs work, but we can take care the details later. For now this is a solid start.
 
-## Conclusion 
+# Now Commit
 
-Again CSS variables make our work more convient and flexible. 
-
-The Score Board component holds information about the current
-state of the game and controls that pause, resume, and 
-restart the game. 
-
-## Resources
-
+>[action]
+>
+```bash
+$ git add .
+$ git commit -m 'Added initial score board'
+$ git push
+```

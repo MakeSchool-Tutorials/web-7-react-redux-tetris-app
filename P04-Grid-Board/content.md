@@ -117,7 +117,10 @@ Now we'll use the CSS Grid to arrange the single row of grid squareas into an ac
 }
 ```
 
-<!-- -->
+You should now see a grid in your browser:
+
+![orange-grid](assets/orange-grid.png)
+
 > [info]
 >
 > To read more about box-sizing, check out this resource on [CSS Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model).

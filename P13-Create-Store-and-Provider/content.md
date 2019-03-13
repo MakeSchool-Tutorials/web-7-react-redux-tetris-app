@@ -20,6 +20,7 @@ import React, { Component } from 'react';
 [bold]import { createStore } from 'redux'[/bold]
 [bold]import { Provider } from 'react-redux'[/bold]
 >
+[bold]import reducers from './reducers'[/bold]
 import GridBoard from './components/grid-board'
 import NextBlock from './components/next-block'
 import ScoreBoard from './components/score-board'

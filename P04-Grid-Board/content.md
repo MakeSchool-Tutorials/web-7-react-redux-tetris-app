@@ -51,7 +51,7 @@ class GridBoard extends Component {
   // The components generated in makeGrid are rendered in div.grid-board
   render () {
     return (
-      <div classname='grid-board'>
+      <div className='grid-board'>
         {this.makeGrid()}
       </div>
     )

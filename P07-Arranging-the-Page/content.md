@@ -1,6 +1,6 @@
 ---
-title: "Tetris - Arranging the Page"
-slug: tetris-arranging-the-page
+title: "Arranging the Page"
+slug: arranging-the-page
 ---
 
 Arranging the large UI elements on the page will

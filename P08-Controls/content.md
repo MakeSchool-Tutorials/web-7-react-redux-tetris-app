@@ -1,6 +1,6 @@
 ---
-title: "Tetris Controls"
-slug: tetris-controls
+title: "Controls"
+slug: controls
 ---
 
 Tetris has a couple controls. Blocks can be moved left, right,

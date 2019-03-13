@@ -1,6 +1,6 @@
 ---
-title: "Tetris - Actions and Reducers"
-slug: tetris-actions-and-reducers
+title: "Actions and Reducers"
+slug: actions-and-reducers
 ---
 
 The game will use Redux to store the state of the application.

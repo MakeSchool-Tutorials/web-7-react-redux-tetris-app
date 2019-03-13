@@ -1,6 +1,6 @@
 ---
-title: "Tetris Grid Board"
-slug: tetris-grid-board
+title: "Grid Board"
+slug: grid-board
 ---
 
 This section takes the grid square created in the last

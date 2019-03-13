@@ -1,6 +1,6 @@
 ---
-title: "Tetris Score Board"
-slug: tetris-score-board
+title: "Score Board"
+slug: score-board
 ---
 
 We need a score board to show the game score and

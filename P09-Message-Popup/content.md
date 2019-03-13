@@ -1,6 +1,6 @@
 ---
-title: "Tetris - Message Popup"
-slug: tetris-message-popup
+title: "Message Popup"
+slug: message-popup
 ---
 
 The game will need to display messages about the game

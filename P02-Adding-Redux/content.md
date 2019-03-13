@@ -1,6 +1,6 @@
 ---
-title: "Tetris - Adding Redux"
-slug: tetris-adding-redux
+title: "Adding Redux"
+slug: adding-redux
 ---
 
 Redux is a library that manages Application state. The React-Redux library acts as bindings between React and Redux. We will need to install both as dependancies.

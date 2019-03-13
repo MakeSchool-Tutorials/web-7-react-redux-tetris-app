@@ -1,6 +1,6 @@
 ---
-title: "Tetris - Getting Started"
-slug: tetris-getting-started
+title: "Getting Started"
+slug: getting-started
 ---
 
 This section sets up the default project using [Create React

@@ -1,7 +1,5 @@
-title: "React Redux Passwords App Tutorial"
+title: "React Redux Tetris App Tutorial"
 cover: cover.png
 solution_url: https://github.com/MakeSchool-Tutorials/Tutorial-Template/
 teaser_text: |
-    This tutorial is an introduction to React and Redux. 
-    The goal is to create a small app that generates and 
-    stores a list of passwords. 
+    Using React and Redux, we will build a clone of the classic game Tetris!

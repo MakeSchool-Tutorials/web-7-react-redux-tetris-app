@@ -1,17 +1,19 @@
 ---
-title: "React Redux Tetris - Connect Grid Board"
-slug: react-redux-tetris-connect-grid-board
+title: "Connect Grid Board"
+slug: connect-grid-board
 ---
 
-Display the grid board from state. This is the core rendering
-feature of the game. 
+We want to be able to display the grid board from state. This is the core rendering feature of the game.
 
-The grid board is a two dimensional array where each each 
-array at the top level represents a row, and each of these 
-row arrays contains integers that represent the contents at
-each column in the row. 
+The `GridBoard` component displays an array of `GridSquare`s.
+It will also map the current shape block at it's rotation into
+this grid at the x, and y.
 
-These integer values map to colors. 
+Tapping the left, right, rotate, down buttons update game state
+which in turn triggers this component to update. Updates are
+also generated as the timer triggers move down actions.
+
+Remember that colors are represented as integer values:
 
 - Color 0: ![square](assets/square-0.png)
 - Color 1: ![square](assets/square-1.png)
@@ -22,109 +24,128 @@ These integer values map to colors.
 - Color 6: ![square](assets/square-6.png)
 - Color 7: ![square](assets/square-7.png)
 
-These colors would map to the grid like this: 
+These colors would map to the grid like this:
 
 ![Grid-with-Colors](assets/Grid-with-Colors.png)
 
-The grid also needs to map the current block onto the 
-grid. The current block is one of the shape arrays at 
-it's rotation. This is a 4 by 4 grid. 
+The grid also needs to map the current block onto the
+grid. The current block is one of the shape arrays at
+it's rotation. This is a 4 by 4 grid.
 
 ![map-shape-to-grid](assets/map-shape-to-grid.png)
 
-The block is mapped to onto the grid. THe image above 
-shows shape 2, rotation 0 at x = 3 and y = 7. 
+The block is mapped onto the grid. The image above
+shows shape 2, rotation 0 at x = 3 and y = 7.
 
-# Introduction 
+# Import connect
 
-The `GridBoard` component displays an array of `GridSquare`s. 
-It will also map the current shape block at it's rotation into 
-this grid at the x, and y. 
+You need to connect the `GridBoard` component to Redux to do this you
+need `connect` from `React-Redux`.
 
-Tapping the left, right, rotate, down buttons update game state 
-which in turn triggers this component to update. Updates are 
-also generated as the timer triggers move down actions. 
-
-## Challenges
-
-**Import connect**
-
-You need to connect the `GridBoard` component to Redux to do this you 
-need `connect` from 'react-redux'.
-
-Import `connect` from 'react-redux' at the top of the `GridBoard`
-component. 
-
-**Map state to props**
-
-Define a `mapStateToProps` method. This method takes in state 
-as a parameter. 
-
-Return an object that maps the following properties from state 
-to these props: 
-
-```JavaScript
-grid: state.game.grid,
-shape: state.game.shape,
-rotation: state.game.rotation,
-x: state.game.x,
-y: state.game.y,
-speed: state.game.speed,
-isRunning: state.game.isRunning
+> [action]
+>
+> Import `connect` from 'react-redux' at the top of `/src/components/grid-board.js`:
+>
+```js
+import { connect } from 'react-redux'
 ```
 
-This component will issue `MOVE_DOWN` actions. It needs to call 
-on the `moveDown` action. 
+# Map state to props
 
-**Map dispatch to props**
+Much like `NextBlock`, we need to define a `mapStateToProps` method. This method takes in state as a parameter.
 
-Import the `moveDown` action and map it to props. 
+> [action]
+>
+> Write the `mapsStateToProps` method in `/src/components/grid-board.js`:
+>
+```js
+const mapStateToProps = (state) => {
+  return {
+    grid: state.game.grid,
+    shape: state.game.shape,
+    rotation: state.game.rotation,
+    x: state.game.x,
+    y: state.game.y,
+    speed: state.game.speed,
+    isRunning: state.game.isRunning
+  }
+}
+```
 
-Add a `mapDispatchToProps` method that returns an Object 
-containing the actions issued by this component. 
+# Map dispatch to props
 
-**Connect the component**
+This component will issue `MOVE_DOWN` actions, therefore it needs to call
+on the `moveDown` action.
 
-Use the connect method to connect `mapStateToProps`, 
-`mapDispatchToProps` and the `GridBoard` component. 
+> [action]
+>
+> Import the `moveDown` action and map it to props in `/src/components/grid-board.js`:
+>
+```js
+import { moveDown } from '../actions'
+```
 
-**Mapping the Grid to GridSquares**
+# Connect the component
 
-Previously the grid was mocked up. Now it's time replace 
-this code with code that generates a grid from game state 
-and maps the current shape block on to the grid. 
+Now we need to add a `mapDispatchToProps` method that returns an Object containing the actions issued by this component.
 
-The `makeGrid()` method is responsible for this. 
-`Array.map` is a good tool here since we want to 
-transform the integer values into Grid Squares with 
-color. 
+> [action]
+>
+> Write the `mapDispatchToProps` method, and then update the `export` at the bottom to use the connect method to connect `mapStateToProps`, `mapDispatchToProps` and the `GridBoard` component in `/src/components grid-board.js`:
+>
+```js
+// Map Dipatch to Props
+const mapDispatchToProps = () => {
+  return {
+    moveDown
+  }
+}
+>
+// Connect the component
+export default connect(mapStateToProps, mapDispatchToProps())(GridBoard)
+```
 
-The source Grid is two dimensional the ouput Grid will 
-just be one dimensional. Use `Array.map()` to map 
-across all rows, inside use `Array.map()` again to map
-across each column. Inside this second map function
-generate Grid Squares. 
+# Mapping the Grid to GridSquares
 
-Let's go over that again. You need to map the row arrays
-then map each row to get the value at each column. These 
-values are used to generate grid squares. 
+Previously the grid was mocked up. Now it's time replace
+this code with code that generates a grid from game state
+and maps the current shape block on to the grid.
 
-Along the way you'll look at shape block and map that into
-the grid. 
+The `makeGrid()` method is responsible for this.
+`Array.map` is a good tool here since we want to
+transform the integer values into Grid Squares with
+color.
 
-The value assigned to each location on the grid is an integer 
-representing the color of each square.
+We'll need to map the row arrays then map each row to get the value at each column. These values are used to generate grid squares.
 
-Next you'll need to map the shape on to the grid. The 
-shape is represented by an integer value. 
+> [info]
+>
+> How do we _really_ do this? The source Grid is two dimensional, but the output Grid will just be one dimensional. We can use `Array.map()` to map across all rows, and then use `Array.map()` again to map across each column. Inside this second map function is where we'll generate Grid Squares.
 
-When Grid Squares are created find the color for the 
+Remember that the value assigned to each location on the grid is an _integer representing the color of each square_.
+
+Next we'll need to map the shape on to the grid. The
+shape is also represented by an integer value.
+
+When Grid Squares are created, find the color for the
 square by looking at the shape array. If there is a 1
-in the shape array use the shape index as the color. 
+in the shape array, use the shape index as the color.
 
+But enough talking, let's crank this out!
+
+> [action]
+>
+> Rewrite the `makeGrid` method in `/src/components/grid-board.js` that follows the description as outlined above:
+>
 ```JavaScript
+// Get Shapes from utils
+import { shapes } from '../utils'
+...
+>
 makeGrid() {
+  // collect properties mapped to props from state.
   const { grid, shape, rotation, x, y } = this.props
+  // get the block which is the current shape the player is controlling
   const block = shapes[shape][rotation]
   const blockColor = shape
   // map rows
@@ -132,11 +153,12 @@ makeGrid() {
     // map columns
     return rowArray.map((square, col) => {
       // Find the block x and y on the shape grid
+      // By subtracting the x and y from the col and the row we get the position of the upper left corner of the block array as if it was superimposed over the main grid
       const blockX = col - x
       const blockY = row - y
       let color = square
-      // Map current falling block to grid. 
-      if (blockX >= 0 && blockX < block.length && blockY >= 0 && blockY < block.length) {
+      // Map current falling block to grid.
+      // For any squares that fall on the grid we need to look at the block array and see if there is a 1 in this case we use the block color. if (blockX >= 0 && blockX < block.length && blockY >= 0 && blockY < block.length) {
         color = block[blockY][blockX] === 0 ? color : blockColor
       }
       // Generate a unique key for every block
@@ -152,23 +174,14 @@ makeGrid() {
 }
 ```
 
-The code above collects properties mapped to props from state. 
-Then it gets the block which is the current shape the player 
-is controlling. Then we map over the rows and then again map 
-the columns. 
+Things still won't render correctly in the browser just yet. Keep filling out these connections though and we'll get there!
 
-To map the shape block onto the grid we need to use the x and y
-values. By subtracting the x and y from the col and the row
-we get the position of the position of the upper left corner 
-of the block array as if it was superimposed over the main
-grid. It's possible some or all of the block array may be 
-off the top left or right of the grid. For any squares that 
-fall on the grid we need to look at the block array and see
-if there is a 1 in this case we use the block color.
+# Now Commit
 
-## Conclusion
-
-
-## Resources
-
- 
+>[action]
+>
+```bash
+$ git add .
+$ git commit -m 'Added connection for grid board'
+$ git push
+```

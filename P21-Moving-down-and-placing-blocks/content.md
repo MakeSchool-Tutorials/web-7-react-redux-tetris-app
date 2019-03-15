@@ -1,83 +1,78 @@
 ---
-title: "React Redux Tetris - Move down and placing blocks"
-slug: react-redux-tetris-moving-down-and-placing-blocks
+title: "Move down and placing blocks"
+slug: moving-down-and-placing-blocks
 ---
 
-Moving blocks down not only moves them down it 
-is also the point where blocks are placed on
-to the grid and a new block is added and starts from 
-the top. This is a core game mechanic. 
+Moving blocks down serves a few purposes:
 
-# Introduction 
+1. It moves them down (surprising, right?)
+1. It serves as the point where blocks are placed at the bottom of the grid and a new block is added and starts from the top
+1. It serves as the point where a block hits an already placed block, and a new block is added and starts from the top
+1. If you can't move down without blocks extending off of the top of the grid, it can signal a game over
 
-Moving down is more complex than moving left
-right or rotating. When a block moves down if 
-it would hit the bottom of the grid or if the block 
-hits a placed square it should become part of the 
-grid and be fixed in place and the next block added 
-to the grid at the top. 
+This is a lot more to think about than with left and right! Let's break down some of the mechanics:
 
-This is also where the game can be over. If placed
-blocks would extend off the top of the grid. 
+- If a block can't move down it should be added to the grid board array. - This will happen by writing the shape number into grid array at the position of the block.
+- If a grid square is empty, the value is 0.
+- After placing new squares on the grid we can score points.
 
-If a block can't move down it should be added
-to the grid board array. This will happen by 
-writing the shape number into grid array at 
-position of the block. If a grid square is 
-empty the value is 0. 
+We will need a function that checks for complete rows on
+the grid, remove them, and moves all the rows above down by one.
 
-After placing new squares on the grid we can score points. 
-You will need a function that checks for complete rows on 
-the grid, remove these and move the rows above down. 
+# Implement an Add block to grid function
 
-## Challenges
+This function takes in the `shape` (index), `grid`
+(array), `rotation`, `x`, and `y`. The values in the new shape should be written into the grid.
 
-**Implement an Add block to grid function**
+It's important that this method create a _copy_ of
+grid before making any changes!
 
-This function takes in the shape (index), grid
-(array), rotation, x, and, y. The values in the 
-new shape should be written into the grid. 
-
+> [action]
+>
+> In `/src/utils/index.js`, write the `addBlocktoGrid` function as described above:
+>
 ```JavaScript
 // Adds current shape to grid
 export const addBlockToGrid = (shape, grid, x, y, rotation) => {
-  const block = shapes[shape][rotation];  // Get the block array
-  const newGrid = [ ...grid ];            // Copy the grid
-  // Map the Block onto the grid                                                           
-  for (let row = 0; row < block.length; row++) {
-    for (let col = 0; col < block[row].length; col++) {
-      if (block[row][col]) {
-        newGrid[row + y][col + x] = shape;
-      }
+    // Get the block array
+    const block = shapes[shape][rotation];
+    // Copy the grid
+    const newGrid = [...grid];            
+    // Map the Block onto the grid                                                           
+    for (let row = 0; row < block.length; row++) {
+        for (let col = 0; col < block[row].length; col++) {
+            if (block[row][col]) {
+                newGrid[row + y][col + x] = shape;
+            }
+        }
     }
-  }
-  return newGrid;
+    return newGrid;
 }
 ```
 
-It's important that this method create a copy of 
-grid, before making any changes! 
+# Scoring points
 
-**Scoring points**
+Teris awards points when a row is completely filled with squares. The number is greater if multiple rows are filled.
 
-Teris awards points when a row is completely filled
-with squares. The number is greater if multiple
-rows are filled. 
+Once a block is placed, it's possible that one or more rows will be filled.
 
-Once a block is placed it's possible that one or more
-rows will be filled. 
-
-Implement a method that looks at the grid and 
-determines of any rows are filled. 
-
+> [action]
+>
+> In `/src/utils/index.js`, implement a method that looks at the grid and
+determines if any rows are filled.
+>
 ```JavaScript
 // Checks for completed rows and scores points
 export const checkRows = (grid) => {
+  // Points increase for each row completed
+  // i.e. 40 points for completing one row, 100 points for two rows
   const points = [0, 40, 100, 300, 1200]
   let completedRows = 0
   for (let row = 0; row < grid.length; row++) {
+    // No empty cells means it can't find a 0, so the row must be complete!
     if (grid[row].indexOf(0) === -1) {
       completedRows += 1
+      // Remove the row and add a new empty one at the top
       grid.splice(row, 1)
       grid.unshift(Array(10).fill(0))
     }
@@ -86,33 +81,53 @@ export const checkRows = (grid) => {
 }
 ```
 
-**Implement MOVE_DOWN in game reducer**
+# Implement MOVE_DOWN in game reducer
 
-The 'MOVE_DOWN' action is likely the most complicated 
-block of code in the game, a lot happens here. Here is 
-the logic you need to implement. 
+The `MOVE_DOWN` action is likely the most complicated
+block of code in the game, a lot happens here. Here is
+the logic we need to implement.
 
 - Check if we can move the block down
   - if so we're done
-- If block can't move down we need to place it
-by doing the following. 
+- If block can't move down we need to place it by doing the following.
   - make a new copy of grid
   - add the block to the grid (`addBlockToGrid`)
   - Properties to start a new block
-    - set shape to next shape
-    - set nextShape to a new random shape
+    - set `shape` to `nextShape`
+    - set `nextShape` to a new random shape
   - Check if the next shape can be displayed
-    - If not game is over
+    - If not, then game over
   - Call `checkRows` to score some points
   and remove completed rows
 
+> [action]
+>
+> In `/src/reducers/game-reducer.js`, implement the case for `MOVE_DOWN` based on the above logic. Remember to also import your necessary functions from `utils`, and update what props you're extracting from `state`:
+>
 ```JavaScript
+...
+import {
+  defaultState,
+  nextRotation,
+  canMoveTo,
+  addBlockToGrid,
+  checkRows,
+  randomShape
+} from '../utils'
+>
+...
+>
+const gameReducer = (state = defaultState(), action) => {
+  const { shape, grid, x, y, rotation, nextShape, score, isRunning } = state
+>
+...
+>
 case MOVE_DOWN:
   // Get the next potential Y position
   const maybeY = y + 1
   // Check if the current block can move here
   if (canMoveTo(shape, grid, x, maybeY, rotation)) {
-      // If so move the block 
+      // If so move the block
       return { ...state, y: maybeY }
   }
   // If not place the block
@@ -124,25 +139,34 @@ case MOVE_DOWN:
   newState.nextShape = randomShape()
   newState.score = score
   newState.isRunning = isRunning
-
+>
   if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
     // Game Over
     console.log("Game Should be over...")
     newState.shape = 0
     return { ...state, gameOver: true }
   }
-  // Score increases decrease interval
+  // Update the score based on if rows were completed or not
   newState.score = score + checkRows(newGrid)
-
+>
   return newState
+>
+...
+>
+}
 ```
+Now we can move blocks down in the game, and when they get placed, we can move the next block down as well!
 
-## Conclusion
+![down-block](assets/down-block.png)
 
-This should get a good portion of the game working. 
-The core mechanic is now in place. The next step is 
-get the blocks to move down on their own. 
+This is great! But we have to manually move the blocks down by clicking the down button. We need the blocks to be able to move down on their own, so let's make that now!
 
-## Resources
+# Now Commit
 
- 
+>[action]
+>
+```bash
+$ git add .
+$ git commit -m 'move down'
+$ git push
+```

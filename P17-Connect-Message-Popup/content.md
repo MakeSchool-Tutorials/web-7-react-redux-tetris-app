@@ -1,64 +1,116 @@
 ---
-title: "React Redux Tetris - Connect Message Popup"
-slug: react-redux-tetris-
+title: "Connect Message Popup"
+slug: connect-message-popup
 ---
 
-Connect the message popup to state. This will 
-allow us to show the message popup when the game 
-changes state. For exampe when the game is paused
-or ends. 
+Time for the message popup to connect to `state`! This will allow us to show the message popup when the game changes state, such as when the game is paused or ends.
 
-# Introduction 
+We want the message popup should display when the game is paused or over. Otherwise it will be invisible. Remember we're using CSS to control the position and visibility.
 
-The message popup should display when the game is
-paused or over. Otherwise it will be invisible. 
+Currently the popup displays all the time. We can fix this in two steps:
 
-CSS controls the display the message popup. With CSS
-you can place the popup over the other elements on 
-the screen and hide it when it is not needed. 
+1. Retrieve the `isRunning` and `gameOver` properties from `state`
+1. Use them to display or hide the popup by adding or removing a CSS class name to the component's parent element!
 
-## Challenges
+# Import Connect, mapStateToProps, mapDispatchToProps
 
-Currently the popup displays all the time. The goal here 
-is to grab `isRunning` and `gameOver` properties 
-from state and use these to display or hide the 
-popup by adding or removing a CSS class name to the 
-component's parent element. 
+Time to do the usual connection set up. For this one, try it yourself first before checking with the solution. Here are some guidelines:
 
-**Import Connect**
+- Map the `isRunning` and `gameOver` properties from state to props in the `mapStateToProps` function.
+- Define the `mapDispatchToProps` function to return an empty object. We won't use this here, but we can stub it in for future use.
+- Remember to connect the component with props and dispatch
 
-Import connect from 'react-redux'. 
+> [solution]
+>
+> Updated `/src/components/message-popup.js`:
+>
+```js
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+>
+// Displays a message
+class MessagePopup extends Component {
+>
+    render() {
+      return (
+        <div className='message-popup'>
+          <h1>Message Title</h1>
+          <p>Message info...</p>
+        </div>
+      )
+    }
+}
+>
+const mapStateToProps = (state) => {
+  return {
+    gameOver: state.game.gameOver,
+    isRunning: state.game.isRunning
+  }
+}
+>
+const mapDispatchToProps = () => {
+  return { }
+}
+>
+export default connect(mapStateToProps, mapDispatchToProps())(MessagePopup)
+```
 
-**Map State to Props**
+# Hide and show the MessagePopup
 
-Map the `isRunning` and `gameOver` properties from 
-state to props in the `mapStateToProps` function. 
-
-**Map Dispatch to Props**
-
-Define the `mapDispatchToProps` function. Return 
-an empty object. We won't use this here but we can 
-stub it in for future use. 
-
-**Connect the component**
-
-Connect the component with props and dispatch. 
-
-**Hide and show the MessagePopup**
-
-Use the following logic to hide and show the message popup. 
+Use the following logic to hide and show the message popup.
 
 - If `isRunning` and `gameOver` is `false` the message popup
-should be hidden. Hide it by adding the `hidden` class to 
-`className`. 
+should be hidden. Hide it by adding the `hidden` class to
+`className`.
 - If `isRunning` is `false` the message popup should be visible
-and the message text should say 'Paused'. 
+and the message text should say 'Paused'.
 - If `gameOver` is `true` the message popup should be visible
 and the message text should say 'Game Over'.
 
-## Conclusion
+Again, try this on your own, and then check against the solution to see how well you matched up.
 
+> [solution]
+>
+> Updated `render` method in `/src/components/message-popup.js`:
+>
+```js
+render() {
+    const { gameOver, isRunning } = this.props
+    let message = ''
+    let isHidden = 'hidden'
+>
+    // If the game is over, show the popup saying "Game Over"
+    if (gameOver) {
+      message = 'Game Over'
+      isHidden = ''
+    // If the game isn't running, it must be paused, so show the popup saying "Paused"
+    } else if (!isRunning) {
+      message = 'Paused'
+      isHidden = ''
+    // Default message, will still be hidden
+    } else {
+      message = '???'
+    }
+>
+    return (
+      <div className={`message-popup ${isHidden}`}>
+        <h1>{message}</h1>
+        <p></p>
+      </div>
+    )
+}
+```
 
-## Resources
+Refresh the browser to see the popup should now be hidden!
 
- 
+![hidden-popup](assets/hidden-popup.png)
+
+# Now Commit
+
+>[action]
+>
+```bash
+$ git add .
+$ git commit -m 'Added connection for message popup'
+$ git push
+```

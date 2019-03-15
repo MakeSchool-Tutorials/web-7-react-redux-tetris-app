@@ -85,7 +85,6 @@ render() {
       <div className="controls">
         {/* left */}
         <button className="control-button" onClick={(e) => {
-          console.log(isRunning)
           if (!isRunning) { return }
           this.props.moveLeft()
         }}>Left</button>

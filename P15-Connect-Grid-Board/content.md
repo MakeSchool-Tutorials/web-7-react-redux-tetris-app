@@ -174,7 +174,7 @@ makeGrid() {
 }
 ```
 
-Things still won't render correctly in the browser just yet. Keep filling out these connections though and we'll get there!
+No visual changes quite yet, but make sure everything still loads correctly in the browser!
 
 # Now Commit
 

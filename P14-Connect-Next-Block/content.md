@@ -34,6 +34,26 @@ The color of the square will match the index of the shape.
 To get state from Redux into this Component you'll
 need to connect the component with React-Redux.
 
+# Set the Default State
+
+First thing we need to do is set our `state` properly. Remember when we set `state = {}` in `/src/reducers/game-reducer.js`? We're not going to be able to track any state or props if we're always setting it to empty!
+
+Luckily we built that `defaultState` function in `/utils`. Time to use it!
+
+> [action]
+>
+> Import the `defaultState` function into `/src/reducers/game-reducer.js`, and then update `state` in the `gameReducer` const to the following:
+>
+```js
+import { defaultState } from '../utils'
+>
+const gameReducer = (state = defaultState(), action) => {
+>
+...
+>
+}
+```
+
 # Import connect
 
 First step is we need to connect the component to Redux.
@@ -112,7 +132,9 @@ makeGrid() {
 }
 ```
 
-Things won't render correctly in the browser just yet. Let's keep filling out these connections and we'll get something to display soon!
+Refresh the browser to see a different shape/orientation appear in the Next Block area!
+
+![random-next-block](assets/random-next-block.png)
 
 # Now Commit
 

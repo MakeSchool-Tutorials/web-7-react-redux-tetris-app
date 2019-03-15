@@ -1,71 +1,142 @@
 ---
-title: "React Redux Tetris - Connect Score Board"
-slug: react-redux-tetris-connect-score-board
+title: "Connect Score Board"
+slug: connect-score-board
 ---
 
-Connect the score board component. The score board
-shows the game score. It also displays a play/pause 
-button and a reset button. 
+Our last component to connect: the score board.
 
-# Introduction 
+The score board component shows the current score. It also has a play/pause and restart button. The play button should toggle it's text from 'Play' to 'Pause' as the game changes state.
 
-The score board component shows the current score. 
-It also has a play/pause and restart button. 
+The value displayed for score will come from the game's `state`.
+The buttons will call actions that play/pause and restart the game.
 
-The play button should toggle it's text from 'Play'
-to 'Pause' as the game changes state. 
+# Import Connect, Actions, mapStateToProps, mapDispatchToProps
 
-## Challenges
+We know the drill by now. Make sure to do the following, and then check against the solution:
 
-The value displayed for score will come from game state. 
-The buttons will call actions that play/pause and restart 
-the game. 
+- Import `connect` from 'react-redux'.
+- Import the `pause`, `resume`, `restart` actions.
+- Map the `score`, `isRunning`, `gameOver` from state to props.
+- Map the `pause`, `resume`, and `restart` actions to the dispatcher.
 
-You'll need to connect this component to state and map 
-some of the properties to props and map actions to 
-props. 
+> [action]
+>
+> Updated `/src/components/score-board.js`:
+>
+```js
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+>
+import { pause, resume, restart } from '../actions'
+>
+class ScoreBoard extends Component {
+>
+    render() {
+        return (
+            <div className="score-board">
+                <div>Score:{this.props.score}</div>
+                <div>Level: 1</div>
+>
+                <button className="score-board-button" onClick={(e) => {
+>
+                }}>Play</button>
+>
+                <button className="score-board-button" onClick={(e) => {
+>
+                }}>Restart</button>
+>
+            </div>
+        )
+    }
+}
+>
+const mapStateToProps = (state) => {
+  return {
+    score: state.game.score,
+    isRunning: state.game.isRunning,
+    gameOver: state.game.gameOver
+  }
+}
+>
+const mapDispatchToProps = () => {
+  return {
+    pause,
+    resume,
+    restart
+  }
+}
+>
+export default connect(mapStateToProps, mapDispatchToProps())(ScoreBoard)
+```
 
-**Import Connect**
+# Pause/Play button
 
-Import `connect` from 'react-redux'.
-
-**Import Actions**
-
-Import the `pause`, `resume`, `restart` actions. 
-
-**Map State to Props**
-
-Map the `score`, `isRunning`, `gameOver` from state 
-to props. 
-
-**Map Dispatch to Props**
-
-Map the `pause`, `resume`, and `restart` actions to 
-the dispatcher.
-
-**Pause/Play button**
-
-Use the following logic to handle the text of the 
-Play/Pause button. 
+Now we need to get our Play/Pause button working. Let's use the following logic to handle the text of the button:
 
 - If `isRunning` is `true` the button text should show
 'Pause'.
 - If `isRunning` is `false` the button text should show
-'Play'. 
+'Play'.
 
-Use the following logic to handle clicks on the button. 
+Use the following logic to handle clicks on the button.
 
-- If `gameOver` is `false` exit without any action, 
-otherwise if `isRunning` is `true` call `this.props.pause()`
-otherwise call `this.props.resume()`. 
+- If `gameOver` is `false`, exit without any action
+- Otherwise if `isRunning` is `true`, call the `pause` action
+otherwise call the `resume` action.
 
-**Restart Button**
+Let's implement this:
 
-Clicking this button should call `this.props.restart()`.
+> [action]
+>
+> Update the `render` method in `/src/components/score-board.js` to the following:
+>
+```js
+render() {
+    const { isRunning, score, resume, pause, restart, gameOver } = this.props
+>
+    return (
+      <div className="score-board">
+        <div>Score:{ score }</div>
+        <div>Level: 1</div>
+>
+        <button className="score-board-button" onClick={(e) => {
+          if (gameOver) { return }
+          isRunning ? pause() : resume()
+        }}>{isRunning ? "Pause" : "Resume"}</button>
+>
+        <button className="score-board-button" onClick={(e) => {
+>          
+        }}>Restart</button>
+>
+      </div>
+    )
+  }
+```
 
-## Conclusion
+# Restart Button
 
+One more small addition to get the restart button working:
 
-## Resources
+> [action]
+>
+> Update the Restart button within the `render` in `/src/components/score-board.js` to the following:
+>
+```js
+<button className="score-board-button" onClick={(e) => {
+    restart()
+}}>Restart</button>
+```
 
- 
+You may have noticed that the past few chapters we've been wiring buttons up, but they aren't doing anything. That's because our game reducers are just returning `state` still!
+
+In the next few chapters, we're going to update those to actually change the state.
+
+# Now Commit
+
+>[action]
+>
+```bash
+$ git add .
+$ git commit -m 'Added connection for score board'
+$ git push
+```

@@ -1,32 +1,40 @@
 ---
-title: "React Redux Tetris - Pause and Resume"
-slug: react-redux-tetris-pause-and-resume
+title: "Pause and Resume"
+slug: pause-and-resume
 ---
 
-We might need to pause the game and resume it later. 
+What if we need to use the bathroom, or get a snack, or both? We might need to pause the game and resume it later.
 
-# Introduction 
+We've already built the Pause and Resume buttons, but at this point they don't do anything. Luckily the game state has an `isRunning` property for this purpose!
 
-The game already implements a Pause and Resume buttons. 
-At this point they don't do anything. The game state 
-has an `isRunning` property for this purpose. 
- 
-## Challenges
+# Implement the Play Resume  button
 
-**Implement the Play Resume  button**
+The button already calls the action, we just need the reducer needs to handle the action.
 
-The button already calls the action. The reducer needs
-to handle the action. 
+> [action]
+>
+> Implement the `RESUME` and `PAUSE` cases in `/src/reducers/game-reducer.js`:
+>
+```js
+case RESUME:
+>
+      return { ...state, isRunning: true }
+>
+case PAUSE:
+>
+      return { ...state, isRunning: false }
+```
 
-The RESUME action in game-reducer needs to set 
-isRunning to true. 
+You should now be able to pause/resume the game!
 
-The PAUSE action in the game-reducer needs to set 
-isRunning to false. 
+![paused](assets/paused.png)
 
-## Conclusion
+# Now Commit
 
-
-## Resources
-
- 
+>[action]
+>
+```bash
+$ git add .
+$ git commit -m 'play and pause implemented'
+$ git push
+```

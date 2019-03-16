@@ -55,7 +55,7 @@ These don't need to be part of `state`. We will make them class properties of th
 class GridBoard extends Component {
     constructor(props) {
       super(props)
-
+>
       this.lastUpdateTime = 0
       this.progressTime = 0
     }
@@ -113,22 +113,22 @@ update(time) {
   if (!this.props.isRunning) {
     return
   }
-
+>
   // If lastUpdateTime not been set, set it to the current time.
   if (!this.lastUpdateTime) {
     this.lastUpdateTime = time
   }
-
+>
   // Calculate delta time and progress time
   const deltaTime = time - this.lastUpdateTime
   this.progressTime += deltaTime
-
+>
   // If the progress time is greater than speed move the block down
   if (this.progressTime > this.props.speed) {
     this.props.moveDown()
     this.progressTime = 0
   }
-
+>
   // set the last update time.
   this.lastUpdateTime = time
 }

@@ -1,27 +1,35 @@
 ---
-title: "React Redux Tetris - Restarting the Game"
-slug: react-redux-tetris-restarting-the-game
+title: "Restarting the Game"
+slug: restarting-the-game
 ---
 
-Now that the game know when it's ended you need a 
-way to restart it. 
+Now that the game knows when it's ended, we need a way to restart it!
 
-# Introduction 
+Restarting the game will only require setting the game `state` in redux back to default, and there already is a function for this!
 
-The game state held in Redux is the entire game. 
-restarting the game will only require setting the
-game state in redux back to default, and there 
-already is a function for this! You need to 
-implement this at the right location. 
+# Restart Game-Reducer
 
-## Challenges
+> [action]
+>
+> Return default state with a call to `defaultState()` in the `RESTART` case in `/src/reducers/game-reducer.js`:
+>
+```js
+case RESTART:
+    return defaultState()
+```
 
-Return default state with a call to `defaultState()`
-in the `RESTART` case in 'game-reducer'.
+Try pressing the restart button and make sure it starts the game from a clean slate.
 
-## Conclusion
+# Now Commit
 
+# Now Commit
 
-## Resources
+>[action]
+>
+```bash
+$ git add .
+$ git commit -m 'restart implemented'
+$ git push
+```
 
- 
+You now have a fully functioning Tetris game! Congrats!

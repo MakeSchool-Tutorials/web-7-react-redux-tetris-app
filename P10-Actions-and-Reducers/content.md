@@ -50,7 +50,6 @@ export const MOVE_LEFT  = "MOVE_LEFT"   // Move piece left
 export const MOVE_RIGHT = "MOVE_RIGHT"  // Move piece right
 export const ROTATE     = "ROTATE"      // Rotate piece
 export const MOVE_DOWN  = "MOVE_DOWN"   // Move piece down
-export const SET_NEXT   = "SET_NEXT"    // ???
 export const GAME_OVER  = "GAME_OVER"   // The game is over
 export const RESTART    = "RESTART"     // Restart Game
 ```
@@ -62,10 +61,6 @@ export const RESTART    = "RESTART"     // Restart Game
 > In the same `/src/actions/index.js` file, define an action creator for each action:
 >
 ```JavaScript
-export const setNext = () => {
-  return { type: SET_NEXT }
-}
->
 export const moveRight = () => {
   return { type: MOVE_RIGHT }
 }
@@ -107,7 +102,6 @@ The reducer takes in **state and an action**. It looks at the `action.type` and 
 >
 ```JavaScript
 import {
-  SET_NEXT,
   MOVE_RIGHT, MOVE_LEFT, MOVE_DOWN, ROTATE,
   PAUSE, RESUME, RESTART, GAME_OVER
 } from '../actions'

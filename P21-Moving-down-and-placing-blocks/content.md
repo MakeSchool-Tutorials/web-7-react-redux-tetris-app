@@ -111,8 +111,7 @@ import {
   nextRotation,
   canMoveTo,
   addBlockToGrid,
-  checkRows,
-  randomShape
+  checkRows
 } from '../utils'
 >
 ...

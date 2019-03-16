@@ -1,111 +1,116 @@
 ---
-title: "React Redux Tetris - Game Over"
-slug: react-redux-tetris-game-over
+title: "Game Over"
+slug: game-over
 ---
 
-In Tetris you lose of the blocks stack to the top of 
-the screen. 
+If the blocks stack to the top of the screen, it's game over. We need to make sure we can handle this state.
 
-# Introduction 
+Let's take a closer look at `state`:
 
-The last step is to handle Game Over. This will occur 
-when the blocks reach the top of the game board. 
-
-Let's take a closer look at game state. This describes 
-how the game looks and what is happening at the moment
-in the game. Game state is stored in redux as an object 
-with several properties. Take a look at those properties. 
-
-- `grid` : An array describing the game board.
-This contains all of the squares that have been placed.
-It does not contain the current block that you are 
-controlling. 
-- `shape` : The index of the current shap that you are 
-controlling. The idex identifies the array of shapes 
-for each rotation in the shape array. 
-- `rotation` : The index of the rotation for the 
-current block. 
-- `x` : horizontal position of the shape you are controlling. 
+- `grid` : An array describing the game board. This contains all of the squares that have been placed. It does not contain the current block that you are controlling.
+- `shape` : The index of the current shape that you are controlling. The index identifies the array of shapes for each rotation in the shape array.
+- `rotation` : The index of the rotation for the current block.
+- `x` : horizontal position of the shape you are controlling.
 - `y` : vertical position of the shape you are controlling.
-nextShape : index of the next shape that will appear after 
-the current shape is placed. 
-- **`isRunning`** : when tru the game is running, false when the 
-game is paused. 
-- **`gameOver`** : true when the game is over. 
-- speed : the number of milliseconds before a block is 
-moved down. 
+- `nextShape` : index of the next shape that will appear after
+the current shape is placed.
+- **`isRunning`** : when true, the game is running, false when the
+game is paused.
+- **`gameOver`** : true when the game is over.
+- `speed` : the number of milliseconds before a block is moved down.
 - `score` : your score
 
-`isRunning` and `gameOver` are the two important propties for 
-this discussion. 
+`isRunning` and `gameOver` are the two important properties for
+this discussion, let's go over the basic rules of these properties:
 
-`isRunning` is is set by the Play/Resume button. When 
-`isRunning` is false the game is paused but not over. 
-
-On the other hand when `gameOver` is true the game is over. 
-
-The controls should not issue actions when `isRunning` is
-false or `gameOver` is true. 
-
-The move down action that forces the game along should also 
+- `isRunning` is is set by the Play/Resume button. When `isRunning` is false, the game is paused but not over.
+- On the other hand when `gameOver` is true the game is over.
+- The controls should not issue actions when `isRunning` is
+false or `gameOver` is true.
+- The move down action that forces the game along should also
 not happen when `isRunning` is false or `gameOver` is true.
+- `gameOver` is set to false by default. It gets set to true
+when the game is over.
+- A game is over when a block is added to the grid and part if that block ends up off the top edge of the grid.
 
-`gameOver` is set to false by default. It gets set to true 
-when the game is over. A game is over when a block is 
-added to the grid and part if that block ends up off the
-top edge of the grid. 
+# Handle gameOver in the controls component
 
-## Challenges
+Here you need to disable the controls when the `gameOver`
+property on `state` is false.
 
-**Handle gameOver in the controls component**
-
-Here you need to disable the controls when the gameOver 
-property on state is false. 
-
-Map `gameOver` to props in `mapStateToProps`. 
-
-When the component renders get the `gameOver` property
-from props. You can deconstruct props at the top of the 
-function like this: 
-
-`const { isRunning, gameOver } = this.props`
-
-The `onClick` handler for each function should check 
-`isRunning` and `gameOver`. If `isRunning` is `false`
-or `gameOver` is `true` the buttons should not send actions. 
-
-Here is an example: 
-
-```JavaScript
-<button className="control-button" onClick={(e) => {
-  if (!isRunning || gameOver) { return }
-  this.props.moveRight()
-}}>Right</button>
+> [action]
+>
+> Map `gameOver` to props in `mapStateToProps` in `/src/components/controls.js`:
+>
+```js
+const mapStateToProps = (state) => {
+  return {
+    isRunning: state.game.isRunning,
+    gameOver: state.game.gameOver
+  }
+}
 ```
 
-Notice the function returns if `isRunning` is `false` 
-(`!isRunning`) or (`||`) `gameOver` is `true`.
+The `onClick` handler for each function should check
+`isRunning` and `gameOver`. If `isRunning` is `false`
+or `gameOver` is `true` the buttons should not send actions.
 
-**Detecting a game over**
+> [action]
+>
+> Update all of the `button` elements in the `render` method of `/src/components/controls.js` to check `isRunning` and `gameOver`. Also make sure to extract the `gameOver` property from `props`:
+>
+```js
+render() {
+    const { isRunning, gameOver } = this.props
+>
+...
+>
+    // for all the below, Notice the function returns if `isRunning` is `false` (`!isRunning`), or (`||`) `gameOver` is `true`.
+    <div className="controls">
+        {/* left */}
+        <button className="control-button" onClick={(e) => {
+            console.log(isRunning, gameOver)
+            if (!isRunning || gameOver) { return }
+            this.props.moveLeft()
+        }}>Left</button>
+>
+        {/* right */}
+        <button className="control-button" onClick={(e) => {
+            if (!isRunning || gameOver) { return }
+            this.props.moveRight()
+        }}>Right</button>
+>
+        {/* rotate */}
+        <button className="control-button" onClick={(e) => {
+            if (!isRunning || gameOver) { return }
+            this.props.rotate()
+        }}>Rotate</button>
+>
+        {/* down */}
+        <button className="control-button" onClick={(e) => {
+            if (!isRunning || gameOver) { return }
+            this.props.moveDown()
+        }}>Down</button>
+    </div>
+>
+...
+>
+}
+```
 
-We can detect or game over in the `addBlockToGrid` 
-function. This is in the 'utils/index'. 
+# Detecting a game over
 
-The fix here is a little awkward. As it is this function 
-takes the following parameters: shape, grid, x, y, rotation. 
-It uses these to map the current block you controlling  
-onto the grid array. The function returns a new grid array. 
+We can detect a game over in the `addBlockToGrid`
+function `utils/index.js`
 
-The `addBlockToGrid()` function adds a block to the grid. 
-If part of the block ends up off the top the grid the 
-game is over. 
+The `addBlockToGrid()` function adds a block to the grid. If part of the block ends up off the top the grid the game is over.
 
-The goal is to have the function return the new grid and 
-a bool that says the game is over true or the game is not 
-over false. Since we can only return one value from a 
-function the return type will have to change to an object 
-with two properties: `grid` and `gameOver`.
+The goal is to have the function return the new grid and a bool that says the game is over (true) or the game is not over (false). Since we can only return one value from a function, the return type will have to change to an object with two properties: `grid` and `gameOver`.
 
+> [action]
+>
+> In `/src/utils/index.js`, update `addBlockToGrid` to the following:
+>
 ```JavaScript
 // Adds current shape to grid
 export const addBlockToGrid = (shape, grid, x, y, rotation) => {
@@ -132,30 +137,32 @@ export const addBlockToGrid = (shape, grid, x, y, rotation) => {
 }
 ```
 
-Changing this will mean changes to the reducer and the 
-MOVE_DOWN case where this method is called. 
+Changing this will mean changes to the reducer and the
+MOVE_DOWN case where this method is called.
 
-**Modify the game-reducer**
+# Modify the game-reducer
 
-Here you'll want to modify the MOVE_DOWN case. 
-
+> [action]
+>
+> Modify the MOVE_DOWN case for `/src/reducers/game-reducer.js`:
+>
 ```JavaScript
 case MOVE_DOWN:
   // Get the next potential Y position
   const maybeY = y + 1
-
+>
   // Check if the current block can move here
   if (canMoveTo(shape, grid, x, maybeY, rotation)) {
       // If so move down don't place the block
       return { ...state, y: maybeY }
   }
-
+>
   // If not place the block
   // (this returns an object with a grid and gameover bool)
   const obj = addBlockToGrid(shape, grid, x, y, rotation)
   const newGrid = obj.grid
   const gameOver = obj.gameOver
-
+>
   if (gameOver) {
     // Game Over
     const newState = { ...state }
@@ -163,46 +170,33 @@ case MOVE_DOWN:
     newState.grid = newGrid
     return { ...state, gameOver: true }
   }
-
+>
   // reset somethings to start a new shape/block
   const newState = defaultState()
   newState.grid = newGrid
   newState.shape = nextShape
   newState.score = score
   newState.isRunning = isRunning
-
+>
   // TODO: Check and Set level
   // Score increases decrease interval
   newState.score = score + checkRows(newGrid)
-
+>
   return newState
 ```
 
-Here there are three exit points. 
+Try to force a game over and make sure you see the popup:
 
-The first if statement exits by **returning** new state. The 
-state in this case is a copy of the current state with the y 
-value changed. In this situation it was okay to move to this 
-new y position. 
+![gameover](assets/gameover.png)
 
-If we get past the first if statement the block has hit some 
-squares on the grid and needs to be placed. Time to 
-call `addBlockToGrid()`. This returns an object with the 
-grid and the `gameOver` bool. 
+Almost done! One more feature and we've got a full Tetris game!
 
-If `gameOver` bool if true 
-the last block placed must have extended off the top of the 
-board the game is over. The game needs to return new state 
-with the shape set to `0` and `gameOver` set to true. 
+# Now Commit
 
-If the block was placed and the game is not over the game 
-needs to reset the x, y, and set the shape to next shape, 
-and set next shape to a new random shape. 
-
-## Conclusion
-
-
-
-## Resources
-
- 
+>[action]
+>
+```bash
+$ git add .
+$ git commit -m 'game over implemented'
+$ git push
+```

@@ -28,11 +28,9 @@ Tetris will run in any web browser that supports JavaScript.
 
 # Prerequisites
 
-To complete this tutorial you should have some experience with
-the JavaScript Language and React by completing the [timers app tutorial](https://www.makeschool.com/academy/track/react-redux-passwords-app-tutorial-oh4)
+To complete this tutorial you should have some experience with the JavaScript Language and React. This tutorial covers some more advanced topics in React and Redux, so if this is completely new to you, we suggest completing the [timers app tutorial](https://www.makeschool.com/academy/track/react-redux-passwords-app-tutorial-oh4) first.
 
-Some experience working with the command line, including NPM
-and Node.
+Some experience working with the command line, including NPM and Node, is also required.
 
 # Overview
 

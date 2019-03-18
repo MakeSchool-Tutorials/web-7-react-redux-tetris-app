@@ -227,6 +227,8 @@ $ git commit -m 'Added grid area styles'
 $ git push
 ```
 
+Great work! From this chapter, we were able to **create complex layouts with CSS grid!**
+
 ## Resources
 
 - https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas

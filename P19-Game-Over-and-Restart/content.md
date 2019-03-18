@@ -248,7 +248,7 @@ $ git commit -m 'restart implemented'
 $ git push
 ```
 
-**You now have a fully functioning Tetris game! Congrats!**
+**You have now implemented an advanced single page application with React — a fully functioning Tetris game! Congrats!**
 
 # Feedback and Review
 

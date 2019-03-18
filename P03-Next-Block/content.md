@@ -131,7 +131,7 @@ You should see the following in your browser:
 
 ![initial-next-block](assets/initial-next-block.png)
 
-Doesn't look amazing right now, but we'll spruce it up in future chapters.
+Doesn't look amazing right now, but we'll spruce it up in future chapters. For now, we've gotten some practice with **using functional programming methods like `map`!**
 
 # Now Commit
 

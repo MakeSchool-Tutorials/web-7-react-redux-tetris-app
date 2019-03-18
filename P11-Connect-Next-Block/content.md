@@ -153,7 +153,7 @@ makeGrid() {
 }
 ```
 
-Refresh the browser to see a different shape/orientation appear in the Next Block area!
+Refresh the browser to see a different shape/orientation appear in the Next Block area! Our Next Block now **uses Redux/Flux to manage application state!** We also covered working with **systems that manage and merge complex arrays,** and have gotten some more practice with **using functional programming methods like `map`!**
 
 ![random-next-block](assets/random-next-block.png)
 

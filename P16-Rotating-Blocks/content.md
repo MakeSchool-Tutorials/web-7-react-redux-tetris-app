@@ -130,7 +130,7 @@ const gameReducer = (state = defaultState(), action) => {
 }
 ```
 
-Since no blocks are falling on the screen yet, we can't test this out quite yet, but we will soon!
+Since no blocks are falling on the screen yet, we can't test this out quite yet, but we will soon! We also further covered working with **systems that manage and merge complex arrays!**
 
 # Now Commit
 

@@ -154,7 +154,7 @@ One more small addition to get the restart button working:
 
 You may have noticed that the past few chapters we've been wiring buttons up, but they aren't doing anything. That's because our game reducers are just returning `state` still!
 
-In the next few chapters, we're going to update those to actually change the state.
+In the next few chapters, we're going to update those to actually change the state. Our Score Board now **uses Redux/Flux to manage application state!**
 
 # Now Commit
 

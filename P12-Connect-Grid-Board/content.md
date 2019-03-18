@@ -196,7 +196,7 @@ makeGrid() {
 }
 ```
 
-No visual changes quite yet, but make sure everything still loads correctly in the browser!
+No visual changes quite yet, but make sure everything still loads correctly in the browser! Our Grid Board now **uses Redux/Flux to manage application state!** We also covered working with **systems that manage and merge complex arrays** in a lot more detail with the board, and have gotten _even more_ practice with **using functional programming methods like `map`!**
 
 # Now Commit
 

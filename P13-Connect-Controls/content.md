@@ -136,7 +136,7 @@ render() {
   }
 ```
 
-Still no visual changes yet, we still have a couple more components to connect up. Make sure everything still loads correctly in the browser!
+Still no visual changes yet, we still have a couple more components to connect up. Make sure everything still loads correctly in the browser! Our Controls now **uses Redux/Flux to manage application state!**
 
 # Now Commit
 

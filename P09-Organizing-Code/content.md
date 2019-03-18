@@ -116,6 +116,8 @@ class App extends Component {
 export default App;
 ```
 
+We're now beginning to **Use Redux/Flux to manage application state**, we'll build more on that going forward.
+
 # Now Commit
 
 >[action]

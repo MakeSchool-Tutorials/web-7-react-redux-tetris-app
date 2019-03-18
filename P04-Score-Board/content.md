@@ -137,7 +137,7 @@ You should see the following in your browser:
 
 ![initial-scoreboard](assets/initial-scoreboard.png)
 
-This needs work, but we will take care the details later. For now this is a solid start.
+This needs work, but we will take care the details later. For now this is a solid start, and we got more practice **working with CSS variables!**
 
 # Now Commit
 

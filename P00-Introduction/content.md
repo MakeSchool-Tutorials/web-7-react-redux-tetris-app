@@ -50,11 +50,12 @@ CSS Grid, and Flex Box.
 
 By the end of this tutorial, students should be able to...
 
-1. Build more advanced React components using JSX syntax
-1. Manage application state using the Flux pattern
-1. Implement the foundation of a game using nested arrays
-1. Integrate CSS variables into their stylesheets for more DRY code
-1. Practice advanced CSS techniques to render elements in the browser
+1. Implement an advanced single page application with React
+1. Use Redux/Flux to manage application state
+1. Build systems that manage and merge complex arrays
+1. Use functional programming methods like `map`
+1. Use CSS variables
+1. Create complex layouts with CSS grid
 
 # Technical Planning
 

@@ -226,7 +226,7 @@ Now we can move blocks down in the game, and when they get placed, we can move t
 
 ![down-block](assets/down-block.png)
 
-This is great! But we have to manually move the blocks down by clicking the down button. We need the blocks to be able to move down on their own, so let's make that now!
+This is great! But we have to manually move the blocks down by clicking the down button. We need the blocks to be able to move down on their own, so let's make that now! We also further covered working with **systems that manage and merge complex arrays!**
 
 # Now Commit
 

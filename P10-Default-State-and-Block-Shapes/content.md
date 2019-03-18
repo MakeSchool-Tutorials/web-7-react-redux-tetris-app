@@ -316,6 +316,8 @@ export const defaultState = () => {
 }
 ```
 
+We now have a default state for our game, and we **used Redux/Flux to manage the application state!** We also covered the beginnings of **building systems that manage and merge complex arrays!**
+
 # Now Commit
 
 >[action]

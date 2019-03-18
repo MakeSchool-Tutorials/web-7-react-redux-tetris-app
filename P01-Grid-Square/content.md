@@ -269,6 +269,8 @@ $ git commit -m 'Added grid square'
 $ git push
 ```
 
+We got some great practice with starting to **use CSS variables!** We'll be using these more throughout this tutorial.
+
 ## Resources
 
 - https://developer.mozilla.org/en-US/docs/Web/CSS/--*

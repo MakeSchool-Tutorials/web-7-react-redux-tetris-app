@@ -248,4 +248,10 @@ $ git commit -m 'restart implemented'
 $ git push
 ```
 
-You now have a fully functioning Tetris game! Congrats!
+**You now have a fully functioning Tetris game! Congrats!**
+
+# Feedback and Review
+
+Please take a moment to rate your understanding of learning outcomes from this tutorial, and how we can improve it via our [tutorial feedback form](https://goo.gl/forms/ErwFsZjnYNPHOo342)
+
+This allows us to get feedback on how well the students are grasping the learning outcomes, and tells us where we can improve the tutorial experience.

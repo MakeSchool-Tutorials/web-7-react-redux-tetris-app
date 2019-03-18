@@ -241,21 +241,6 @@ Setting the color to 1 should display an orange square:
 
 Try some other values by changing the value of `color`.
 
-## conclusion
-
-CSS Variables, also known as CSS Custom Properties are an
-amazing feature, that can go a long way to making your code
-easier to manage, and more DRY.
-
-Colors will be managed by a classes named `color-#` where # will
-be a number 0-7. 0 is an empty square and the numbers 1-7 are
-the colors for each of the different block shapes.
-
-## Resources
-
-- https://developer.mozilla.org/en-US/docs/Web/CSS/--*
-- https://www.quackit.com/css/css_color_codes.cfm
-
 # Now Commit
 
 >[action]
@@ -265,3 +250,8 @@ $ git add .
 $ git commit -m 'Added grid square'
 $ git push
 ```
+
+## Resources
+
+- https://developer.mozilla.org/en-US/docs/Web/CSS/--*
+- https://www.quackit.com/css/css_color_codes.cfm

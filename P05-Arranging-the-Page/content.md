@@ -198,19 +198,6 @@ Check out your browser now, sure looks a lot better than before!
 
 ![grid-area](assets/grid-area.png)
 
-## Conclusion
-
-This step used CSS Grid to layout the major UI element blocks.
-Using `grid-area` makes the the process easier manage.
-
-You used variables to define the width of UI blocks based on the
-size of the grid squares. This way changing the size of the grid
-square will change the size of everything.
-
-## Resources
-
-- https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas
-
 # Now Commit
 
 >[action]
@@ -220,3 +207,7 @@ $ git add .
 $ git commit -m 'Added grid area styles'
 $ git push
 ```
+
+## Resources
+
+- https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas

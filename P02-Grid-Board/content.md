@@ -125,17 +125,6 @@ You should now see a grid in your browser:
 >
 > To read more about box-sizing, check out this resource on [CSS Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model).
 
-## conclusion
-
-Here you created a new component to display the game board grid.
-This component contains 10x18 grid squares, which are arranged
-in a grid with the help of CSS Grid.
-
-## Resources
-
-- https://www.w3schools.com/css/css_grid.asp
-- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model
-
 # Now Commit
 
 >[action]
@@ -145,3 +134,8 @@ $ git add .
 $ git commit -m 'Added grid board'
 $ git push
 ```
+
+## Resources
+
+- https://www.w3schools.com/css/css_grid.asp
+- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model

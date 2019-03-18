@@ -158,103 +158,103 @@ export const shapes = [
     [0,0,0,0],
     [0,0,0,0],
     [0,0,0,0]]],
-
+>
   // I
   [[[0,0,0,0],
     [1,1,1,1],
     [0,0,0,0],
     [0,0,0,0]],
-
+>
    [[0,1,0,0],
     [0,1,0,0],
     [0,1,0,0],
     [0,1,0,0]]],
-
+>
   // T
   [[[0,0,0,0],
     [1,1,1,0],
     [0,1,0,0],
     [0,0,0,0]],
-
+>
    [[0,1,0,0],
     [1,1,0,0],
     [0,1,0,0],
     [0,0,0,0]],
-
+>
    [[0,1,0,0],
     [1,1,1,0],
     [0,0,0,0],
     [0,0,0,0]],
-
+>
    [[0,1,0,0],
     [0,1,1,0],
     [0,1,0,0],
     [0,0,0,0]]],
-
+>
   // L
   [[[0,0,0,0],
     [1,1,1,0],
     [1,0,0,0],
     [0,0,0,0]],
-
+>
    [[1,1,0,0],
     [0,1,0,0],
     [0,1,0,0],
     [0,0,0,0]],
-
+>
    [[0,0,1,0],
     [1,1,1,0],
     [0,0,0,0],
     [0,0,0,0]],
-
+>
    [[0,1,0,0],
     [0,1,0,0],
     [0,1,1,0],
     [0,0,0,0]]],
-
+>
   // J
   [[[1,0,0,0],
     [1,1,1,0],
     [0,0,0,0],
     [0,0,0,0]],
-
+>
    [[0,1,1,0],
     [0,1,0,0],
     [0,1,0,0],
     [0,0,0,0]],
-
+>
    [[0,0,0,0],
     [1,1,1,0],
     [0,0,1,0],
     [0,0,0,0]],
-
+>
    [[0,1,0,0],
     [0,1,0,0],
     [1,1,0,0],
     [0,0,0,0]]],
-
+>
   // Z
   [[[0,0,0,0],
     [1,1,0,0],
     [0,1,1,0],
     [0,0,0,0]],
-
+>
    [[0,0,1,0],
     [0,1,1,0],
     [0,1,0,0],
     [0,0,0,0]]],
-
+>
   // S
   [[[0,0,0,0],
     [0,1,1,0],
     [1,1,0,0],
     [0,0,0,0]],
-
+>
    [[0,1,0,0],
     [0,1,1,0],
     [0,0,1,0],
     [0,0,0,0]]],
-
+>
   // O
   [[[0,1,1,0],
     [0,1,1,0],
@@ -284,10 +284,11 @@ The game will use the returned index to get the shape.
 
 # Game State
 
-Write a function that generates the default state
-of the game.
+We need a function that will return the default object that redux uses with all of the properties reflecting a default game state.
 
-This function should return the default object that redux uses with all of the properties reflecting a default game state
+> [action]
+>
+> Write a function in `/src/utils/index.js` that generates the default state of the game.
 >
 ```JavaScript
 // Return the default state for the game

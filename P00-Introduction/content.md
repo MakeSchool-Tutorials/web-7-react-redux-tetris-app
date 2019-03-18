@@ -48,26 +48,35 @@ grid containing all of the blocks.
 The tutorial will also delve into related topics like CSS,
 CSS Grid, and Flex Box.
 
-# Concepts Covered
+# Learning Outcomes
 
-Tetris is a fun and interesting game that can be reacted with
-arrays. This tutorial will store those arrays and other
-information and manage changes with Redux.
+By the end of this tutorial, students should be able to...
 
-The game will use React to display the data stored in Redux to
-render the game in the browser.
+1. Build more advanced React components using JSX syntax
+1. Manage application state using the Flux pattern
+1. Implement the foundation of a game using nested arrays
+1. Integrate CSS variables into their stylesheets for more DRY code
+1. Practice advanced CSS techniques to render elements in the browser
 
-The tutorial will also use some advanced CSS techniques like
-CSS Grid and Flex Box to render elements in the browser.
+# Technical Planning
 
-The project will manage software dependancies with npm and node.
+We're going to build this game up component by component, then implement our actions and reducers, and tie it all together. We'll also be styling as we go along as well. At a high level, here's our plan to follow:
 
-## Resources
-
-- [React](https://reactjs.org)
-- [Redux](https://redux.js.org)
-- [npm](https://www.npmjs.com)
-- [Node JS](https://nodejs.org/en/)
+1. Implement the overall grid square
+1. Implement the game board
+1. Implement the "next block" area
+1. Implement the score board
+1. Arrange the layout of the game
+1. Implement the controls
+1. Implement the message popup
+1. Implement the actions and reducers
+1. Do some code organizing and cleanup
+1. Implement state and shapes
+1. Connect each component up to state and reducers
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
 
 # Using Git/GitHub
 
@@ -177,6 +186,10 @@ $ git push
 
 ## Resources
 
+- [React](https://reactjs.org)
+- [Redux](https://redux.js.org)
+- [npm](https://www.npmjs.com)
+- [Node JS](https://nodejs.org/en/)
 - https://github.com/facebook/create-react-app
 - https://github.com/reduxjs/redux
 - https://github.com/reduxjs/react-redux

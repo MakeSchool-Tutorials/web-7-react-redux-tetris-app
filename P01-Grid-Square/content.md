@@ -3,6 +3,24 @@ title: "Tetris Grid"
 slug: tetris-grid
 ---
 
+1. **Implement the overall grid square**
+    1. **Build the grid square component**
+    1. **Add styling**
+1. Implement the game board
+1. Implement the "next block" area
+1. Implement the score board
+1. Arrange the layout of the game
+1. Implement the controls
+1. Implement the message popup
+1. Implement the actions and reducers
+1. Do some code organizing and cleanup
+1. Implement state and shapes
+1. Connect each component up to state and reducers
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 In this section you will make a component that represents a single
 grid square. The game board is played on a grid made up of grid
 squares.
@@ -208,7 +226,7 @@ Now we need to define the appearance of a grid square. The grid squares all have
 
 That might seem like a lot of styles but much of what is there will be reused throughout this tutorial. With this arrangement we can easily make changes to the size and border in a single place, at the top of the style sheet.
 
-# Test a Grid Sqaure
+# Test a Grid Square
 
 > [action]
 >

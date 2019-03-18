@@ -3,6 +3,30 @@ title: "Connect Controls"
 slug: connect-controls
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. ~~Implement the "next block" area~~
+1. ~~Implement the score board~~
+1. ~~Arrange the layout of the game~~
+1. ~~Implement the controls~~
+1. ~~Implement the message popup~~
+1. ~~Implement the actions and reducers~~
+1. ~~Do some code organizing and cleanup~~
+1. ~~Implement state and shapes~~
+1. **Connect each component up to state and reducers**
+    1. ~~NextBlock~~
+    1. ~~GridBoard~~
+    1. **Controls**
+        1. **Add the actions needed for the controls**
+        1. **Implement the `mapStateToProps` function**
+        1. **Implement the `mapDispatchToProps` function**
+        1. **Connect the `controls` component**
+        1. **Call the actions in their appropriate buttons**
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 Now we'll connect the controls to actions so that we can play the game! Tapping the left, right, and down buttons move the block. Tapping the rotate button changes the rotation of the block.
 
 Controls need to issue actions to control the game.

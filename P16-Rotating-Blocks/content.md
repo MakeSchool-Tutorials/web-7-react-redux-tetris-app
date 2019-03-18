@@ -3,6 +3,25 @@ title: "Rotating Blocks"
 slug: rotating-blocks
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. ~~Implement the "next block" area~~
+1. ~~Implement the score board~~
+1. ~~Arrange the layout of the game~~
+1. ~~Implement the controls~~
+1. ~~Implement the message popup~~
+1. ~~Implement the actions and reducers~~
+1. ~~Do some code organizing and cleanup~~
+1. ~~Implement state and shapes~~
+1. ~~Connect each component up to state and reducers~~
+1. **Implement block rotation**
+    1. **Implement a util function to provide the next rotation of a shape**
+    1. **Implement a util function that tells the game if a shape can move to a certain location**
+    1. **Build out the ROTATION case in the `game-reducer`**
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 Rotation is handled by setting the `rotation` property on `state`. This integer represents the _index in the shapes array of the shape at a rotation._
 
 Let's do a quick review of the Array that holds the shapes and their rotations. Remember the the shapes array at the top level holds arrays of rotations.

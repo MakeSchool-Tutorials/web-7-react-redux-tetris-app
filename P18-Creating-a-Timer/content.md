@@ -3,6 +3,26 @@ title: "Creating a Timer"
 slug: creating-a-timer
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. ~~Implement the "next block" area~~
+1. ~~Implement the score board~~
+1. ~~Arrange the layout of the game~~
+1. ~~Implement the controls~~
+1. ~~Implement the message popup~~
+1. ~~Implement the actions and reducers~~
+1. ~~Do some code organizing and cleanup~~
+1. ~~Implement state and shapes~~
+1. ~~Connect each component up to state and reducers~~
+1. ~~Implement block rotation~~
+1. ~~Implement moving blocks~~
+1. **Building a timer system**
+    1. **Overview of timing and how to use `requestAnimationFrame`**
+    1. **Track delta time in the GridBoard**
+    1. **Build out an `update` function to update the GridBoard as blocks fall down**
+    1. **Implement the logic in the Pause/Resume button**
+1. Implementing Game Over and Restart
+
 With what we have so far, the game is almost finished. One important step is needed to make turn this into a playable game: the blocks need to move down on their own!
 
 To make this work the game needs to issue
@@ -146,7 +166,7 @@ $ git commit -m 'timer created'
 $ git push
 ```
 
-# Implement the Play Resume  button
+# Implement the Pause Resume button
 
 What if we need to use the bathroom, or get a snack, or both? With the timer now running, we might need to pause the game and resume it later.
 
@@ -178,6 +198,6 @@ You should now be able to pause/resume the game!
 >
 ```bash
 $ git add .
-$ git commit -m 'play and pause implemented'
+$ git commit -m 'Resume and pause implemented'
 $ git push
 ```

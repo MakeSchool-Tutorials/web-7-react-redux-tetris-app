@@ -3,6 +3,25 @@ title: "Message Popup"
 slug: message-popup
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. ~~Implement the "next block" area~~
+1. ~~Implement the score board~~
+1. ~~Arrange the layout of the game~~
+1. ~~Implement the controls~~
+1. **Implement the message popup**
+    1. **Build out message popup component**
+    1. **Style the controls**
+    1. **Add the component to `App.js`**
+1. Implement the actions and reducers
+1. Do some code organizing and cleanup
+1. Implement state and shapes
+1. Connect each component up to state and reducers
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 The game will need to display messages about the game
 state. Messages will be 'Game Over' and 'Paused' for
 now but can be expanded to showing score, advancing

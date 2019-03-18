@@ -3,6 +3,30 @@ title: "Connect Message Popup"
 slug: connect-message-popup
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. ~~Implement the "next block" area~~
+1. ~~Implement the score board~~
+1. ~~Arrange the layout of the game~~
+1. ~~Implement the controls~~
+1. ~~Implement the message popup~~
+1. ~~Implement the actions and reducers~~
+1. ~~Do some code organizing and cleanup~~
+1. ~~Implement state and shapes~~
+1. **Connect each component up to state and reducers**
+    1. ~~NextBlock~~
+    1. ~~GridBoard~~
+    1. ~~Controls~~
+    1. **Message-Popup**
+        1. **Implement the `mapStateToProps` function**
+        1. **Implement the `mapDispatchToProps` function**
+        1. **Connect the `message-popup` component**
+        1. **Update the `render` method to display the appropriate text based on the state of the game**
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 Time for the message popup to connect to `state`! This will allow us to show the message popup when the game changes state, such as when the game is paused or ends.
 
 We want the message popup should display when the game is paused or over. Otherwise it will be invisible. Remember we're using CSS to control the position and visibility.

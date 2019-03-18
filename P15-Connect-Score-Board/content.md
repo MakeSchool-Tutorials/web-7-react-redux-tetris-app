@@ -3,6 +3,31 @@ title: "Connect Score Board"
 slug: connect-score-board
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. ~~Implement the "next block" area~~
+1. ~~Implement the score board~~
+1. ~~Arrange the layout of the game~~
+1. ~~Implement the controls~~
+1. ~~Implement the message popup~~
+1. ~~Implement the actions and reducers~~
+1. ~~Do some code organizing and cleanup~~
+1. ~~Implement state and shapes~~
+1. **Connect each component up to state and reducers**
+    1. ~~NextBlock~~
+    1. ~~GridBoard~~
+    1. ~~Controls~~
+    1. ~~Message-Popup~~
+    1. **ScoreBoard**
+        1. **Implement the `mapStateToProps` function**
+        1. **Implement the `mapDispatchToProps` function**
+        1. **Connect the `score-board` component and add the actions that it needs**
+        1. **Implement the logic for the play/resume buttons**
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 Our last component to connect: the score board.
 
 The score board component shows the current score. It also has a play/pause and restart button. The play button should toggle it's text from 'Play' to 'Pause' as the game changes state.

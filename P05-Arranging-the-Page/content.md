@@ -3,6 +3,25 @@ title: "Arranging the Page"
 slug: arranging-the-page
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. ~~Implement the "next block" area~~
+1. ~~Implement the score board~~
+1. **Arrange the layout of the game**
+    1. **Define a CSS grid with rows and columns**
+    1. **Style the grid**
+    1. **Add current styles to the grid**
+1. Implement the controls
+1. Implement the message popup
+1. Implement the actions and reducers
+1. Do some code organizing and cleanup
+1. Implement state and shapes
+1. Connect each component up to state and reducers
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 Arranging the large UI elements on the page will
 make the app easier to understand and look better.
 

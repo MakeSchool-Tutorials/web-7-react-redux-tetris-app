@@ -3,6 +3,25 @@ title: "Next Block"
 slug: next-block
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. **Implement the "next block" area**
+    1. **Build the next block component**
+    1. **Add style to the component**
+    1. **Add the component to `App.js`**
+1. Implement the score board
+1. Arrange the layout of the game
+1. Implement the controls
+1. Implement the message popup
+1. Implement the actions and reducers
+1. Do some code organizing and cleanup
+1. Implement state and shapes
+1. Connect each component up to state and reducers
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 Tetris shows you the next block that will appear to
 the side of the game grid. This section makes a component
 for this purpose.

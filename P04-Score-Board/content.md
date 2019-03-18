@@ -3,6 +3,25 @@ title: "Score Board"
 slug: score-board
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. ~~Implement the "next block" area~~
+1. **Implement the score board**
+    1. **Create the score board component with restart and play/resume buttons**
+    1. **Style the component**
+    1. **Add to `App.js`**
+1. Arrange the layout of the game
+1. Implement the controls
+1. Implement the message popup
+1. Implement the actions and reducers
+1. Do some code organizing and cleanup
+1. Implement state and shapes
+1. Connect each component up to state and reducers
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 We need a score board to show the game score and
 provide a place for the play and pause buttons
 to live.

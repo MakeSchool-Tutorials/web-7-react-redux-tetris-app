@@ -3,6 +3,26 @@ title: "Game Over and Restart"
 slug: game-over-and-restart
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. ~~Implement the "next block" area~~
+1. ~~Implement the score board~~
+1. ~~Arrange the layout of the game~~
+1. ~~Implement the controls~~
+1. ~~Implement the message popup~~
+1. ~~Implement the actions and reducers~~
+1. ~~Do some code organizing and cleanup~~
+1. ~~Implement state and shapes~~
+1. ~~Connect each component up to state and reducers~~
+1. ~~Implement block rotation~~
+1. ~~Implement moving blocks~~
+1. ~~Building a timer system~~
+1. **Implementing Game Over and Restart**
+    1. **Handle the behavior of Controls in relation to the game over state**
+    1. **Handle the game over state in the `addBlockToGrid` function to know if the blocks are off the screen**
+    1. **Modify `game-reducer` to handle the game over state**
+    1. **Modify `game-reducer` to handle the restart state**
+
 If the blocks stack to the top of the screen, it's game over. We need to make sure we can handle this state.
 
 Let's take a closer look at `state`:

@@ -3,6 +3,25 @@ title: "Default state and Block Shapes"
 slug: default-state-and-block-shapes
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. ~~Implement the "next block" area~~
+1. ~~Implement the score board~~
+1. ~~Arrange the layout of the game~~
+1. ~~Implement the controls~~
+1. ~~Implement the message popup~~
+1. ~~Implement the actions and reducers~~
+1. ~~Do some code organizing and cleanup~~
+1. **Implement state and shapes**
+    1. **Provide a definition for the default state of the game**
+    1. **Build out a nested array to access all shapes in their array representation**
+    1. **Write a function to grab a random shape**
+1. Connect each component up to state and reducers
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 The game will work by managing it's state in a series of arrays stored in Redux. Manipulating and comparing these arrays will determine what the game shows and how the game plays.
 
 Nested arrays represent a two dimensional data structure. This reflects the two dimensional grid the game is played on.

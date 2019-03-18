@@ -3,6 +3,28 @@ title: "Connect Grid Board"
 slug: connect-grid-board
 ---
 
+1. ~~Implement the overall grid square~~
+1. ~~Implement the game board~~
+1. ~~Implement the "next block" area~~
+1. ~~Implement the score board~~
+1. ~~Arrange the layout of the game~~
+1. ~~Implement the controls~~
+1. ~~Implement the message popup~~
+1. ~~Implement the actions and reducers~~
+1. ~~Do some code organizing and cleanup~~
+1. ~~Implement state and shapes~~
+1. **Connect each component up to state and reducers**
+    1. ~~NextBlock~~
+    1. **GridBoard**
+        1. **Connect the `grid-board` component**
+        1. **Implement the `mapStateToProps` function**
+        1. **Implement the `mapDispatchToProps` function**
+        1. **Build out the board to show shapes and calculate their position**
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 We want to be able to display the grid board from state. This is the core rendering feature of the game.
 
 The `GridBoard` component displays an array of `GridSquare`s.

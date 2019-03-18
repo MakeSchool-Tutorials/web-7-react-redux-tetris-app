@@ -3,6 +3,25 @@ title: "Grid Board"
 slug: grid-board
 ---
 
+1. ~~Implement the overall grid square~~
+1. **Implement the game board**
+    1. **Build the game board component using the grid squares**
+    1. **Import it into `App.js`**
+    1. **Style the board**
+1. Implement the "next block" area
+1. Implement the score board
+1. Arrange the layout of the game
+1. Implement the controls
+1. Implement the message popup
+1. Implement the actions and reducers
+1. Do some code organizing and cleanup
+1. Implement state and shapes
+1. Connect each component up to state and reducers
+1. Implement block rotation
+1. Implement moving blocks
+1. Building a timer system
+1. Implementing Game Over and Restart
+
 This section takes the grid square created in the last
 section and displays them as a 10 x 18 grid.
 This grid of squares will be a component.

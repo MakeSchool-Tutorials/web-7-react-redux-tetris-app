@@ -136,6 +136,8 @@ Now we'll use the CSS Grid to arrange the single row of grid squareas into an ac
 }
 ```
 
+# Product So Far
+
 You should now see a grid in your browser:
 
 ![orange-grid](assets/orange-grid.png)

@@ -26,6 +26,10 @@ Tetris will run in any web browser that supports JavaScript.
 
 ![tetris-web](assets/Screen-Shot-small.png)
 
+# Why is this important?
+
+This gives some more advanced practice in building web apps using React and getting familiar with the JSX syntax. As you go throughout this course, we'll be building more complex apps, so it's good to practice the fundamentals (plus a little extra), before moving on to bigger and more challenging things!
+
 # Prerequisites
 
 To complete this tutorial you should have some experience with the JavaScript Language and React. This tutorial covers some more advanced topics in React and Redux, so if this is completely new to you, we suggest completing the [timers app tutorial](https://www.makeschool.com/academy/track/react-redux-passwords-app-tutorial-oh4) first.

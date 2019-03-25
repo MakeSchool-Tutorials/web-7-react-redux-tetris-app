@@ -188,6 +188,8 @@ case PAUSE:
       return { ...state, isRunning: false }
 ```
 
+# Product So Far
+
 You should now be able to pause/resume the game!
 
 ![paused](assets/paused.png)

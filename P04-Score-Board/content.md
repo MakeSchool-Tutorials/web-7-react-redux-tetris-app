@@ -133,6 +133,8 @@ class App extends Component {
 export default App;
 ```
 
+# Product So Far
+
 You should see the following in your browser:
 
 ![initial-scoreboard](assets/initial-scoreboard.png)

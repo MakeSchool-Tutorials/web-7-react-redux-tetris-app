@@ -250,7 +250,11 @@ $ git push
 
 **You have now implemented an advanced single page application with React — a fully functioning Tetris game! Congrats!**
 
-# Feedback and Review
+As you go through this FEW course, try to tie the concepts you learned here into the course material. The foundational work here on building React apps will be used to make bigger and bolder apps down the road!
+
+# Feedback and Review - 2 minutes
+
+**We promise this won't take longer than 2 minutes!**
 
 Please take a moment to rate your understanding of learning outcomes from this tutorial, and how we can improve it via our [tutorial feedback form](https://goo.gl/forms/ErwFsZjnYNPHOo342)
 

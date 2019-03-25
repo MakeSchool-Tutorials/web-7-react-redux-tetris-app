@@ -222,6 +222,9 @@ case MOVE_DOWN:
 >
 }
 ```
+
+# Product So Far
+
 Now we can move blocks down in the game, and when they get placed, we can move the next block down as well!
 
 ![down-block](assets/down-block.png)

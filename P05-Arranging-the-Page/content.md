@@ -213,6 +213,8 @@ Let's edit some of the previous styles we made to include the `grid-area`
 }
 ```
 
+# Product So Far
+
 Check out your browser now, sure looks a lot better than before!
 
 ![grid-area](assets/grid-area.png)

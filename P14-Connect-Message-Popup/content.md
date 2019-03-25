@@ -125,6 +125,8 @@ render() {
 }
 ```
 
+# Product So Far
+
 Refresh the browser to see the popup should now be hidden! Our Message Popup now **uses Redux/Flux to manage application state!**
 
 ![hidden-popup](assets/hidden-popup.png)

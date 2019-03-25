@@ -130,6 +130,8 @@ class App extends Component {
 export default App;
 ```
 
+# Product So Far
+
 Your browser should now look like the following:
 
 ![initial-message](assets/initial-message.png)

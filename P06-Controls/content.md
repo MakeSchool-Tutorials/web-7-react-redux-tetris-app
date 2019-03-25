@@ -161,6 +161,8 @@ class App extends Component {
 export default App;
 ```
 
+# Product So Far
+
 You should see the following in your browser:
 
 ![initial-controls](assets/initial-controls.png)

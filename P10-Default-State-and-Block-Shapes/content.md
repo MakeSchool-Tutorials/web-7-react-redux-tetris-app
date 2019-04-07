@@ -126,7 +126,7 @@ for (let row = 0; row < rows; row++) {
 
 # Shapes
 
-Shapes will be mapped onto the board. There are There are 7 shapes. Let's represent them here as letters. The letters approximate the outline of the shape:
+Shapes will be mapped onto the board. There are 7 shapes. Let's represent them here as letters. The letters approximate the outline of the shape:
 
 - I (has two rotations)
 - T (has four rotations)

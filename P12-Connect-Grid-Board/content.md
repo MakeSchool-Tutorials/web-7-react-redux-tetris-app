@@ -180,7 +180,8 @@ makeGrid() {
       const blockY = row - y
       let color = square
       // Map current falling block to grid.
-      // For any squares that fall on the grid we need to look at the block array and see if there is a 1 in this case we use the block color. if (blockX >= 0 && blockX < block.length && blockY >= 0 && blockY < block.length) {
+      // For any squares that fall on the grid we need to look at the block array and see if there is a 1 in this case we use the block color.
+      if (blockX >= 0 && blockX < block.length && blockY >= 0 && blockY < block.length) {
         color = block[blockY][blockX] === 0 ? color : blockColor
       }
       // Generate a unique key for every block

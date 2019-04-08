@@ -8,9 +8,8 @@ slug: arranging-the-page
 1. ~~Implement the "next block" area~~
 1. ~~Implement the score board~~
 1. **Arrange the layout of the game**
-    1. **Define a CSS grid with rows and columns**
+    1. **Defining a CSS grid with rows and columns**
     1. **Style the grid**
-    1. **Add current styles to the grid**
 1. Implement the controls
 1. Implement the message popup
 1. Implement the actions and reducers
@@ -55,7 +54,7 @@ to define the configuration of the grid many different
 ways. This discussion will focus on Grid Areas. Grid Areas
 are named collections of cells on the grid.
 
-# Defining a grid for the game
+# Defining a CSS grid with rows and columns
 
 For the Tetris game the grid might have three columns and three rows. This layout includes the Header, NextBlock, GridBoard, ScoreBoard, Buttons components.
 
@@ -111,7 +110,7 @@ not being used.
 The gap between cells is an option that can be set with
 CSS Grid. We will make that the same size as one grid square.
 
-# App Grid Style
+# Style The Grid
 
 Now that we have a better sense of how grids work, let's define some styles to declare the main app container as a grid. This will layout it's children as grid items.
 

@@ -189,8 +189,7 @@ makeGrid() {
       // Generate a grid square
       return <GridSquare
               key={k}
-              square={square}
-              color={color}>{square}
+              color={color}>
             </GridSquare>
     })
   })

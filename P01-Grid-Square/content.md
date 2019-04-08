@@ -236,7 +236,7 @@ That might seem like a lot of styles but much of what is there will be reused th
 ```js
 import React, { Component } from 'react';
 import './App.css';
-[bold]import Gridsquare from './components/grid-square'[/bold]
+[bold]import GridSquare from './components/grid-square'[/bold]
 >
 class App extends Component {
   render() {

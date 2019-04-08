@@ -93,15 +93,16 @@ passed as props. The value of `props.color` will be a number e.g. 1, 2, 3.
 
 # Define some CSS
 
-This project will store all of it's styles in `index.css`. The
-components in the project are not portable, they would find
-little use outside of this project.
+This project will store all of it's styles in `index.css`. **The components in the project are not portable, they would find little use outside of this project.**
 
-By keeping all of the styles in one place it will make for a
-large body of CSS code. To keep this as [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) as possible you can use CSS custom properties.
+> [challenge]
+>
+> Putting all the styles in one file does not scale well. For more practice, and for cleaner CSS, create a structure of CSS files that best suites this project and reference those instead of putting them all in `index.css`
+
+By keeping all of the styles in one place it will make for a large body of CSS code. To keep this as [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) as possible, you can use CSS custom properties.
 
 > [action]
-> First we should edit the `min-height` of `.App-header` in `/src/index.css` so that it's not taking up the whole page anymore:
+> First we should edit the `min-height` of `.App-header` in `/src/App.css` so that it's not taking up the whole page anymore:
 >
 ```css
 .App-header {

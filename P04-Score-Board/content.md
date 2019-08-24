@@ -85,7 +85,6 @@ the text, we'll just focus on the buttons for now.
 ```css
 /* Score Board */
 .score-board-button {
-  padding: 0;
   display: block;
   padding: 1em;
   border-width: 5px;

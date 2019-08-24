@@ -50,28 +50,20 @@ more difficult in other ways for the current level.
 >
 ```js
 import React, { Component } from 'react'
->
 class ScoreBoard extends Component {
->
   render() {
     return (
       <div className="score-board">
         <div>Score:{ this.props.score }</div>
         <div>Level: 1</div>
->
         <button className="score-board-button" onClick={(e) => {
->
         }}>Play</button>
->
         <button className="score-board-button" onClick={(e) => {
->
         }}>Restart</button>
->
       </div>
     )
   }
 }
->
 export default ScoreBoard
 ```
 
@@ -107,13 +99,10 @@ Let's see what we have so far:
 >
 ```js
 import React, { Component } from 'react';
->
 import GridBoard from './components/grid-board'
 import NextBlock from './components/next-block'
 [bold]import ScoreBoard from './components/score-board'[/bold]
->
 import './App.css';
->
 class App extends Component {
   render() {
     return (
@@ -128,7 +117,6 @@ class App extends Component {
     );
   }
 }
->
 export default App;
 ```
 

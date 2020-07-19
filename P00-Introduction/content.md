@@ -3,26 +3,17 @@ title: "Tetris - Introduction"
 slug: tetris-introduction
 ---
 
-This tutorial uses React and Redux to recreate the classic
-arcade game Tetris.
+This tutorial uses React and Redux to recreate the classic arcade game Tetris.
 
-Tetris is a classic arcade game that was originally designed
-and programmed by Russian game designer [Alexey Pajitnov](https://en.wikipedia.org/wiki/Alexey_Pajitnov).
-It was released on June 6, 1984.
+Tetris is a classic arcade game that was originally designed and programmed by Russian game designer [Alexey Pajitnov](https://en.wikipedia.org/wiki/Alexey_Pajitnov). It was released on June 6, 1984.
 
-The game, or one of its many variants, is available for nearly
-every video game console and computer operating system, as well
-as on devices such as graphing calculators, mobile phones,
-portable media players, PDAs, Network music players and as an
-Easter egg on non-media products like oscilloscopes.
+The game, or one of its many variants, is available for nearly every video game console and computer operating system, as well as on devices such as graphing calculators, mobile phones, portable media players, PDAs, Network music players and as an Easter egg on non-media products like oscilloscopes.
 
-Here is what Tetris looked like on an arcade machine in the
-80s.
+Here is what Tetris looked like on an arcade machine in the 80s.
 
 ![tetris-arcade](assets/s-l300.gif)
 
-Here is what we will build with this tutorial. This version of
-Tetris will run in any web browser that supports JavaScript.
+Here is what we will build with this tutorial. This version of Tetris will run in any web browser that supports JavaScript.
 
 ![tetris-web](assets/Screen-Shot-small.png)
 
@@ -41,14 +32,11 @@ Some experience working with the command line, including NPM and Node, is also r
 The goal of the project is to recreate the classic arcade game
 Tetris with React and Redux.
 
-React will generate and manage the views in the project while
-the state of the game will be stored in Redux.
+React will generate and manage the views in the project while the state of the game will be stored in Redux.
 
-The game is controlled by a nested array that represents the
-grid containing all of the blocks.
+The game is controlled by a nested array that represents the grid containing all of the blocks.
 
-The tutorial will also delve into related topics like CSS,
-CSS Grid, and Flex Box.
+The tutorial will also delve into related topics like CSS, CSS Grid, and Flex Box.
 
 # Learning Outcomes
 

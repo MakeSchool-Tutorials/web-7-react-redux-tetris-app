@@ -23,9 +23,7 @@ slug: message-popup
 1. Implementing Game Over and Restart
 
 The game will need to display messages about the game
-state. Messages will be 'Game Over' and 'Paused' for
-now but can be expanded to showing score, advancing
-to a new level, and more.
+state. Messages will be 'Game Over' and 'Paused' for now but can be expanded to showing score, advancing to a new level, and more.
 
 ![Modal](assets/Modal.png)
 
@@ -41,25 +39,20 @@ absolute position. This allows us to place this anywhere on the screen regardles
 
 > [action]
 >
-> Add a new file: `/src/components/message-popup.js` with the following code:
+> Add a new file: `/src/components/MessagePopup.js` with the following code:
 >
 ```JS
-import React, { Component } from 'react'
+import React from 'react'
 >
 // Displays a message
-class MessagePopup extends Component {
->
-  render() {
-    return (
-      <div className='message-popup'>
-        <h1>Message Title</h1>
-        <p>Message info...</p>
-      </div>
-    )
-  }
+export default function MessagePopup(props) {
+  return (
+    <div className='message-popup'>
+      <h1>Message Title</h1>
+      <p>Message info...</p>
+    </div>
+  )
 }
->
-export default MessagePopup
 ```
 
 # Give Some Flair to the Message
@@ -70,8 +63,10 @@ Use styles to position and display the Message Popup.
 >
 > Add the following to `/src/index.css`:
 >
+> Message Popup - These styles apply to the `MessagePopup` container. With `position:absolute` this element can be placed anywhere on the screen, `left, top, transform:translate` perform this function.
+>
 ```CSS
-/* Message Popup - These styles apply to the `MessagePopup` container. With `position:absolute` this element can be placed anywhere on the screen, `left, top, transform:translate` perform this function.*/
+/* Message Popup Styles */
 .message-popup {
   position: absolute;
   left: 50%;
@@ -82,10 +77,11 @@ Use styles to position and display the Message Popup.
   background-color: rgba(255, 255, 255, 0.5);
   text-align: center;
 }
+```
 >
-/* This style is applied only when the message popup container
-has both `message-popup` class and the `hidden` class. In this
-case the Message Popup is not displayed */
+> This style is applied only when the message popup container has both `message-popup` class and the `hidden` class. In this case the Message Popup is not displayed
+> 
+```CSS
 .message-popup.hidden {
   display: none;
 }
@@ -100,31 +96,28 @@ Import and add the message popup component to the _bottom_ of App. **It should b
 > Add the following to `/src/App.js`
 >
 ```js
-import React, { Component } from 'react';
->
-import GridBoard from './components/grid-board'
-import NextBlock from './components/next-block'
-import ScoreBoard from './components/score-board'
-import Controls from './components/controls'
-[bold]import MessagePopup from './components/message-popup'[/bold]
->
+import React from 'react';
 import './App.css';
 >
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Tetris Redux</h1>
-        </header>
-        <GridBoard />
-        <NextBlock />
-        <ScoreBoard />
-        <Controls />
-[bold]        <MessagePopup />[/bold]
-      </div>
-    );
-  }
+import GridBoard from './components/GridBoard'
+import NextBlock from './components/NextBlock'
+import ScoreBoard from './components/ScoreBoard'
+import Controls from './components/Controls'
+import MessagePopup from './components/MessagePopup'
+>
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1 className="App-title">Tetris Redux</h1>
+      </header>
+      <GridBoard />
+      <NextBlock />
+      <ScoreBoard />
+      <Controls />
+      <MessagePopup />
+    </div>
+  );
 }
 >
 export default App;

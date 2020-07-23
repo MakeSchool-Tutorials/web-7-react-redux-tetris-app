@@ -25,10 +25,9 @@ slug: creating-a-timer
 
 With what we have so far, the game is almost finished. One important step is needed to make turn this into a playable game: the blocks need to move down on their own!
 
-To make this work the game needs to issue
-`MOVE_DOWN` actions on it's own. The time between each of these actions will determine the difficulty.
+To make this work the game needs to issue `MOVE_DOWN` actions on it's own. The time between each of these actions will determine the difficulty.
 
-We're going to use `requestAnimationFrame` to implement this feature. It may seem a little strange, but it has a couple advantages over using something like `setInterval`, and is a great way to practice some new ideas.
+You're going to use `requestAnimationFrame` to implement this feature. It may seem a little strange, but it has a couple advantages over using something like `setInterval`, and is a great way to practice some new ideas.
 
 # Dispatching a periodic MOVE_DOWN action
 
@@ -36,7 +35,7 @@ The goal here is issue a MOVE_DOWN action every time period, where the time peri
 
 > [info]
 >
-> We're going to be referring to **Delta time** a lot in this chapter. Delta time represents the difference between now and the last time the browser redrew the window.
+> You're going to be referring to **Delta time** a lot in this chapter. Delta time represents the difference between now and the last time the browser redrew the window.
 
 As usual, let's go over some basic requirements:
 
@@ -57,104 +56,149 @@ JavaScript provides a method to notify our applications when the browser is abou
 
 [requestAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) is a method that takes a callback that is executed just before the browser redraws the window.
 
-# Keeping track of Delta Time
+# useRef()
 
-To keep track of delta time the game needs two
-variables:
+When components are created from components values that are used by the component would be lost by the time the component finishes rendering. 
 
-- `lastUpdateTime` to hold the time of the last update
-- `progressTime` to hold the amount of time since the last update.
+There are times you'll need a component to "remember" a value it used the last time it rendered/ran. 
 
-These don't need to be part of `state`. We will make them class properties of the GameBoard.
+React provides two hooks for this purpose. 
+
+- useState
+- useRef
+
+The useState hook let's you define values that when changed will cause the component to render again. 
+
+The useRef hook will hold on to a value value and changing this value won't automatically render the component. 
+
+In the Tetris game you'll be receiving updated every "frame", which is about 30 to 60 times per second, but you'll only be makng changes that need to be rendered about 1 time per second. In this case useRef is the better choice. 
+
+# useEffect
+
+The useEffect hook is used to handle lifecycle events for a component. 
+
+A component is a function as such each time the component is rendered all fo the code in the function is run. In some cases you may have code that should only be run the first a component is added to the DOM, or code that is run when a component removed from the DOM. These are lifecycle events, and useEffect covers these. 
+
+# Making things move
+
+To make things move in the game you'll combine useRef and useEffect. 
+
+The idea is to calculate the time between calls to requestAnimationFrame and when the time is greater than the speed of the game dispatch a move down action. 
+
+this means that you'll be getting requestAnimationFrame updates often but changing state and rendering components less often. 
+
+Import useEffect and useRef. You'll also need useDispatch to update your application state so import that also. 
+
+To move a piece down the screen you'll need a reference to the dispatcher and an action to dispatch. Import these also. 
 
 > [action]
 >
-> Add the following within the `GridBoard` class in `/src/components/grid-board.js`:
+> Add the following within the `GridBoard` class in `/src/components/GridBoard.js`:
 >
-```JavaScript
-class GridBoard extends Component {
-    constructor(props) {
-      super(props)
+> Update your import statement at the top of the file. 
 >
-      this.lastUpdateTime = 0
-      this.progressTime = 0
-    }
->
+```JS 
+import React, { useEffect, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { moveDown } from '../actions'
 ...
->
-}
 ```
+>
 
-# Implementing Request Animation Frame
+Next define some refs. You'll three. 
 
-The goal is to calculate the number of
-milliseconds that have elapsed since the last
-frame by subtracting the current time from
-the last update time.
+- requestRef - Holds a referece to requestAnimationFrame
+- lastUpdateTimeRef - tracks the time of the last update
+- progressTimeRef - tracks the total time between updates
 
-The game will keep a running total of the
-milliseconds that have elapsed since the last
-update. When the total is greater than the
-speed, we will issue a MOVE_DOWN.
-
-In other words, we will add up milliseconds with
-each frame that is rendered and when the total
-is greater than the speed, we move a the block down.
-
-`requestAnimationFrame()` takes a callback and
-only calls it once. So you will need to make
-the first call to `requestAnimationFrame()` in
-[componentDidMount()](https://reactjs.org/docs/react-component.html#componentdidmount).
+You also need a reference to the dispatcher since you'll be dispatching a move down action periodically. 
 
 > [action]
 >
-> Add the `componentDidMount` to `/src/components/grid-board.js`, which will issue the first call to `requestAnimationFrame`.
+> Add the following within the `GridBoard` class in `/src/components/GridBoard.js`:
 >
-```JavaScript
-componentDidMount() {
-  window.requestAnimationFrame(this.update.bind(this))
+> Add the following at the top of the function GridBoard
+>
+```JS 
+export default function GridBoard(props) {
+  const requestRef = useRef()
+	const lastUpdateTimeRef = useRef(0)
+	const progressTimeRef = useRef(0)
+  const dispatch = useDispatch()
+  ...
 }
 ```
+>
 
-Now you may have noticed that this will break your app in its current state. When the browser calls `requestAnimationFrame()`, it's
-going to call a function `update()`, which we will define next.
+# Adding an update function
 
-Notice we're binding `this` on the callback to guarantee that `this` in `update()` references the component.
+Write a function that will handle updates from requestAnimationFrame. This function will be defined inside the GridBoard function, after the variables at the top, and before the return statement. 
 
 > [action]
 >
-> Define the callback `update` for `requestAnimationFrame()` in `/src/components/grid-board.js`:
+> Add the following within the `GridBoard` class in `/src/components/GridBoard.js`:
 >
-```JavaScript
-// Handle game updates
-update(time) {
-  // If the game is is running we want to request a callback at the next animation frame.
-  window.requestAnimationFrame(this.update.bind(this))
-  if (!this.props.isRunning) {
-    return
-  }
+> Add the update function.  
 >
-  // If lastUpdateTime not been set, set it to the current time.
-  if (!this.lastUpdateTime) {
-    this.lastUpdateTime = time
-  }
+```JS 
+export default function GridBoard(props) {
+	...
 >
-  // Calculate delta time and progress time
-  const deltaTime = time - this.lastUpdateTime
-  this.progressTime += deltaTime
+	const update = (time) => {
+		requestRef.current = requestAnimationFrame(update)
+		if (!isRunning) {
+			return 
+		}
+		if (!lastUpdateTimeRef.current) {
+			lastUpdateTimeRef.current = time
+		}
+		const deltaTime = time - lastUpdateTimeRef.current
+		progressTimeRef.current += deltaTime
+		if (progressTimeRef.current > speed) {
+			dispatch(moveDown())
+			progressTimeRef.current = 0
+		}
+		lastUpdateTimeRef.current = time
+  } 
 >
-  // If the progress time is greater than speed move the block down
-  if (this.progressTime > this.props.speed) {
-    this.props.moveDown()
-    this.progressTime = 0
-  }
->
-  // set the last update time.
-  this.lastUpdateTime = time
+  return (
+    ...
+  )
 }
 ```
+>
 
-Try testing the timing. Decrease the default value for speed in `defaultState()` and the blocks should fall faster!
+# Start listening for updates with useEffect
+
+You need to start listening for updates when the component is added to the DOM, and this should only happen once! To prevent the component from running this next block of code on each update you'll wrap in useEffect. 
+
+Add the following after the last block of code. 
+
+> [action]
+>
+> Add the following within the `GridBoard` class in `/src/components/GridBoard.js`:
+>
+> Add the following at the top of the function GridBoard
+>
+```JS 
+export default function GridBoard(props) {
+  ...
+>
+  useEffect(() => {
+		requestRef.current = requestAnimationFrame(update)
+		return () => cancelAnimationFrame(requestRef.current)
+	}, [isRunning])
+>
+  return (
+    ...
+  )
+}
+```
+>
+
+This should make a game that can be played. Blocks should move down the screen. You may have to wait a moment until they move down into view. A block should stop when it hits the bottom or another block and a new block should start falling. You should be able to move and rotate the blocks. 
+
+There are a couple things that still need to be taken care of. The game doesn't know when it's over. So if blocks stack up a bove the top of the grid it breaks. Also the pause and restart buttons are not wired up yet. 
 
 # Now Commit
 
@@ -168,11 +212,11 @@ $ git push
 
 # Implement the Pause Resume button
 
-What if we need to use the bathroom, or get a snack, or both? With the timer now running, we might need to pause the game and resume it later.
+What if you need to use the bathroom, or get a snack, or both? With the timer now running, you might need to pause the game and resume it later.
 
-We've already built the Pause and Resume buttons, but at this point they don't do anything. Luckily the game state has an `isRunning` property for this purpose!
+You've already built the Pause and Resume buttons, but at this point they don't do anything. Luckily the game state has an `isRunning` property for this purpose!
 
-The button already calls the action, we just need the reducer needs to handle the action.
+The button already calls the action, you just need the reducer needs to handle the action.
 
 > [action]
 >

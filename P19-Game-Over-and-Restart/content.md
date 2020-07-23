@@ -40,8 +40,7 @@ game is paused.
 - `speed` : the number of milliseconds before a block is moved down.
 - `score` : your score
 
-`isRunning` and `gameOver` are the two important properties for
-this discussion, let's go over the basic rules of these properties:
+`isRunning` and `gameOver` are the two important properties for this discussion, let's go over the basic rules of these properties:
 
 - `isRunning` is is set by the Play/Resume button. When `isRunning` is false, the game is paused but not over.
 - On the other hand when `gameOver` is true the game is over.
@@ -55,19 +54,26 @@ when the game is over.
 
 # Handle gameOver in the controls component
 
-Here you need to disable the controls when the `gameOver`
-property on `state` is false.
+Here you need to disable the controls when the `gameOver` property on `state` is false.
 
 > [action]
 >
-> Map `gameOver` to props in `mapStateToProps` in `/src/components/controls.js`:
+> Use the `useSelector` hook in `/src/components/Controls.js`:
 >
+> Import useSelector and then get the isRunning and gameOver values from state. 
+> 
 ```js
-const mapStateToProps = (state) => {
-  return {
-    isRunning: state.game.isRunning,
-    gameOver: state.game.gameOver
-  }
+...
+import { useSelector, useDispatch } from 'react-redux'
+...
+export default function Controls(props) {
+	const dispatch = useDispatch()
+	const isRunning = useSelector((state) => state.game.isRunning)
+	const gameOver = useSelector((state) => state.game.gameOver) 
+>
+  return (
+    ...
+  )
 }
 ```
 
@@ -77,46 +83,106 @@ or `gameOver` is `true` the buttons should not send actions.
 
 > [action]
 >
-> Update all of the `button` elements in the `render` method of `/src/components/controls.js` to check `isRunning` and `gameOver`. Also make sure to extract the `gameOver` property from `props`:
+> Update all of the `button` elements in the `return` block of `/src/components/controls.js` to check `isRunning` and `gameOver` before dispatching their actions. 
 >
 ```js
-render() {
-    const { isRunning, gameOver } = this.props
->
 ...
 >
-    // for all the below, Notice the function returns if `isRunning` is `false` (`!isRunning`), or (`||`) `gameOver` is `true`.
-    <div className="controls">
-        {/* left */}
-        <button className="control-button" onClick={(e) => {
-            console.log(isRunning, gameOver)
-            if (!isRunning || gameOver) { return }
-            this.props.moveLeft()
-        }}>Left</button>
+export default function Controls(props) {
+	...
 >
-        {/* right */}
-        <button className="control-button" onClick={(e) => {
-            if (!isRunning || gameOver) { return }
-            this.props.moveRight()
-        }}>Right</button>
+	return (
+		<div className="controls">
+			{/* left */}
+			<button className="control-button" onClick={(e) => {
+				if (!isRunning || gameOver) { return } 
+				dispatch(moveLeft())
+			}}>Left</button>
 >
-        {/* rotate */}
-        <button className="control-button" onClick={(e) => {
-            if (!isRunning || gameOver) { return }
-            this.props.rotate()
-        }}>Rotate</button>
+			{/* right */}
+			<button className="control-button" onClick={(e) => {
+				if (!isRunning || gameOver) { return } 
+				dispatch(moveRight())
+			}}>Right</button>
 >
-        {/* down */}
-        <button className="control-button" onClick={(e) => {
-            if (!isRunning || gameOver) { return }
-            this.props.moveDown()
-        }}>Down</button>
-    </div>
+			{/* rotate */}
+			<button className="control-button" onClick={(e) => {
+				if (!isRunning || gameOver) { return } 
+				dispatch(rotate())
+			}}>Rotate</button>
 >
-...
+			{/* down */}
+			<button className="control-button" onClick={(e) => {
+				if (!isRunning || gameOver) { return } 
+				dispatch(moveDown())
+			}}>Down</button>
 >
+		</div>
+	)
 }
 ```
+
+With these changes the controls will not work when the game is paused or over. You haven't solved the game over situation yet, soon! For now when game is paused the blocks should not move or rotate when the controls are used. 
+
+There is a small problem. When the game is paused the buttons look like they should work. Visually they look the same as when the game is not paused.
+
+Button has an attribute: disabled that disables a button when true. 
+
+> [action]
+>
+> Update `/src/components/controls.js` to check `isRunning` and `gameOver` and set the disabled attribute.
+>
+```js
+...
+>
+export default function Controls(props) {
+  ...
+>
+	return (
+		<div className={`controls`}>
+			{/* left */}
+			<button 
+				disabled={!isRunning || gameOver}
+				className="control-button" 
+				onClick={(e) => {
+					if (!isRunning || gameOver) { return } 
+					dispatch(moveLeft())
+				}}>Left</button>
+>
+			{/* right */}
+			<button 
+				disabled={!isRunning || gameOver}
+				className="control-button" 
+				onClick={(e) => {
+					if (!isRunning || gameOver) { return } 
+					dispatch(moveRight())
+				}}>Right</button>
+>
+			{/* rotate */}
+			<button 
+				disabled={!isRunning || gameOver}
+				className="control-button" 
+				onClick={(e) => {
+					if (!isRunning || gameOver) { return } 
+					dispatch(rotate())
+				}}>Rotate</button>
+>
+			{/* down */}
+			<button 
+				disabled={!isRunning || gameOver}
+				className="control-button" 
+				onClick={(e) => {
+					if (!isRunning || gameOver) { return } 
+					dispatch(moveDown())
+				}}>Down</button>
+>
+		</div>
+	)
+}
+```
+>
+
+With this change in place the buttons should disable as disbaled when the game is paused, `isRunning === false`, or over, `gameOver === false`. 
 
 # Detecting a game over
 

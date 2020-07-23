@@ -21,21 +21,13 @@ slug: arranging-the-page
 1. Building a timer system
 1. Implementing Game Over and Restart
 
-Arranging the large UI elements on the page will
-make the app easier to understand and look better.
-
-The components are on a grid.
+Arranging the large UI elements on the page will make the app easier to understand and look better.
 
 ![css-grid](assets/css-grid.png)
 
-CSS grid is good for arranging the tiles in the
-grid. CSS grid can also be used to arrange the
-larger UI element on the page as a whole.
+CSS Grid is good for arranging the tiles in the grid. CSS Grid can also be used to arrange the larger UI element on the page as a whole.
 
-CSS Grid gives you control to arrange elements on
-a two dimensional grid. Elements can occupy multiple
-rows and/or columns. All of this is easily accomplished
-using a simple declarative approach.
+CSS Grid gives you control to arrange elements on a two dimensional grid. Elements can occupy multiple rows and/or columns. All of this is easily accomplished using a simple declarative approach.
 
 > [info]
 >
@@ -49,10 +41,7 @@ supported by CSS: `%`, `px`, `em`, `pt`, `mm`, `in`, cm etc.
 Columns and rows can also also be specified as a fraction
 of the available space with special unit: `fr`.
 >
-> The CSS grid module provides properties that allow you
-to define the configuration of the grid many different
-ways. This discussion will focus on Grid Areas. Grid Areas
-are named collections of cells on the grid.
+> The CSS grid module provides properties that allow you to define the configuration of the grid many different ways. This discussion will focus on Grid Areas. Grid Areas are named collections of cells on the grid.
 
 # Defining a CSS grid with rows and columns
 
@@ -88,11 +77,9 @@ The intersection of Columns and Rows makes the **Grid Cells**.
 
 ![Cells](./assets/tetris-grid-cells.png)
 
-CSS Grid allows you to define **Grid Areas** that span
-multiple Columns and Rows.
+CSS Grid allows you to define **Grid Areas** that span multiple Columns and Rows.
 
-**The goal of the final layout is to place the header across
-the top three columns.**
+**The goal of the final layout is to place the header across the top three columns.**
 
 ![rows](./assets/tetris-grid-areas.png)
 
@@ -104,11 +91,9 @@ The image shows 5 areas defined.
 - **Score:** Shows the game score
 - **Buttons:** Shows the game buttons
 
-Notice the cells in the lower left and right corner are
-not being used.
+Notice the cells in the lower left and right corner are not being used.
 
-The gap between cells is an option that can be set with
-CSS Grid. We will make that the same size as one grid square.
+The gap between cells is an option that can be set with CSS Grid. We will make that the same size as one grid square.
 
 # Style The Grid
 
@@ -122,8 +107,7 @@ Currently the app structure looks looks like this:
   - div.next-block
   - div.score-board
 
-We will declare `.App` as a grid container and define some grid areas.
-The areas are just strings, and we'll use the following names to represent the areas:
+We will declare `.App` as a grid container and define some grid areas. The areas are just strings, and we'll use the following names to represent the areas:
 
 - h : Header
 - l : Left
@@ -160,6 +144,8 @@ and 'b'. The '.' represents an empty cell on the grid. */
                        ". b .";
 }
 ```
+
+It's starting to look like a grid but things are not where you want them. Following steps map each element to it's location defined in `grid-template-areas`.
 
 Now let's assign child elements to grid areas in the parent.
 

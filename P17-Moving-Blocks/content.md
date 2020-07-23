@@ -24,7 +24,7 @@ slug: moving-blocks
 1. Building a timer system
 1. Implementing Game Over and Restart
 
-Let's make sure we can move the blocks left and right. Down is going to involve a bit more complexity, so we'll do that in the next chapter. Now that we have our `canMoveTo` function, this will be a _lot_ easier!
+Make sure you can move the blocks left and right. Down is going to involve a bit more complexity, so you'll do that in the next chapter. Now that you have your `canMoveTo` function, this will be a _lot_ easier!
 
 # Left button
 
@@ -84,16 +84,13 @@ This is a lot more to think about than with left and right! Let's break down som
 - If a grid square is empty, the value is 0.
 - After placing new squares on the grid we can score points.
 
-We will need a function that checks for complete rows on
-the grid, remove them, and moves all the rows above down by one.
+We will need a function that checks for complete rows on the grid, remove them, and moves all the rows above down by one.
 
 # Implement an Add block to grid function
 
-This function takes in the `shape` (index), `grid`
-(array), `rotation`, `x`, and `y`. The values in the new shape should be written into the grid.
+This function takes in the `shape` (index), `grid` (array), `rotation`, `x`, and `y`. The values in the new shape should be written into the grid.
 
-It's important that this method create a _copy_ of
-grid before making any changes!
+It's important that this method create a _copy_ of grid before making any changes!
 
 > [action]
 >
@@ -179,7 +176,8 @@ import {
   nextRotation,
   canMoveTo,
   addBlockToGrid,
-  checkRows
+  checkRows,
+  randomShape
 } from '../utils'
 >
 ...

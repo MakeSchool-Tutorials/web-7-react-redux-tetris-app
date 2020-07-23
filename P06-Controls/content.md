@@ -22,23 +22,17 @@ slug: controls
 1. Building a timer system
 1. Implementing Game Over and Restart
 
-Tetris has a couple controls. Blocks can be moved left, right,
-and down. They can also be rotated.
+Tetris has a couple controls. Blocks can be moved left, right, and down. They can also be rotated.
 
-The original game used a joystick and button. This game will use
-four buttons.
+The original game used a joystick and button. This game will use four buttons.
 
 ![controls](assets/controls.png)
 
-The next step is to create a component with four buttons. These
-buttons will all issue actions.
+The next step is to create a component with four buttons. These buttons will all issue actions.
 
-Redux allows you to make changes to applications state from
-any component by issuing an action.
+Redux allows you to make changes to application state from any component by issuing an action.
 
-Without Redux, changes in state would have to be passed up and
-down the component hierarchy and state would have to be managed by
-a shared parent component.
+Without Redux, changes in state would have to be passed up and down the component hierarchy and state would have to be managed by a shared parent component.
 
 # Adding Controls
 
@@ -46,42 +40,37 @@ The first step is to make a new component to hold the buttons.
 
 > [action]
 >
-> Make a new file `/src/components/controls.js` that contains the following stub code for the controls component class (we'll build this out later):
+> Make a new file `/src/components/Controls.js` that contains the following stub code for the controls component class (we'll build this out later):
 >
 ```JS
-import React, { Component } from 'react'
+import React from 'react'
+
+export default function Controls(props) {
+	return (
+		<div className="controls">
+			{/* left */}
+			<button className="control-button" onClick={(e) => {
 >
-class Controls extends Component {
+			}}>Left</button>
 >
-  render() {
-    return (
-      <div className="controls">
-        {/* left */}
-        <button className="control-button" onClick={(e) => {
+			{/* right */}
+			<button className="control-button" onClick={(e) => {
 >
-        }}>Left</button>
+			}}>Right</button>
 >
-        {/* right */}
-        <button className="control-button" onClick={(e) => {
+			{/* rotate */}
+			<button className="control-button" onClick={(e) => {
 >
-        }}>Right</button>
+			}}>Rotate</button>
 >
-        {/* rotate */}
-        <button className="control-button" onClick={(e) => {
+			{/* down */}
+			<button className="control-button" onClick={(e) => {
+
+			}}>Down</button>
 >
-        }}>Rotate</button>
->
-        {/* down */}
-        <button className="control-button" onClick={(e) => {
->
-        }}>Down</button>
->
-      </div>
-    )
-  }
+		</div>
+	)
 }
->
-export default Controls
 ```
 
 # Style the Controls
@@ -101,15 +90,19 @@ Add some styles to the controls container. Notice here we are mapping this eleme
 }
 ```
 
-The controls container will use the [Flex Box](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) for layout. Flex Box is a one dimensional layout. All of the buttons in the controls container are arranged in a horizontal row along a single axis.
+The controls container will use the [Flex Box](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) for layout. 
+
+Flex Box implements is a one dimensional layout. All of the buttons in the controls container are arranged in a horizontal row along a single axis.
 
 
 > [action]
 >
 > Define some styles for the control buttons in `/src/index.css`
 >
+> We want the buttons to be square with a width of 25% of grid board. The grid is 10 tiles wide, so the size of the buttons should be (2.5 * tile size)
+>
 ```CSS
-/* We want the buttons to be square with a width of 25% of grid board. The grid is 10 tiles wide, so the size of the buttons should be (2.5 * tile size) */
+/* Control Button */
 .control-button {
   --size: calc(var(--tile-size) * 2.5);
   width: var(--size);
@@ -133,32 +126,27 @@ Let's add our controls into our app!
 > Add the following to `/src/App.js`:
 >
 ```js
-import React, { Component } from 'react';
->
-import GridBoard from './components/grid-board'
-import NextBlock from './components/next-block'
-import ScoreBoard from './components/score-board'
-[bold]import Controls from './components/controls'[/bold]
->
+import React from 'react';
 import './App.css';
 >
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Tetris Redux</h1>
-        </header>
-        <GridBoard />
-        <NextBlock />
-        <ScoreBoard />
-[bold]        <Controls />[/bold]
-      </div>
-    );
-  }
-}
+import GridBoard from './components/GridBoard'
+import NextBlock from './components/NextBlock'
+import ScoreBoard from './components/ScoreBoard'
+import Controls from './components/Controls'
 >
-export default App;
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1 className="App-title">Tetris Redux</h1>
+      </header>
+      <GridBoard />
+      <NextBlock />
+      <ScoreBoard />
+      <Controls />
+    </div>
+  );
+}
 ```
 
 # Product So Far

@@ -23,11 +23,9 @@ slug: actions-and-reducers
 1. Building a timer system
 1. Implementing Game Over and Restart
 
-The game will use Redux to store the state of the application.
-The game board, the next block, whether the game is playing or
-paused, and the game score are all part of the application state.
+The game will use Redux to store the state of the application. The game board, the next block, whether the game is playing or paused, and the game score are all part of the application state.
 
-The game will respond to a range of actions that we need to define. Actions will be handled by various components, but this won't effect how we define actions since React-Redux will connect actions to any component.
+The game will respond to a range of actions that you need to define. Actions will be handled by various components, but this won't effect how you define actions since React-Redux will connect actions to any component.
 
 # Overview of Game Actions
 
@@ -110,7 +108,7 @@ export const restart = () => {
 }
 ```
 
-Ok we've got our actions and action creators. Next we need to add a reducer to handle changes to application state.
+Ok you've got your actions and action creators. Next you need to add a reducer to handle changes to application state.
 
 # Reducer
 
@@ -169,19 +167,12 @@ const gameReducer = (state = {}, action) => {
 export default gameReducer
 ```
 
-This is a stub for the final implementation. So far it
-imports the actions and defines and exports the
+This is a stub for the final implementation. So far it imports the actions and defines and exports the
 `gameReducer` method.
 
-There is a lot of work to do here. Currently all cases
-return `state` unchanged. The entire game state will be
-handled by a single Object which will pass through
-this reducer and each case will be responsible for making
-changes to `state` and returning a **copy** of state.
+There is a lot of work to do here. Currently all cases return `state` unchanged. The entire game state will be handled by a single Object which will pass through this reducer and each case will be responsible for making changes to `state` and returning a **copy** of state.
 
-Reducers are responsible for defining the initial value
-for state. Currently the stub method sets the default
-value of state to an empty object `{}`.
+Reducers are responsible for defining the initial value for state. Currently the stub method sets the default value of state to an empty object `{}`.
 
 # Combine Reducers
 

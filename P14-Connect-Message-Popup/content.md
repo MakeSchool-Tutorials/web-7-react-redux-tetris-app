@@ -27,59 +27,18 @@ slug: connect-message-popup
 1. Building a timer system
 1. Implementing Game Over and Restart
 
-Time for the message popup to connect to `state`! This will allow us to show the message popup when the game changes state, such as when the game is paused or ends.
+Time for the message popup to connect to `state`! This will allow you to show the message popup when the game changes state, such as when the game is paused or ends.
 
-We want the message popup should display when the game is paused or over. Otherwise it will be invisible. Remember we're using CSS to control the position and visibility.
+The message popup should display when the game is paused or over. Otherwise it will be invisible. _Remember we're using CSS to control the position and visibility._
 
-Currently the popup displays all the time. We can fix this in two steps:
+Currently the popup displays all the time. You can fix this in two steps:
 
 1. Retrieve the `isRunning` and `gameOver` properties from `state`
 1. Use them to display or hide the popup by adding or removing a CSS class name to the component's parent element!
 
-# Import Connect, mapStateToProps, mapDispatchToProps
-
-Time to do the usual connection set up. For this one, try it yourself first before checking with the solution. Here are some guidelines:
-
-- Map the `isRunning` and `gameOver` properties from state to props in the `mapStateToProps` function.
-- Define the `mapDispatchToProps` function to return an empty object. We won't use this here, but we can stub it in for future use.
-- Remember to connect the component with props and dispatch
-
-> [solution]
->
-> Updated `/src/components/message-popup.js`:
->
-```js
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
->
-// Displays a message
-class MessagePopup extends Component {
->
-    render() {
-      return (
-        <div className='message-popup'>
-          <h1>Message Title</h1>
-          <p>Message info...</p>
-        </div>
-      )
-    }
-}
->
-const mapStateToProps = (state) => {
-  return {
-    gameOver: state.game.gameOver,
-    isRunning: state.game.isRunning
-  }
-}
->
-const mapDispatchToProps = () => {
-  return { }
-}
->
-export default connect(mapStateToProps, mapDispatchToProps())(MessagePopup)
-```
-
 # Hide and show the MessagePopup
+
+This is an opportunity to see where Redux is really helping you manage your application state. The MessagePopup component is can easily be displayed or hidden based on state without having to do much work or without tightly coupling it to the rest of the application. 
 
 Use the following logic to hide and show the message popup.
 
@@ -98,30 +57,30 @@ Again, try this on your own, and then check against the solution to see how well
 > Updated `render` method in `/src/components/message-popup.js`:
 >
 ```js
-render() {
-    const { gameOver, isRunning } = this.props
-    let message = ''
-    let isHidden = 'hidden'
+import React from 'react'
+import { useSelector } from 'react-redux'
 >
-    // If the game is over, show the popup saying "Game Over"
-    if (gameOver) {
-      message = 'Game Over'
-      isHidden = ''
-    // If the game isn't running, it must be paused, so show the popup saying "Paused"
-    } else if (!isRunning) {
-      message = 'Paused'
-      isHidden = ''
-    // Default message, will still be hidden
-    } else {
-      message = '???'
-    }
+// Displays a message
+export default function MessagePopup(props) {
+  const isRunning = useSelector((state) => state.game.isRunning)
+  const gameOver = useSelector((state) => state.game.gameOver)
 >
-    return (
-      <div className={`message-popup ${isHidden}`}>
-        <h1>{message}</h1>
-        <p></p>
-      </div>
-    )
+  let message = ''
+  let isHidden = 'hidden'
+>
+  if (gameOver) {
+    message = 'Game Over'
+    isHidden = ''
+  } else if (!isRunning) {
+    message = 'Paused'
+    isHidden = ''
+  }
+>
+  return (
+    <div className={`message-popup ${isHidden}`}>
+      <h1>{message}</h1>
+    </div>
+  )
 }
 ```
 

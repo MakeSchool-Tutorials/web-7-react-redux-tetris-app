@@ -22,7 +22,7 @@ slug: default-state-and-block-shapes
 1. Building a timer system
 1. Implementing Game Over and Restart
 
-The game will work by managing it's state in a series of arrays stored in Redux. Manipulating and comparing these arrays will determine what the game shows and how the game plays.
+The game will work by managing it's state in a series of arrays managed by the Redux store. Manipulating and comparing these arrays will determine what the game shows and how the game plays.
 
 Nested arrays represent a two dimensional data structure. This reflects the two dimensional grid the game is played on.
 
@@ -40,9 +40,7 @@ Shapes can be rotated so there will be a 4 x 4 grid representing each rotation. 
 
 ![Shapes-Array](assets/Shapes-Array.png)
 
-To access the array containing the shape data, we'll
-use the _index of the shape followed by the index of
-the rotation_, e.g.
+To access the array containing the shape data, you'll use the _index of the shape followed by the index of the rotation_, e.g.
 
 `shapes[shapeIndex][rotationIndex]`
 
@@ -89,8 +87,7 @@ The grid above shows the game board with a "T" shaped block in color 3  near the
 
 # Empty Array
 
-You need a function that will generate a default
-empty array. This function needs to return an array containing 18 arrays, each of the nested arrays should contain ten 0s. This represents an empty game board.
+You need a function that will generate a default empty array. This function needs to return an array containing 18 arrays, each of the nested arrays should contain ten 0s. This represents an empty game board.
 
 > [action]
 >
@@ -265,16 +262,16 @@ export const shapes = [
 
 # Generate Random Shapes
 
-The game needs to generate a random shape from the
-shape array. Add a function to handle this.
+The game needs to generate a random shape from the shape array. Add a function to handle this.
 
 > [action]
 >
 > Add the following to `/src/utils/index.js`:
+> 
+> Return the index of a random shape from 1 to the number of items in `shapes`. You don't want the first item, which is an empty shape
 >
 ```JavaScript
-// Return the index of a random shape from 1 to the number of items in `shapes`
-// We don't want the first item, which is an empty shape
+// Random Shape
 export const randomShape = () => {
   return random(1, shapes.length - 1)
 }
@@ -317,7 +314,7 @@ export const defaultState = () => {
 }
 ```
 
-We now have a default state for our game, and we **used Redux/Flux to manage the application state!** We also covered the beginnings of **building systems that manage and merge complex arrays!**
+You now have a default state for our game, and we **used Redux/Flux to manage the application state!** We also covered the beginnings of **building systems that manage and merge complex arrays!**
 
 # Now Commit
 

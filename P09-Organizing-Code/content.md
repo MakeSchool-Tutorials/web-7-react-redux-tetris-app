@@ -21,10 +21,7 @@ slug: organizing-code
 1. Building a timer system
 1. Implementing Game Over and Restart
 
-Keeping files organized is important. Rather than
-clutter components with more code, it's a good idea
-to move code to other modules and import it where
-needed.
+Keeping files organized is important. Rather than clutter components with more code, it's a good idea to move code to other modules and import it where needed.
 
 # Overview of the code
 
@@ -52,9 +49,7 @@ export const random = (min, max) => {
 }
 ```
 
-As the project progresses any time we need more
-general purpose code we can add it to this file,
-export, and import as needed.
+As the project progresses any time we need more general purpose code we can add it to this file, export, and import as needed.
 
 # Now Commit
 
@@ -70,47 +65,43 @@ $ git push
 
 We need to define the Redux store and wrap child components in a provider component to share the store. We're going to need this if we want to work with state and reducers for our app.
 
-Define the store in App and Create a Provider
-component that wraps the components rendered by
-App.
+Define the store in App and Create a Provider component that wraps the components rendered by App.
 
 > [action]
 >
 > Update `/src/App.js` to include the following:
 >
 ```js
-import React, { Component } from 'react';
-[bold]import { createStore } from 'redux'[/bold]
-[bold]import { Provider } from 'react-redux'[/bold]
->
-[bold]import reducers from './reducers'[/bold]
-import GridBoard from './components/grid-board'
-import NextBlock from './components/next-block'
-import ScoreBoard from './components/score-board'
-import Controls from './components/controls'
-import MessagePopup from './components/message-popup'
+import React from 'react';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducers from './reducers'
 >
 import './App.css';
 >
-[bold]const store = createStore(reducers)[/bold]
+import GridBoard from './components/GridBoard'
+import NextBlock from './components/NextBlock'
+import ScoreBoard from './components/ScoreBoard'
+import Controls from './components/Controls'
+import MessagePopup from './components/MessagePopup'
 >
-class App extends Component {
-  render() {
-    return (
-[bold]      <Provider store={store}>[/bold]
-        <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Tetris Redux</h1>
-          </header>
-          <GridBoard />
-          <NextBlock />
-          <ScoreBoard />
-          <Controls />
-          <MessagePopup />
-        </div>
-[bold]      </Provider>[/bold]
-    );
-  }
+const store = createStore(reducers)
+>
+function App() {
+  return (
+    <Provider store={store}>
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Tetris Redux</h1>
+        </header>
+        <GridBoard />
+        <NextBlock />
+        <ScoreBoard />
+        <Controls />
+        <MessagePopup />
+      </div>
+    </Provider>
+  );
 }
 >
 export default App;

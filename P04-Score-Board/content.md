@@ -22,12 +22,9 @@ slug: score-board
 1. Building a timer system
 1. Implementing Game Over and Restart
 
-We need a score board to show the game score and
-provide a place for the play and pause buttons
-to live.
+You need a score board to show the game score and provide a place for the Play and Pause buttons to live.
 
-The scoreboard when completed will display on the
-right side of the game board.
+The scoreboard when completed will display on the right side of the game board.
 
 ![score-board](assets/score-board.png)
 
@@ -40,35 +37,31 @@ Some requirements for the score board:
 more difficult in other ways for the current level.
 - The component added in this chapter will give these previously described elements a place to live.
 
-
-
 # Create the ScoreBoard Component
 
 > [action]
 >
-> Make a new file: `/src/components/score-board.js` with the following code:
+> Make a new file: `/src/components/ScoreBoard.js` with the following code:
 >
 ```js
-import React, { Component } from 'react'
-class ScoreBoard extends Component {
-  render() {
-    return (
-      <div className="score-board">
-        <div>Score:{ this.props.score }</div>
-        <div>Level: 1</div>
-        <button className="score-board-button" onClick={(e) => {
-        }}>Play</button>
-        <button className="score-board-button" onClick={(e) => {
-        }}>Restart</button>
-      </div>
-    )
-  }
+import React from 'react'
+>
+export default function ScoreBoard(props) {
+	return (
+		<div className="score-board">
+			<div>Score:{ props.score }</div>
+			<div>Level: 1</div>
+			<button className="score-board-button" onClick={(e) => {
+			}}>Play</button>
+			<button className="score-board-button" onClick={(e) => {
+			}}>Restart</button>
+		</div>
+	)
 }
-export default ScoreBoard
+
 ```
 
-Now we can define some styles for these elements. No need to worry about
-the text, we'll just focus on the buttons for now.
+Now you can define some styles for these elements. No need to worry about the text, you'll just focus on the buttons for now.
 
 > [action]
 >
@@ -98,25 +91,26 @@ Let's see what we have so far:
 > Add the following to `/src/App.js`:
 >
 ```js
-import React, { Component } from 'react';
-import GridBoard from './components/grid-board'
-import NextBlock from './components/next-block'
-[bold]import ScoreBoard from './components/score-board'[/bold]
+import React from 'react';
 import './App.css';
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Tetris Redux</h1>
-        </header>
-        <GridBoard />
-        <NextBlock />
-[bold]        <ScoreBoard />[/bold]
-      </div>
-    );
-  }
+>
+import GridBoard from './components/GridBoard'
+import NextBlock from './components/NextBlock'
+import ScoreBoard from './components/ScoreBoard'
+>
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1 className="App-title">Tetris Redux</h1>
+      </header>
+      <GridBoard />
+      <NextBlock />
+      <ScoreBoard />
+    </div>
+  );
 }
+>
 export default App;
 ```
 

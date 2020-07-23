@@ -19,7 +19,7 @@ Here is what we will build with this tutorial. This version of Tetris will run i
 
 # Why is this important?
 
-This gives some more advanced practice in building web apps using React and getting familiar with the JSX syntax. As you go throughout this course, we'll be building more complex apps, so it's good to practice the fundamentals (plus a little extra), before moving on to bigger and more challenging things!
+Completing this project will give you a chance to practice creating advanced front end applications with React. It will also give you an opportunity to look at managing complex appication satte with Redux. Beyond all of this the tutorial uses complex Objects and Arrays. This should give you new tools to practice your JavaScript skills. 
 
 # Prerequisites
 
@@ -29,8 +29,7 @@ Some experience working with the command line, including NPM and Node, is also r
 
 # Overview
 
-The goal of the project is to recreate the classic arcade game
-Tetris with React and Redux.
+The goal of the project is to recreate the classic arcade game Tetris with React and Redux.
 
 React will generate and manage the views in the project while the state of the game will be stored in Redux.
 
@@ -43,7 +42,7 @@ The tutorial will also delve into related topics like CSS, CSS Grid, and Flex Bo
 By the end of this tutorial, students should be able to...
 
 1. Implement an advanced single page application with React
-1. Use Redux/Flux to manage application state
+1. Use Redux to manage application state
 1. Build systems that manage and merge complex arrays
 1. Use functional programming methods like `map`
 1. Use CSS variables
@@ -119,12 +118,16 @@ content.
 >
 > In `/src/App.js` edit the `render` method to provide the following JSX:
 >
-```html
-<div className="App">
-  <header className="App-header">
-    <h1 className="App-title">Tetris Redux</h1>
-  </header>
-</div>
+```JSX
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1 className="App-title">Tetris Redux</h1>
+      </header>
+    </div>
+  );
+}
 ```
 >
 > Since we removed the logo we should remove the import for it:

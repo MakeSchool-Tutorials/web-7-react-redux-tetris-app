@@ -50,9 +50,9 @@ From the shapes array, the actual shape is accessed from the shape and rotation 
 
 # Make Some New Utils
 
-First off, we're going to be dealing with a lot of moving blocks here. Whether we're rotating, going left, right, or down, we need to know if we can move somewhere. The game needs a function to determine if the current block can move to a new x, y, and rotation. This function will take in the shape, the grid, the x, y, and rotation, and determine if drawing the block with these options would make the block overlap the edges of the board or some placed  blocks. This function will return true if the move is possible, false if not.
+First off, you're going to be dealing with a lot of moving blocks here. Whether you're rotating, going left, right, or down, you need to know if you can move somewhere. The game needs a function to determine if the current block can move to a new x, y, and rotation. This function will take in the shape, the grid, the x, y, and rotation, and determine if drawing the block with these options would make the block overlap the edges of the board or some placed  blocks. This function will return true if the move is possible, false if not.
 
-Secondly, more specific to the rotation action, we need to be able to easily find the next rotation of a shape, if given the shape and its current rotation.
+Secondly, more specific to the rotation action, you need to be able to easily find the next rotation of a shape, if given the shape and its current rotation.
 
 Both of these functions can be accomplished by making new utilities!
 

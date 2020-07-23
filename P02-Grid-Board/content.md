@@ -22,9 +22,7 @@ slug: grid-board
 1. Building a timer system
 1. Implementing Game Over and Restart
 
-This section takes the grid square created in the last
-section and displays them as a 10 x 18 grid.
-This grid of squares will be a component.
+This section takes the grid square created in the last section and displays them as a 10 x 18 grid. This grid of squares will be a component.
 
 ![game-board](assets/game-board.png)
 
@@ -44,40 +42,34 @@ if all the squares contained color 0.
 
 > [action]
 >
-> Make a new file `src/components/grid-board.js` and put the following code in it:
+> Make a new file `src/components/GridBoard.js` and put the following code in it:
 >
 ```js
-import React, { Component } from 'react'
-import GridSquare from './grid-square'
+import React from 'react'
+import GridSquare from './GridSquare'
 >
 // Represents a 10 x 18 grid of grid squares
 >
-class GridBoard extends Component {
+export default function GridBoard(props) {
 >
   // generates an array of 18 rows, each containing 10 GridSquares.
-  makeGrid() {
-    const grid = []
-    for (let row = 0; row < 18; row ++) {
-      grid.push([])
-      for (let col = 0; col < 10; col ++) {
-        grid[row].push(<GridSquare key={`${col}${row}`} color="1" />)
-      }
-    }
 >
-    return grid
-  }
+	const grid = []
+	for (let row = 0; row < 18; row ++) {
+		grid.push([])
+		for (let col = 0; col < 10; col ++) {
+			grid[row].push(<GridSquare key={`${col}${row}`} color="1" />)
+		}
+	}
 >
   // The components generated in makeGrid are rendered in div.grid-board
-  render () {
-    return (
-      <div className='grid-board'>
-        {this.makeGrid()}
-      </div>
-    )
-  }
-}
 >
-export default GridBoard
+	return (
+		<div className='grid-board'>
+			{grid}
+		</div>
+	)
+}
 ```
 
 Now we should import `GridBoard` into `/src/App.js`
@@ -87,23 +79,20 @@ Now we should import `GridBoard` into `/src/App.js`
 > Change `/src/App.js` to the following:
 >
 ```js
-import React, { Component } from 'react';
->
-[bold]import GridBoard from './components/grid-board'[/bold]
->
+import React from 'react';
 import './App.css';
 >
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Tetris Redux</h1>
-        </header>
-[bold]        <GridBoard />[/bold]
-      </div>
-    );
-  }
+import GridBoard from './components/GridBoard'
+>
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1 className="App-title">Tetris Redux</h1>
+      </header>
+      <GridBoard />
+    </div>
+  );
 }
 >
 export default App;
@@ -115,19 +104,23 @@ The grid squares should all end up stacked vertically:
 
 # Use CSS Grid to arrange the squares
 
-Now we'll use the CSS Grid to arrange the single row of grid squareas into an actual grid (what a concept!)
+Now you'll use the CSS Grid to arrange the single row of grid squareas into an actual grid (what a concept!)
 
 > [action]
 >
 > Add the following to `/src/index.css`:
 >
+> tells the browser to calculate the size boxes to include the border width rather than adding the border, which is the default
+>
 ```css
-/* tells the browser to calculate the size boxes to include the border width rather than adding the border, which is the default */
 * {
   box-sizing: border-box;
 }
+```
 >
-/* Grid Board - This defines the `grid-board` to display as `grid`. This causes the children of this element to arrange on a grid. The number of columns is set by `--cols` var and the width of each column is set by `--tile-size`. These two CSS custom properties are defined in `:root` which allow them to be easily changed.*/
+> Grid Board - This defines the `grid-board` to display as `grid`. This causes the children of this element to arrange on a grid. The number of columns is set by `--cols` var and the width of each column is set by `--tile-size`. These two CSS custom properties are defined in `:root` which allow them to be easily changed.
+>
+```CSS
 .grid-board {
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--tile-size));

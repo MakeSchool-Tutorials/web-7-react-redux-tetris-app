@@ -21,9 +21,7 @@ slug: tetris-grid
 1. Building a timer system
 1. Implementing Game Over and Restart
 
-In this section you will make a component that represents a single
-grid square. The game board is played on a grid made up of grid
-squares.
+In this section you will make a component that represents a single grid square. The game board is played on a grid made up of grid squares.
 
 One square will look like this:
 
@@ -46,19 +44,11 @@ Colors will be stored as an index:
 
 # Why Use Components
 
-React uses a component based architecture. Everything you see
-rendered in the browser is a component.
+React uses a component based architecture. Everything you see rendered in the browser is a component.
 
-Breaking components down into smaller and more granular
-components is usually the best strategy with React. While you
-could make the game from a single Game Component. A better
-strategy would be to make Game Component from Grid Component
-that is made of GridSquare Components.
+Breaking components down into smaller and more granular components is usually the best strategy with React. While you could make the game from a single Game Component. A better strategy would be to make a game from many components that all fit together like Lego brocks to form the final game. 
 
-Each component will require CSS styles. The components used in
-this project will not have much use in other projects. They are
-too specialized. This makes keeping all of the styles in a single
-stylesheet more convenient.
+Each component will require CSS styles. The components used in this project will not have much use in other projects. They are too specialized. This makes keeping all of the styles in a single stylesheet more convenient.
 
 # Make the GridSquare Component
 
@@ -66,30 +56,28 @@ This component will render as a single square of color.
 
 > [action]
 >
-> Make a new file: `src/components/grid-square.js` with the following code:
+> Make a new file: `src/components/GridSquare.js` with the following code:
 >
 ```js
-import React, { Component } from 'react'
+import React from 'react'
 >
 // Represents a grid square with a color
 >
-class GridSquare extends Component {
-  render () {
-    const classes = `grid-square color-${this.props.color}`
-    return <div className={classes} />
-  }
+export default function GridSquare(props) {
+  const classes = `grid-square color-${props.color}`
+  return <div className={classes} />
 }
->
-export default GridSquare
 ```
 
 The GridSquare is just a `div` with some class names. Below is a breakdown of the class names:
 
-- `grid-square` : Define default grid square properties shared by all grid squares.
-- `color-${this.props.color}` : The color of the square will be
-passed as props. The value of `props.color` will be a number e.g. 1, 2, 3.
+- `GridSquare` : Define default grid square properties shared by all grid squares.
+- `color-${props.color}` : The color of the square will be
+passed via props. The value of `props.color` will be a number e.g. 1, 2, 3.
 
 **As a requirement The class name for any grid square will use the following format:** `color-0`, `color-1`, `color-2`, `color-3` etc.
+
+You'll define these color classes later in the tutorial. 
 
 # Define some CSS
 
@@ -117,7 +105,7 @@ By keeping all of the styles in one place it will make for a large body of CSS c
 }
 ```
 >
-> Now we can edit `/src/index.css` to include the below styles that define some properties for the colors and sizes we'll use:
+> Now you can edit `/src/index.css` to include the below styles that define some properties for the colors and sizes we'll use:
 >
 ```css
 :root {
@@ -225,7 +213,9 @@ Now we need to define the appearance of a grid square. The grid squares all have
 }
 ```
 
-That might seem like a lot of styles but much of what is there will be reused throughout this tutorial. With this arrangement we can easily make changes to the size and border in a single place, at the top of the style sheet.
+That might seem like a lot of styles but much of what is there will be reused throughout this tutorial. With this arrangement you can easily make changes to the size and border in a single place, at the top of the style sheet.
+
+Defining these CSS custom properties is well worth the time effort your future self will thank you! 
 
 # Test a Grid Square
 
@@ -234,21 +224,20 @@ That might seem like a lot of styles but much of what is there will be reused th
 > Add the folowing bolded parts to `/src/App.js`:
 >
 ```js
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
-[bold]import GridSquare from './components/grid-square'[/bold]
 >
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Tetris Redux</h1>
-        </header>
-[bold]        <GridSquare color="1" />[/bold]
-      </div>
-    );
-  }
+import GridSquare from './components/GridSquare'
+>
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1 className="App-title">Tetris Redux</h1>
+      </header>
+      <GridSquare color="1" />
+    </div>
+  );
 }
 >
 export default App;

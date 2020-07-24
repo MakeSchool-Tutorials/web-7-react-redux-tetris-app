@@ -318,6 +318,158 @@ $ git push
 
 As you go through this FEW course, try to tie the concepts you learned here into the course material. The foundational work here on building React apps will be used to make bigger and bolder apps down the road!
 
+# Challenges
+
+## Change the styles 
+
+The square and the buttons use a beveled/chiseled looks which doesn't look that great. This was chosen originally because it looks like the original game. But you can add a more modern and updated look with a few styles. 
+
+Here are a few ideas to get you started. 
+
+Remove the border on the square; 
+
+```css
+.grid-square {
+  /* border-style: solid; */
+  width: var(--tile-size);
+  height: var(--tile-size);
+  /* border-width: var(--border-width);
+  border-left-color: var(--border-left-color);
+  border-top-color: var(--border-top-color);
+  border-right-color: var(--border-right-color);
+  border-bottom-color: var(--border-bottom-color); */
+}
+```
+
+Add a border radius 
+
+```CSS
+/* Grid Square */
+.grid-square {
+  width: var(--tile-size);
+  height: var(--tile-size);
+  border-radius: 4px;
+}
+```
+
+Add a gap between the grid squares by adding `grid-gap` to the game board styles. 
+
+```css
+/* Grid Board */
+.grid-board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--tile-size));
+  grid-gap: 0;
+  align-self: flex-start;
+  grid-area: c;
+  grid-gap: 1px; /* Add a gap! */
+}
+```
+
+You can apply the same ideas to the next block. 
+
+Style the buttons: 
+
+```css
+/* Score Board */
+.score-board-button {
+  display: block;
+  padding: 1em;
+  background-color: var(--color-0);
+  border: none;
+  /* border-width: 5px; */
+  /* border-top-color: var(--button-color-t);
+  border-left-color: var(--button-color-l);
+  border-right-color: var(--button-color-r);
+  border-bottom-color: var(--button-color-b); */
+}
+```
+
+You can do the same thing to the `.control-button`. Might be good to make a `.button` class and share this across both the scoreboard and control buttons. This was overlooked in the original tutorial.
+
+The buttons in the score board are a little uneven. It would be good to arrange make these buttons so they fill the width of the side bar. You can do this with flex box. 
+
+```CSS
+/* score-board */
+.score-board {
+  grid-area: r;
+  display: flex;
+  flex-direction: column;
+}
+```
+
+You can customize the colors by adjusting the color variables at the top of the style sheet: 
+
+```css
+:root {
+  --bg-color: rgba(150, 150, 150, 1);
+
+  /* Border Colors are all transparent colors. These will tint or shade the background color of the square. */
+  --border-left-color: rgba(255, 255, 255, 0.20);
+  --border-top-color: rgba(255, 255, 255, 0.33);
+  --border-right-color: rgba(0, 0, 0, 0.15);
+  --border-bottom-color: rgba(0, 0, 0, 0.5);
+
+  /* Square Colors:  background colors for the squares.*/
+  --color-0: #eaeaea;
+  --color-1: #ff6600;
+  --color-2: #eec900;
+  --color-3: #0000ff;
+  --color-4: #cc00ff;
+  --color-5: #00ff00;
+  --color-6: #66ccff;
+  --color-7: #ff0000;
+  ...
+}
+```
+
+## JS Challenges 
+
+Looks liek the next block displays the color of the shape as color 0. It would be nice to display the shape color. Colors are mapped to an index and the index matches the index of the shape. 
+
+The problem is the square value is 0 or 1. It's the shape index `nextShape` that should be index of the color. 
+
+```JS
+export default function NextBlock(props) {
+	...
+	const box = shapes[nextShape][0]
+>
+	const grid = box.map((rowArray, row) => {
+		return rowArray.map((square, col) => {
+      // make the changes here: 
+			return <GridSquare key={`${row}${col}`} color={square === 0 ? 0 : nextShape} />
+		})
+	})
+ ...
+}
+```
+
+Note the change here sets the color to 0 if the `square` value is 0 or the `nextShape`. 
+
+## Counting Completed Rows 
+
+Besides scoring points you also remove rows of squares. Teacking the number of rows removed can be used to track score.
+
+In some versions of the game the goal is to complete a number of rows within a given time alotment. You could use the completion of rows to decrease the speed property on state increasing the speed of the game and making play more difficult over time. 
+
+## Edge Cases 
+
+The game has a bug. When block is off the top edge of the grid if you move it left or right enough to move it off the grid the game registers this as a game over. You can try this yourself. When a block starts clicking left or right enough will cause a game over. You won't see the block. 
+
+To track down the problem think about how the game works. Click the left or right button you're issuing an action which is in turn sent to the reducer. In the reducer a MOVE_RIGHT or MOVE_LEFT action call `canMoveTo()` which returns true or false if the shape can be moved. There is a problem here. 
+
+## User interactions 
+
+The game is working but the user interface needs some attention. While clicking the buttons works it would be better and more playable to be able to use the keyboard.
+
+Think about which keys would make sense for controls. The left and right arrows make sense to work with the left and right actions. The rotate action might be the space bar or the down and or the up arrow. The W, A, S, and D keys are also classic controls for games. 
+
+using the keyboard you could intrduce a positive and negative rotation. Currently the rotation is only in the positive direction. There is a only one button which limits how the game can handle rotation. With the key board the down arrow could rotate in the positive direction and the up arrow could rotate in the negative direction. 
+
+## Saving High Scores 
+
+If you did the other React + Redux trutorials you worked with Local storage you could put these ideas to use here to save the game state and save the high score. 
+
 # Feedback and Review - 2 minutes
 
 **We promise this won't take longer than 2 minutes!**
@@ -325,3 +477,5 @@ As you go through this FEW course, try to tie the concepts you learned here into
 Please take a moment to rate your understanding of learning outcomes from this tutorial, and how we can improve it via our [tutorial feedback form](https://goo.gl/forms/ErwFsZjnYNPHOo342)
 
 This allows us to get feedback on how well the students are grasping the learning outcomes, and tells us where we can improve the tutorial experience.
+
+

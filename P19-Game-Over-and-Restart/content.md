@@ -452,11 +452,53 @@ Besides scoring points you also remove rows of squares. Teacking the number of r
 
 In some versions of the game the goal is to complete a number of rows within a given time alotment. You could use the completion of rows to decrease the speed property on state increasing the speed of the game and making play more difficult over time. 
 
+To track the completed rows you might follow these steps: 
+
+- Define a new property on state for rows Completed. This will need to go into the default state object in `utils/index.js`
+- The checkRows function calculates the rows completed and returns a score. You'll need to modify this to return the score and the number of rows completed.
+- In the `reducers/game-reducer.js` take a look at the code in MOVE_DOWN case. Near the bottom the code calls `checkRows()` if you modified the return value work with that here. Also caluclate the new row count here and set it on newState. 
+
 ## Edge Cases 
 
 The game has a bug. When block is off the top edge of the grid if you move it left or right enough to move it off the grid the game registers this as a game over. You can try this yourself. When a block starts clicking left or right enough will cause a game over. You won't see the block. 
 
 To track down the problem think about how the game works. Click the left or right button you're issuing an action which is in turn sent to the reducer. In the reducer a MOVE_RIGHT or MOVE_LEFT action call `canMoveTo()` which returns true or false if the shape can be moved. There is a problem here. 
+
+Here is a refactor of the canMoveTo function. Try this on your own. You can compare your solution. 
+
+```JS
+export const canMoveTo = (shape, grid, x, y, rotation) => {
+	const currentShape = shapes[shape][rotation]
+	// Get the width and height of the grid
+	const gridWidth = grid[0].length - 1
+	const gridHeight = grid.length - 1
+	// Loop over the shape array
+	for (let row = 0; row < currentShape.length; row++) {
+		for (let col = 0; col < currentShape[row].length; col++) {
+			// If the value isn't 0 it's part of the shape
+			if (currentShape[row][col] !== 0) {
+				// Offset the square to map it to the larger grid
+				const proposedX = col + x
+				const proposedY = row + y
+				// Get the possible row. This might be undefined if we're above the top
+				const possibleRow = grid[proposedY]
+
+				// Off the left or right side or off the bottom return false
+				if (proposedX < 0 || proposedX > gridWidth || proposedY > gridHeight) {
+					return false
+				} else if (possibleRow !== undefined) {
+					// If the row is not undefined you're on the grid
+					if (possibleRow[proposedX] !== 0) {
+						// This square must be filled
+						return false
+					}
+				}
+			}
+		}
+	}
+	return true
+}
+```
 
 ## User interactions 
 

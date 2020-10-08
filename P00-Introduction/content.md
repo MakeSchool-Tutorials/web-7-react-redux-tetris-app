@@ -19,7 +19,7 @@ Here is what we will build with this tutorial. This version of Tetris will run i
 
 # Why is this important?
 
-Completing this project will give you a chance to practice creating advanced front end applications with React. It will also give you an opportunity to look at managing complex appication satte with Redux. Beyond all of this the tutorial uses complex Objects and Arrays. This should give you new tools to practice your JavaScript skills. 
+Completing this project will give you a chance to practice creating advanced front end applications with React. It will also give you an opportunity to look at managing complex appication satte with Redux. Beyond all of this the tutorial uses complex Objects and Arrays. This should give you new tools to practice your JavaScript skills.
 
 # Prerequisites
 
@@ -92,7 +92,7 @@ Now go to GitHub and create a public repository called REPO-NAME, and now associ
 >
 ```bash
 $ git remote add origin GITHUB-REPO-URL
-$ git push origin master -u
+$ git push origin main -u
 ```
 
 # Create a default app

@@ -76,6 +76,7 @@ The useSelector hook give your components access to the redux store.
 >
 ```js
 import { useSelector } from 'react-redux'
+import { shapes } from '../shapes'
 ```
 
 # Get a piece of state

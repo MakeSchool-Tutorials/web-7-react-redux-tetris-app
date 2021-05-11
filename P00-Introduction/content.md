@@ -118,7 +118,7 @@ content.
 >
 > In `/src/App.js` edit the `render` method to provide the following JSX:
 >
-```JSX
+```js
 function App() {
   return (
     <div className="App">

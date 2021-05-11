@@ -46,7 +46,7 @@ Colors will be stored as an index:
 
 React uses a component based architecture. Everything you see rendered in the browser is a component.
 
-Breaking components down into smaller and more granular components is usually the best strategy with React. While you could make the game from a single Game Component. A better strategy would be to make a game from many components that all fit together like Lego brocks to form the final game. 
+Breaking components down into smaller and more granular components is usually the best strategy with React. While you could make the game from a single Game Component. A better strategy would be to make a game from many components that all fit together like Lego brocks to form the final game.
 
 Each component will require CSS styles. The components used in this project will not have much use in other projects. They are too specialized. This makes keeping all of the styles in a single stylesheet more convenient.
 
@@ -77,7 +77,7 @@ passed via props. The value of `props.color` will be a number e.g. 1, 2, 3.
 
 **As a requirement The class name for any grid square will use the following format:** `color-0`, `color-1`, `color-2`, `color-3` etc.
 
-You'll define these color classes later in the tutorial. 
+You'll define these color classes later in the tutorial.
 
 # Define some CSS
 
@@ -215,7 +215,7 @@ Now we need to define the appearance of a grid square. The grid squares all have
 
 That might seem like a lot of styles but much of what is there will be reused throughout this tutorial. With this arrangement you can easily make changes to the size and border in a single place, at the top of the style sheet.
 
-Defining these CSS custom properties is well worth the time effort your future self will thank you! 
+Defining these CSS custom properties is well worth the time effort your future self will thank you!
 
 # Test a Grid Square
 
@@ -263,5 +263,5 @@ We got some great practice with starting to **use CSS variables!** We'll be usin
 
 ## Resources
 
-- https://developer.mozilla.org/en-US/docs/Web/CSS/--*
+- https://developer.mozilla.org/en-US/docs/Web/CSS/
 - https://www.quackit.com/css/css_color_codes.cfm

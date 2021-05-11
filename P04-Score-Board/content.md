@@ -58,7 +58,6 @@ export default function ScoreBoard(props) {
 		</div>
 	)
 }
-
 ```
 
 Now you can define some styles for these elements. No need to worry about the text, you'll just focus on the buttons for now.

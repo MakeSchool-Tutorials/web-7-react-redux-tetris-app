@@ -66,9 +66,9 @@ need `connect` from `React-Redux`.
 import { useSelector } from 'react-redux'
 ```
 
-# Get game data from state 
+# Get game data from state
 
-Get the game object and deconstruct it into each of it's properties. 
+Get the game object and deconstruct it into each of it's properties.
 
 > [action]
 >
@@ -81,7 +81,7 @@ export default function GridBoard(props) {
 }
 ```
 
-Note! at this step you'll have an error since `grid` will be declared twice! You're going to fix that in a moment. 
+Note! at this step you'll have an error since `grid` will be declared twice! You're going to fix that in a moment.
 
 # Mapping the Grid to GridSquares
 
@@ -94,14 +94,14 @@ You'll need to map the row arrays then map each row to get the value at each col
 > [action]
 >
 > Import `shapes` from utils.js. Add the following at the top of `GridBoard.js`
-> 
+>
 ```JS
 ...
 import { shapes } from '../utils'
 ...
 ```
 
-Next mape the current block shape into the grid.
+Next map the current block shape into the grid.
 
 > [info]
 >
@@ -160,10 +160,9 @@ export default function GridBoard(props) {
 		</div>
 	)
 }
-
 ```
 
-At this point the grid should display with the gray squares. This is the empty color. 
+At this point the grid should display with the gray squares. This is the empty color.
 
 No visual changes quite yet, but make sure everything still loads correctly in the browser! Our Grid Board now **uses Redux/Flux to manage application state!** We also covered working with **systems that manage and merge complex arrays** in a lot more detail with the board, and have gotten _even more_ practice with **using functional programming methods like `map`!**
 

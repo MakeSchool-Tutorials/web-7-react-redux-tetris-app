@@ -37,9 +37,9 @@ You can also use `isRunning` to control the display of the buttons. Imagine the 
 
 # Dispatch actions from a component with useDispatch
 
-To dispatch actions from a component use `useDipatch`. The controls component will want access to values on state also so it will also import `useSelector`. 
+To dispatch actions from a component use `useDipatch`. The controls component will want access to values on state also so it will also import `useSelector`.
 
-`useDispatch` sends actions from your action creator functions. You'll need to import these also. 
+`useDispatch` sends actions from your action creator functions. You'll need to import these also.
 
 > [action]
 >
@@ -78,22 +78,22 @@ export default function Controls(props) {
 			<button className="control-button" onClick={(e) => {
 				dispatch(moveLeft())
 			}}>Left</button>
-
+>
 			{/* right */}
 			<button className="control-button" onClick={(e) => {
 				dispatch(moveRight())
 			}}>Right</button>
-
+>
 			{/* rotate */}
 			<button className="control-button" onClick={(e) => {
 				dispatch(rotate())
 			}}>Rotate</button>
-
+>
 			{/* down */}
 			<button className="control-button" onClick={(e) => {
 				dispatch(moveDown())
 			}}>Down</button>
-
+>
 		</div>
 	)
 }

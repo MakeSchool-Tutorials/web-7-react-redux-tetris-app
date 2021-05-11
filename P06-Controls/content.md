@@ -44,7 +44,7 @@ The first step is to make a new component to hold the buttons.
 >
 ```JS
 import React from 'react'
-
+>
 export default function Controls(props) {
 	return (
 		<div className="controls">
@@ -65,7 +65,7 @@ export default function Controls(props) {
 >
 			{/* down */}
 			<button className="control-button" onClick={(e) => {
-
+>
 			}}>Down</button>
 >
 		</div>
@@ -90,7 +90,7 @@ Add some styles to the controls container. Notice here we are mapping this eleme
 }
 ```
 
-The controls container will use the [Flex Box](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) for layout. 
+The controls container will use the [Flex Box](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) for layout.
 
 Flex Box implements is a one dimensional layout. All of the buttons in the controls container are arranged in a horizontal row along a single axis.
 
